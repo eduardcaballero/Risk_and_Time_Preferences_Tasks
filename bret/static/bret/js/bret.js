@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-(function(angular){
+(function an(angular){
 
 	//
 	// ANGULAR
@@ -115,6 +115,7 @@
 			// automatically resolve cards
 			// by given time interval, so
 			// by random order or rows
+			console.log("start")
 			if( this.dynamic )
 			{				
 				var me = this, 
@@ -147,6 +148,7 @@
 	 */
 	BombTaskController.prototype.stop = function()
 		{
+			console.log("stop")
 			if( this.dynamic && this._intervalId )
 				this.$interval.cancel(this._intervalId);
 			
@@ -381,6 +383,7 @@
 				this.start(state._intIndex);
 
 			if( state.stopped )
+				console.log("stop")
 				this.stop();
 
 			if( state.resolved )

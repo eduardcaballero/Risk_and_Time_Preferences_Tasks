@@ -14,16 +14,28 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'otdm',
-        'display_name': "Otdm",
+        'name': 'dm',
+        'display_name': "DM",
         'num_demo_participants': 1,
-        'app_sequence': ['otdm']
+        'app_sequence': ['dm']
     },
     {
         'name': 'bret',
-        'display_name': "Bret",
+        'display_name': "BRET",
         'num_demo_participants': 1,
         'app_sequence': ['bret']
+    },
+    {
+        'name': 'sgg',
+        'display_name': "SGG",
+        'num_demo_participants': 1,
+        'app_sequence': ['sgg']
+    },
+    {
+        'name': 'hl',
+        'display_name': "HL",
+        'num_demo_participants': 1,
+        'app_sequence': ['hl']
     }
 ]
 
