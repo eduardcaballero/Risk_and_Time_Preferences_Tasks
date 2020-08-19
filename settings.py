@@ -1,12 +1,30 @@
 from os import environ
 
+environ.__setitem__('OTREE_PRODUCTION','0') ################
+if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
+    DEBUG = False
+else:
+    DEBUG = True
+
+SESSION_CONFIG_DEFAULTS = {
+    'real_world_currency_per_point': 1.00,
+    'participation_fee': 0.00,
+    'doc': ""
+    }
+
 SESSION_CONFIGS = [
-    # dict(
-    #    name='public_goods',
-    #    display_name="Public Goods",
-    #    num_demo_participants=3,
-    #    app_sequence=['public_goods', 'payment_info']
-    # ),
+    {
+        'name': 'otdm',
+        'display_name': "Otdm",
+        'num_demo_participants': 1,
+        'app_sequence': ['otdm']
+    },
+    {
+        'name': 'bret',
+        'display_name': "Bret",
+        'num_demo_participants': 1,
+        'app_sequence': ['bret']
+    }
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -20,10 +38,10 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'COP'
 USE_POINTS = True
 
 ROOMS = []
@@ -38,3 +56,5 @@ SECRET_KEY = '6k75xea8!xbc+)g%)zu&em-^(#*u38$5h1mu8o8t)7i4k5czsk'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+STATIC_URL = '/static/'
