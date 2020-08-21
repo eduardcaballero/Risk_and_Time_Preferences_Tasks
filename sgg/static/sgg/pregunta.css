@@ -1,0 +1,58 @@
+/* table {
+  margin-top: 15px;
+  text-align: center;
+} */
+/* body {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 1rem;
+} */
+/* .otree-body{
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  max-width: none !important;
+} */
+.otree-btn-next{
+  margin: 0 auto;
+  display: block;
+}
+.left{
+  padding-left: 50px !important;
+}
+.right{
+  padding-right: 50px !important;
+}
+.contentbody{
+  margin-top: -50px !important;
+}
+
+td {
+  padding: 5px !important;
+}
+
+.color1 {
+  background-color: rgb(255, 255, 255);
+}
+
+.color2 {
+  background-color: rgb(247, 255, 128);
+}
+
+.dot {
+  height: 3rem;
+  width: 3rem;
+  vertical-align: middle;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(42, 42, 42);
+  margin-right: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.radio {
+  margin-left: 15px;
+  margin-right: 15px;
+}
