@@ -1,7 +1,8 @@
 const filas = 10
 const columnas = 10
-const valor_1_fila = ["$2.000","$2.200","$2.600","$2.900","$3.500","$4.200","$5.300","$7.100","$10.800", "$21.800"]
+const valor_1_fila = ["$2.000","$2.400","$3.000","$3.700","$4.700","$6.000","$8.000","$11.300","$18.000","$38.000"]
 const valor_2_fila = "$0"
+
 contenido = document.getElementById("contenido");
 
 for (var j = 0; j < filas; j++) {
@@ -25,7 +26,7 @@ for (var j = 0; j < filas; j++) {
   col1.appendChild(row);
   var col2 = document.createElement("td")
   col2.classList.add("align-middle");
-  col2.innerHTML = '<input class="radio" type="radio" name="sgg_p1" value="'+(j+1)+'">';
+  col2.innerHTML = '<input class="radio" type="radio" name="sgg_p2" value="'+(j+1)+'">';
   var col3 = document.createElement("td")
   col3.classList.add("align-middle");
   col3.innerHTML = "<img width='100px' src='https://drive.google.com/uc?id=1lU9CNMJouxKbvEwdxPJuTzSKkZh5jPER' />";

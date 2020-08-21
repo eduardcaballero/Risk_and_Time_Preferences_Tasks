@@ -151,7 +151,10 @@
 #bomb-task .holder .card.clickable.active .front{
 	background: #ececec;
 }
-
+.stop:disabled, .resolve:disabled{
+	background: #dddddd !important;
+	border-color: #dddddd !important;
+}
 /** line */
 #bomb-task .holder .card .front:after{
 	background: #337ab7;

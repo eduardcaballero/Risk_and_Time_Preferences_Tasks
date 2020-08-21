@@ -32,4 +32,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    sgg_p1 = models.IntegerField()
+    sgg_p1 = models.StringField()
+    sgg_p2 = models.StringField()
+    sgg_p3 = models.StringField()
+    sgg_p4 = models.StringField()
+
