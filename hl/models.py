@@ -41,22 +41,21 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        tarea_inicial = models.IntegerField()
-        tarea_pago = models.IntegerField()
-        pregunta_pago = models.IntegerField()
-        for i in range(2):
-            for j in range(10):
-                # Holt&Laury_tarea#_pregunta#
-                setattr(self,"hl_t{i}_p{j}".format(i=i+1,j=j+1), models.StringField()) #A/B
-    
+    tarea_inicial = models.IntegerField()
+    tarea_pago = models.IntegerField()
+    pregunta_pago = models.IntegerField()
+    hl_t1_p1, hl_t1_p2, hl_t1_p3, hl_t1_p4, hl_t1_p5, hl_t1_p6, hl_t1_p7, hl_t1_p8, hl_t1_p9, hl_t1_p10 = (models.StringField() for _ in range(10))
+    hl_t2_p1, hl_t2_p2, hl_t2_p3, hl_t2_p4, hl_t2_p5, hl_t2_p6, hl_t2_p7, hl_t2_p8, hl_t2_p9, hl_t2_p10 = (models.StringField() for _ in range(10))
+
     def set_pago(self):
+        print(self.__dict__)
+        print("hola")
         if random.random() < self.pregunta_pago/10 :
             self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[
                 getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
                 ][0]
         else:
+            print("hola2")
             self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[
                 getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
                 ][1]
