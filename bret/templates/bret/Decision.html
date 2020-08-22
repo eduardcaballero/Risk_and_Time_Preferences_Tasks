@@ -60,11 +60,15 @@
 {% endblock %}
 
 {% block title %}
-{% trans "Your Decision" %}
+{% trans "Decisión" %}
 {% endblock %}
 
 
 {% block content %}
+<p style="text-align:left;">Su tarea es elegir cuando parar el proceso de recolección de las cajas. Use los siguientes <i>botones</i>:
+<br><b>Iniciar:</b>  inicia la recolección de las cajas. 
+<br><b>Parar:</b>    detiene la recolección de las cajas.
+<br><b>Mostrar:</b>  permite ver el contenido de las cajas recolectadas. </p>
 <div class="panel panel-primary">
     <div id="bomb-task" class="ng-cloak" data-ng-app="bombTask"
         data-ng-controller="BombTaskController as bombTaskController">
@@ -73,19 +77,15 @@
             <div class="counter">
 
                 <div data-ng-if="!bombTaskController.input">
-                    <strong>
-                        {% trans "No. of boxes collected:" %}
-                    </strong>
-                    <span data-ng-bind="bombTaskController.getCollectedBoxes()"></span>
+                    {% trans "Número de cajas recolectadas:" %}
+                    <b><span data-ng-bind="bombTaskController.getCollectedBoxes()"></span></b>
                     <br>
-                    <strong>
-                        {% trans "No. of boxes remaining:" %}
-                    </strong>
-                    <span data-ng-bind="bombTaskController.getRemainingBoxes()"></span>
+                    {% trans "Número de cajas restantes:" %}
+                    <b><span data-ng-bind="bombTaskController.getRemainingBoxes()"></span></b>
                 </div>
                 <div data-ng-if="bombTaskController.input">
                     <label>
-                        {% trans "No. of boxes to collect:" %}
+                        {% trans "Número de cajas recolectadas:" %}
 
                         <input min="0" type="number" class="form-control" data-ng-change="bombTaskController.select()"
                             data-ng-disabled="bombTaskController.stopped" data-ng-model="bombTaskController.input_value"
@@ -101,7 +101,7 @@
                     <button type="button" href="javascript:void(0)" class="btn btn-success btn-md start"
                         data-ng-click="bombTaskController.start()">
                         <span>
-                            {% trans "Start" %}
+                            {% trans "Iniciar" %}
                         </span>
                     </button>
 
@@ -109,7 +109,7 @@
                         data-ng-click="bombTaskController.stop()"
                         data-ng-disabled="!bombTaskController.getCollectedBoxes() || !bombTaskController.started || bombTaskController.stopped">
                         <span>
-                            {% trans "Stop" %}
+                            {% trans "Parar" %}
                         </span>
                     </button>
 
@@ -117,7 +117,7 @@
                         data-ng-if="bombTaskController.feedback" data-ng-click="bombTaskController.resolve()"
                         data-ng-disabled="!bombTaskController.stopped">
                         <span>
-                            {% trans "Solve" %}
+                            {% trans "Mostrar" %}
                         </span>
                     </button>
                 </div>
