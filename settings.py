@@ -36,6 +36,12 @@ SESSION_CONFIGS = [
         'display_name': "HL",
         'num_demo_participants': 1,
         'app_sequence': ['hl']
+    },
+    {
+        'name': 'CTB',
+        'display_name': "CTB",
+        'num_demo_participants': 1,
+        'app_sequence': ['CTB']
     }
 ]
 

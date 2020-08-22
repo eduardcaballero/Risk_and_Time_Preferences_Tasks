@@ -27,7 +27,7 @@ for (var j = 0; j < filas; j++) {
   col1.appendChild(row);
   var col2 = document.createElement("td")
   col2.classList.add("align-middle");
-  col2.innerHTML = '<input class="radio" type="radio" name="sgg_p4" value="'+(j+1)+'">';
+  col2.innerHTML = '<input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction()" type="radio" name="sgg_p4" value="'+(j+1)+'">';
   var col3 = document.createElement("td")
   col3.classList.add("align-middle");
   col3.innerHTML = "<img width='100px' src='https://drive.google.com/uc?id=1lU9CNMJouxKbvEwdxPJuTzSKkZh5jPER' />";

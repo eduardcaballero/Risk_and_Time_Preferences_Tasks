@@ -51,7 +51,6 @@ class Player(BasePlayer):
     pregunta_pago = models.IntegerField()
 
     def set_pago(self):
-        print(self.__dict__)
         fila_pregunta_pago = int(getattr(self, "sgg_p"+str(self.pregunta_pago)))
         if random.random() < Constants.probabilidad[fila_pregunta_pago-1] :
             self.payoff = c(getattr(Constants,"p{}_1_fila".format(self.pregunta_pago))[fila_pregunta_pago-1].replace("$","").replace(".",""))

@@ -1,0 +1,133 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load otree static %}
+
+
+{% block title %}
+    Pregunta {{ pregunta }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .otree-title{
+        font-size: 50px;
+     }
+    .otree-btn{
+        float: right;
+     }
+     .opcion{
+        font-size: 20px;
+    }
+    td.ancho {
+        width: 50px;
+    }
+</style>
+
+
+
+<script>
+    function clickaction(b){
+
+        switch(b){
+           case 1: {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 1. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $40.000 y además dentro de 10 semanas $0. Total $40.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+           case 2: {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 2. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $32.000 y además dentro de 10 semanas $10.000. Total $42.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+           case 3:  {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 3. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $24.000 y además dentro de 10 semanas $20.000. Total $44.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+           case 4: {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 4. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $16.000 y además dentro de 10 semanas $30.000. Total $46.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+           case 5: {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 5. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $8.000 y además dentro de 10 semanas $40.000. Total $48.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+           case 6: {
+              document.getElementById("select-text").innerHTML =
+                "<p> Ha seleccionado la opción 6. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                Recibe en {{Constants.semanas}} semanas $0 y además dentro de 10 semanas $50.000. Total $50.000 <br> <br>\
+                ¿Está seguro de su elección? </p>";
+              break;
+           }
+        }
+    }
+
+</script>
+
+    <table class="table">
+        <tr>
+            <td rowspan="6" class="col-sm-4 ancho"> <img src = "{% static 'CTB/15.PNG' %}" alt=""> </td>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(1)" type="radio" name="ctb_p15" value="1">            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(2)" type="radio" name="ctb_p15" value="2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(3)" type="radio" name="ctb_p15" value="3">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(4)" type="radio" name="ctb_p15" value="4">
+            </td>
+        </tr>
+        <tr>
+            <td>  <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(5)" type="radio" name="ctb_p15" value="5">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(6)" type="radio" name="ctb_p15" value="6">
+            </td>
+        </tr>
+    </table>
+
+
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Confirme su elección</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="opcion" id="select-text"> </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"> No </button>
+            <button class="btn btn-primary otree-btn"> Si </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

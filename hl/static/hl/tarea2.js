@@ -35,10 +35,10 @@ for (var j = 0; j < filas; j++) {
   col1.appendChild(row);
   var col2 = document.createElement("td")
   col2.classList.add("align-middle");
-  col2.innerHTML = '<input class="radio" type="radio" name="hl_t2_p' + (j+1) + '" value="A">';
+  col2.innerHTML = '<input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction()" type="radio" name="hl_t2_p' + (j+1) + '" value="A">';
   var col3 = document.createElement("td")
   col3.classList.add("align-middle");
-  col3.innerHTML = '<input class="radio" type="radio" name="hl_t2_p' + (j+1) + '" value="B">';
+  col3.innerHTML = '<input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction()" type="radio" name="hl_t2_p' + (j+1) + '" value="B">';
   col3.setAttribute("id", "divcircles")
   var col4 = document.createElement("td")
   // col4.classList.add("col-5", "div-circles");
