@@ -11,4 +11,4 @@ It's not recommended to edit any of the other files.
 NUM_WEEKS = 52
 
 #: The gain to be paid out per week
-GAIN_PER_WEEK = 20
+GAIN_PER_WEEK = 30000
