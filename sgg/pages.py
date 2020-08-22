@@ -38,18 +38,23 @@ class Pregunta4(Page):
 
     def is_displayed(self):
         return self.round_number == 1
-# class Calculos(WaitPage):
-#     def after_all_players_arrive(self):
-#         self.subsession.set_pago_jugadores()
+
+class Calculos(WaitPage):
+    def after_all_players_arrive(self):
+        self.subsession.set_pago_jugadores()
+
+    def is_displayed(self):
+        return self.round_number == 1
 
 class Resultados(Page):
+    def vars_for_template(self):
+        return {
+            "pago" : self.player.payoff,
+            "pregunta" : self.player.pregunta_pago,
+            "valor" : str(self.player.payoff).split(",")[0]
+        }
     def is_displayed(self):
-        return self.round_number == 2
+        return self.round_number == 1
 
 
-
-class Results(Page):
-    pass
-
-
-page_sequence = [Instrucciones, Pregunta, Pregunta2, Pregunta3, Pregunta4, Resultados]
+page_sequence = [Instrucciones, Pregunta, Pregunta2, Pregunta3, Pregunta4, Calculos, Resultados]

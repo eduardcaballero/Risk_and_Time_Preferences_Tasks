@@ -53,7 +53,6 @@ class Player(BasePlayer):
                 getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
                 ][0]
         else:
-            print("hola2")
             self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[
                 getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
                 ][1]
