@@ -151,7 +151,7 @@
 #bomb-task .holder .card.clickable.active .front{
 	background: #ececec;
 }
-.stop:disabled, .resolve:disabled{
+.stop:disabled, .resolve:disabled, .start:disabled{
 	background: #dddddd !important;
 	border-color: #dddddd !important;
 }

@@ -99,7 +99,7 @@
                 <div data-ng-if="!bombTaskController.resolved">
                     
                     <button type="button" href="javascript:void(0)" class="btn btn-success btn-md start"
-                        data-ng-click="bombTaskController.start()">
+                        data-ng-disabled="bombTaskController.started" data-ng-click="bombTaskController.start()">
                         <span>
                             {% trans "Start" %}
                         </span>
