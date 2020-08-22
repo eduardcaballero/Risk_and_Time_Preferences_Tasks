@@ -14,16 +14,16 @@
 
 <div class="otdm__choices-selection">
     <h3 class="text-center">
-        Gain {{ gain | c }} <em>per Week</em>
+        Reciba {{ gain | c }} <em>cada semana</em>
     </h3>
 
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
         <tr class="text-center">
-            <th>Option A</th>
+            <th>OPCIÓN A</th>
             <th width="75">A</th>
             <th width="75">B</th>
-            <th>Option B</th>
+            <th>OPCIÓN B</th>
         </tr>
         </thead>
         <tbody class="small">
@@ -31,11 +31,12 @@
         <tr>
             <td class="text-right">
                 {% if gain == 1 %}
-                in week <span class="otdm__week">{{ week }}</span>
+                Pago en la semana <b><span class="otdm__week">{{ week }}</span></b>
+                <br> [<span class="otdm__week">{{ gain }}</span></b> pago]
                 {% else %}
-                starting in week <span class="otdm__week">{{ week_start }}</span>
-                and ending (after) week <span class="otdm__week">{{ week }}</span>
-                [<span class="otdm__week">{{ gain }}</span>]
+                Pago inicial en la semana <b><span class="otdm__week">{{ week_start }}</span></b>
+                y pago final en la semana <b><span class="otdm__week">{{ week }}</span></b>
+                <br> [<span class="otdm__week">{{ gain }}</span> pagos]
                 {% endif %}
             </td>
             <td class="text-center otdm__choice-cell">
@@ -54,11 +55,12 @@
             </td>
             <td class="text-left">
                 {% if rev_gain == 1 %}
-                in week <span class="otdm__week">{{ rev_week }}</span>
+                Pago en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
+                <br> [<b><span class="otdm__week">{{ rev_gain }}</span><b> pago]
                 {% else %}
-                starting in week <span class="otdm__week">{{ rev_week }}</span>
-                and ending (after) week <span class="otdm__week">{{ week_end }}</span>
-                [<span class="otdm__week">{{ rev_gain }}</span>]
+                Pago inicial en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
+                y pago final en la semana <b><span class="otdm__week">{{ week_end }}</span></b>
+                <br> [<span class="otdm__week">{{ rev_gain }}</span> pagos]
                 {% endif %}
             </td>
         </tr>
@@ -67,38 +69,38 @@
     </table>
 
     <div class="otdm__waiting">
-        You have to select an option above to continue.
+        Por favor seleccione una opción en la tabla para continuar.
     </div>
 </div>
 
 <div class="otdm__confirm-button-wrapper">
     <button class="btn btn-primary otdm__confirm-button" type="button">
-        Confirm
+        Confirmar
     </button>
 </div>
 
 <div class="otdm__player-confirmation">
-    <h5>Your choices mean that you prefer to:</h5>
+    <h5>De acuerdo a sus elecciones usted prefiere:</h5>
 
     <p class="text-center">
-        Gain {{ gain | c }} <em>per Week</em>, <span class="otdm__confirmation-either"></span>
+        Recibir {{ gain | c }} <em>cada semana</em>, <span class="otdm__confirmation-either"></span>
     </p>
 
     <p class="text-center">
-        <b>rather than</b>
+        <b>en lugar de</b>
     </p>
 
     <p class="text-center">
-        Gain {{ gain | c }} <em>per Week</em>, <span class="otdm__confirmation-other"></span>
+        Recibir {{ gain | c }} <em>cada semana</em>, <span class="otdm__confirmation-other"></span>
     </p>
 
     <br>
 
-    <p class="text-center">Are you sure about your choice?</p>
+    <p class="text-center">¿Está seguro de sus elecciones?</p>
 
     <div class="text-center">
-        <button class="btn btn-primary otdm__confirmation-yes" type="submit">YES</button>
-        <button class="btn btn-light otdm__confirmation-no" type="button">NO</button>
+        <button class="btn btn-primary otdm__confirmation-yes" type="submit">Si</button>
+        <button class="btn btn-light otdm__confirmation-no" type="button">No</button>
     </div>
 </div>
 
