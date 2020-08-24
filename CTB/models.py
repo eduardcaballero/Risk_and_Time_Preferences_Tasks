@@ -12,7 +12,7 @@ Your app description
 
 
 class Constants(BaseConstants):
-    name_in_url = 'CTB'
+    name_in_url = 'ctb'
     players_per_group = None
     num_rounds = 1
     semanas = 5
