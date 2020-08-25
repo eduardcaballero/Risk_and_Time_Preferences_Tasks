@@ -1,0 +1,41 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'bret/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Instrucciones" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="instructions">
+        <p>
+            {% blocktrans trimmed %}
+            En esta tarea, usted tomará varias decisiones sobre cómo asignar entradas de dinero semanales con diferentes fechas de inicio y fin. Las fechas de inicio y fin variarán según las distintas decisiones. Esto significa que podría estar recibiendo pagos desde esta primer semana y hasta dentro de 52 semanas (1 año) a partir de hoy, o adicionalmente en todos las semanas intermedias especificadas durante este tiempo establecido. Las decisiones que tome determinarán sus pagos.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+            En cada una de las filas, usted tendrá dos opciones de asignación de pagos en diferentes períodos de tiempo. Por favor, elija el período de tiempo que prefiera entre las dos opciones seleccionando una de ellas. Elegir una opción significa que usted recibirá $20.000 (veinte mil pesos) durante las semanas especificadas en el período de tiempo correspondiente. El número entre paréntesis al final de cada opción indica el número de semanas durante las que recibirá pagos de $20.000 (veinte mil pesos) cada uno. 
+            {% endblocktrans %}
+        </p>
+    </div>
+
+     {% next_button %}
+{% endblock %}

@@ -7,6 +7,9 @@ from .choices import ChoiceManager
 from .config import GAIN_PER_WEEK, NUM_WEEKS
 
 
+class Instructions(Page):
+    pass
+
 class ChoiceListPage(Page):
     """
     Displays a list of choices to the player to elicitate a certain c value.
@@ -92,6 +95,7 @@ class Results(Page):
 
 
 page_sequence = [
+    Instructions,
     ChoiceListPage,  # elicit c12
     ChoiceListPage,  # elicit c14
     ChoiceListPage,  # elicit c34
