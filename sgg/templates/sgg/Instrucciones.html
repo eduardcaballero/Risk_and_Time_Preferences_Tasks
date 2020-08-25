@@ -1,12 +1,51 @@
-{% extends "global/Page.html" %}
-{% load otree static %}
+{% extends "global/Base.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
 
-{% block title %}
-    Instrucciones
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'bret/css/custom.css' %}" rel="stylesheet"/>
 {% endblock %}
 
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Instrucciones" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
 {% block content %}
 
-    {% next_button %}
+    <div class="instructions">
+        <p>
+            {% blocktrans trimmed %}
+            En esta tarea usted puede ganar dinero que depende sus elecciones y de la suerte.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+            En cada pregunta tendrá diez (10) opciones. Cada opción representa una bolsa en la que se colocan pelotas blancas y pelotas azules, y de la que luego se seleccionará al azar una pelota. Si sale una pelota BLANCA no gana nada. Si sale una pelota AZUL gana la cantidad de dinero que se muestra en la columna de la derecha. 
+            {% endblocktrans %}
+        </p>
+       	<p>
+            {% blocktrans trimmed %}
+            En la opción 1 (fila) gana $2000 con una probabilidad del 100%, en otras palabras, es seguro que gana dos mil pesos. En las siguientes filas aumenta la cantidad de dinero que puede recibir si sale una pelota AZUL pero también se reduce la probabilidad de ganar dicho monto (hay menos pelotas azules).
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+          	Una de las cuatro (4) preguntas será seleccionada para el pago. Recuerde que los pagos dependen de la opción (fila) que usted eligió.
+            {% endblocktrans %}
+        </p>
+    </div>
 
+     {% next_button %}
 {% endblock %}
