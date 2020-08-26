@@ -41,7 +41,7 @@ SESSION_CONFIGS = [
         'name': 'ctb',
         'display_name': "CTB",
         'num_demo_participants': 2,
-        'app_sequence': ['ctb']
+        'app_sequence': ['CTB']
     }
 ]
 

@@ -6,10 +6,12 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class Bienvenido(Page):
-     def is_displayed(self):
+    def is_displayed(self):
         return self.round_number == 1
+
 class Instrucciones(Page):
-    pass
+    def is_displayed(self):
+        return self.round_number == 1
 
 class Pregunta_1(Page):
     form_model = 'player'
@@ -402,41 +404,41 @@ class Resultados(Page):
     def vars_for_template(self):
         if self.player.pregunta_pago < 7:
             return {
-                "pago_hoy" : self.player.pago_hoy,
-                "pago_5" : self.player.pago_5,
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_10" : False,
                 "pago_15" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
+                "pregunta_pago" : json.loads(self.participant.vars['orden_preguntas']).index(self.player.pregunta_pago) + 1,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         elif self.player.pregunta_pago < 13:
             return {
-                "pago_hoy" : self.player.pago_hoy,
-                "pago_10" : self.player.pago_10,
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
                 "pago_5" : False,
                 "pago_15" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
+                "pregunta_pago" : json.loads(self.participant.vars['orden_preguntas']).index(self.player.pregunta_pago) + 1,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         elif self.player.pregunta_pago < 19:
             return {
-                "pago_5" : self.player.pago_5,
-                "pago_10" : self.player.pago_10,
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
                 "pago_15" : False,
                 "pago_hoy" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
+                "pregunta_pago" : json.loads(self.participant.vars['orden_preguntas']).index(self.player.pregunta_pago) + 1,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         else:
             return {
-                "pago_5" : self.player.pago_5,
-                "pago_15" : self.player.pago_15,
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_15" : "$"+format(int(str(self.player.pago_15).split(",")[0]), ',d'),
                 "pago_hoy" : False,
                 "pago_10" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
+                "pregunta_pago" : json.loads(self.participant.vars['orden_preguntas']).index(self.player.pregunta_pago) + 1,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }

@@ -52,7 +52,7 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             for p in self.get_players():
                 p.pregunta_pago = random.randint(1,24)
-                p.participant.vars['orden_preguntas'] = json.dumps(np.random.choice(Constants.num_rounds, Constants.num_rounds, replace=False).tolist())
+                p.participant.vars['orden_preguntas'] = json.dumps((np.random.choice(Constants.num_rounds, Constants.num_rounds, replace=False) + 1).tolist())
         else:
             for p in self.get_players():
                 p.pregunta_pago = p.in_round(1).pregunta_pago
@@ -110,15 +110,14 @@ class Player(BasePlayer):
             self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
             self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
 
-        for ronda in self.in_all_rounds():
-            ronda.pago_hoy = self.pago_hoy
-            ronda.pago_5 = self.pago_5
-            ronda.pago_10 = self.pago_10
-            ronda.pago_15 = self.pago_15
+        for ronda in range(1,Constants.num_rounds+1):
+            self.in_round(ronda).pago_hoy = self.pago_hoy
+            self.in_round(ronda).pago_5 = self.pago_5
+            self.in_round(ronda).pago_10 = self.pago_10
+            self.in_round(ronda).pago_15 = self.pago_15
 
             
 
     def rellenar_campos(self, campo):
         for i in range(1, Constants.num_rounds+1):
-            for j in self.in_all_rounds():
-                setattr(j, campo, getattr(self, campo))
+            setattr(self.in_round(i), campo, getattr(self, campo))
