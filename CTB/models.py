@@ -3,6 +3,9 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
+import json
+import numpy as np
+
 
 author = 'Your name here'
 
@@ -14,7 +17,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'ctb'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 24
     semanas = 5
     pagos = {
         "p1" : [[50000, 0], [40000, 10000], [30000, 20000], [20000, 30000], [10000, 40000], [0, 50000]] ,
@@ -46,9 +49,13 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        for j in self.get_players():
-            j.pregunta_pago = random.randint(1,24)
-    
+        if self.round_number == 1:
+            for p in self.get_players():
+                p.pregunta_pago = random.randint(1,24)
+                p.participant.vars['orden_preguntas'] = json.dumps(np.random.choice(Constants.num_rounds, Constants.num_rounds, replace=False).tolist())
+        else:
+            for p in self.get_players():
+                p.pregunta_pago = p.in_round(1).pregunta_pago
     def set_pago_jugadores(self):
         for j in self.get_players():
             j.set_pago()
@@ -84,16 +91,11 @@ class Player(BasePlayer):
     ctb_p23 = models.StringField()
     ctb_p24 = models.StringField()
     pregunta_pago = models.IntegerField()
-    pregunta_actual = models.IntegerField(initial=0)
     pago_hoy = models.CurrencyField(initial=0)
     pago_5 = models.CurrencyField(initial=0)
     pago_10 = models.CurrencyField(initial=0)
     pago_15 = models.CurrencyField(initial=0)
 
-    def get_pregunta_actual(self):
-        self.pregunta_actual+=1
-        return self.pregunta_actual
-    
     def set_pago(self):
         if self.pregunta_pago < 7:
             self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
@@ -107,3 +109,16 @@ class Player(BasePlayer):
         else:
             self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
             self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+
+        for ronda in self.in_all_rounds():
+            ronda.pago_hoy = self.pago_hoy
+            ronda.pago_5 = self.pago_5
+            ronda.pago_10 = self.pago_10
+            ronda.pago_15 = self.pago_15
+
+            
+
+    def rellenar_campos(self, campo):
+        for i in range(1, Constants.num_rounds+1):
+            for j in self.in_all_rounds():
+                setattr(j, campo, getattr(self, campo))

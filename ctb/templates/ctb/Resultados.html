@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'sgg/pregunta.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Resultados
+{% endblock %}
+
+{% block content %}
+    <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
+    <table class="table table-bordered text-center">
+        <thead class="thead-light">
+          <tr>
+            {% if pago_hoy %}
+                <th scope="col"><p class="m-0" id="pago_hoy"></p></th>
+            {% endif %}
+            {% if pago_5 %}
+                <th scope="col"><p class="m-0" id="pago_5"></p></th>
+            {% endif %}
+            {% if pago_10 %}
+                <th scope="col"><p class="m-0" id="pago_10"></p></th>
+            {% endif %}
+            {% if pago_15 %}
+                <th scope="col"><p class="m-0" id="pago_15"></p></th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% if pago_hoy %}
+                <td>{{ pago_hoy }}</td>
+            {% endif %}
+            {% if pago_5 %}
+                <td>{{ pago_5 }}</td>
+            {% endif %}
+            {% if pago_10 %}
+                <td>{{ pago_10 }}</td>
+            {% endif %}
+            {% if pago_15 %}
+                <td>{{ pago_15 }}</td>
+            {% endif %}
+          </tr>
+        </tbody>
+      </table>
+    
+
+    {% next_button %}
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment-with-locales.min.js" integrity="sha512-qSnlnyh7EcD3vTqRoSP4LYsy2yVuqqmnkM9tW4dWo6xvAoxuVXyM36qZK54fyCmHoY1iKi9FJAUZrlPqmGNXFw==" crossorigin="anonymous"></script>
+<script>
+    moment.locale('es');
+    var p_hoy = document.getElementById("pago_hoy")
+    var p_5 = document.getElementById("pago_5")
+    var p_10 = document.getElementById("pago_10")
+    var p_15 = document.getElementById("pago_15")
+
+    let fecha_hoy = moment().format('LL')
+    let fecha_5 = moment().add(5, 'weeks').format('LL')
+    let fecha_10 = moment().add(10, 'weeks').format('LL')
+    let fecha_15 = moment().add(15, 'weeks').format('LL')
+
+    if (p_hoy){
+        p_hoy.innerHTML = "Recibe Hoy ("+fecha_hoy+")";
+    }
+    if (p_5){
+        p_5.innerHTML = "Recibe en 5 Semanas ("+fecha_5+")";
+    }
+    if (p_10){
+        p_10.innerHTML = "Recibe en 10 Semanas ("+fecha_10+")";
+    }
+    if (p_15){
+        p_15.innerHTML = "Recibe en 15 Semanas ("+fecha_15+")";
+    }
+
+
+</script>
+{% endblock %}

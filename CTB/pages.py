@@ -1,219 +1,452 @@
 import random
+import json
 
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
 class Bienvenido(Page):
-    pass
+     def is_displayed(self):
+        return self.round_number == 1
 
 class Pregunta_1(Page):
     form_model = 'player'
     form_fields = ['ctb_p1']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 1
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_2(Page):
     form_model = 'player'
     form_fields = ['ctb_p2']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 2
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_3(Page):
     form_model = 'player'
     form_fields = ['ctb_p3']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 3
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_4(Page):
     form_model = 'player'
     form_fields = ['ctb_p4']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 4
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_5(Page):
     form_model = 'player'
     form_fields = ['ctb_p5']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 5
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_6(Page):
     form_model = 'player'
     form_fields = ['ctb_p6']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 6
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_7(Page):
     form_model = 'player'
     form_fields = ['ctb_p7']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 7
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_8(Page):
     form_model = 'player'
     form_fields = ['ctb_p8']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 8
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_9(Page):
     form_model = 'player'
     form_fields = ['ctb_p9']
 
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 9
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 class Pregunta_10(Page):
     form_model = 'player'
     form_fields = ['ctb_p10']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 10
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-            "pregunta": self.player.get_pregunta_actual(),
+            "pregunta": self.round_number,
         }
 
 class Pregunta_11(Page):
     form_model = 'player'
     form_fields = ['ctb_p11']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 11
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_12(Page):
     form_model = 'player'
     form_fields = ['ctb_p12']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 12
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_13(Page):
     form_model = 'player'
     form_fields = ['ctb_p13']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 13
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_14(Page):
     form_model = 'player'
     form_fields = ['ctb_p14']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 14
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_15(Page):
     form_model = 'player'
     form_fields = ['ctb_p15']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 15
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_16(Page):
     form_model = 'player'
     form_fields = ['ctb_p16']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 16
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_17(Page):
     form_model = 'player'
     form_fields = ['ctb_p17']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 17
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_18(Page):
     form_model = 'player'
     form_fields = ['ctb_p18']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 18
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_19(Page):
     form_model = 'player'
     form_fields = ['ctb_p19']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 19
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_20(Page):
     form_model = 'player'
     form_fields = ['ctb_p20']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 20
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_21(Page):
     form_model = 'player'
     form_fields = ['ctb_p21']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 21
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_22(Page):
     form_model = 'player'
     form_fields = ['ctb_p22']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 22
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_23(Page):
     form_model = 'player'
     form_fields = ['ctb_p23']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 23
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
 class Pregunta_24(Page):
     form_model = 'player'
     form_fields = ['ctb_p24']
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 24
+
+    def before_next_page(self):
+        self.player.rellenar_campos(self.form_fields[0])
+        if(self.round_number == Constants.num_rounds):
+            self.player.set_pago()
+
     def vars_for_template(self):
         return {
-                "pregunta": self.player.get_pregunta_actual(),
+                "pregunta": self.round_number,
             }
 
-class Calculos(WaitPage):
-    def after_all_players_arrive(self):
-        self.subsession.set_pago_jugadores()
+class Resultados(Page):
+    def is_displayed(self):
+        return json.loads(self.participant.vars['orden_preguntas'])[self.round_number-1] == 1
+
+    def vars_for_template(self):
+        if self.player.pregunta_pago < 7:
+            return {
+                "pago_hoy" : self.player.pago_hoy,
+                "pago_5" : self.player.pago_5,
+                "pago_10" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        elif self.player.pregunta_pago < 13:
+            return {
+                "pago_hoy" : self.player.pago_hoy,
+                "pago_10" : self.player.pago_10,
+                "pago_5" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        elif self.player.pregunta_pago < 19:
+            return {
+                "pago_5" : self.player.pago_5,
+                "pago_10" : self.player.pago_10,
+                "pago_15" : False,
+                "pago_hoy" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        else:
+            return {
+                "pago_5" : self.player.pago_5,
+                "pago_15" : self.player.pago_15,
+                "pago_hoy" : False,
+                "pago_10" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
 
     def is_displayed(self):
-        return self.round_number == 1
+        return self.round_number == Constants.num_rounds
+
 
 class Gracias(Page):
-    pass
+     def is_displayed(self):
+        return self.round_number == Constants.num_rounds
 
-
-class ResultsWaitPage(WaitPage):
-
-    def after_all_players_arrive(self):
-        pass
 
 page_sequence = [Bienvenido]
 
@@ -244,10 +477,11 @@ preguntas = [
     Pregunta_24
 ]
 
-random.shuffle(preguntas)
+# random.shuffle(preguntas)
 
 for p in preguntas:
     page_sequence.append(p)
 
-page_sequence.append(Calculos)
+# page_sequence.append(Calculos)
+page_sequence.append(Resultados)
 page_sequence.append(Gracias)
