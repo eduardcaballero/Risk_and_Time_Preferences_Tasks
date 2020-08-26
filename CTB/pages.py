@@ -8,6 +8,8 @@ from .models import Constants
 class Bienvenido(Page):
      def is_displayed(self):
         return self.round_number == 1
+class Instrucciones(Page):
+    pass
 
 class Pregunta_1(Page):
     form_model = 'player'
@@ -448,7 +450,7 @@ class Gracias(Page):
         return self.round_number == Constants.num_rounds
 
 
-page_sequence = [Bienvenido]
+page_sequence = [Instrucciones]
 
 preguntas = [
     Pregunta_1,
