@@ -3,6 +3,10 @@
     width: 1.5em;
     text-align: center;
 }
+.otree-title{
+    margin: 0px !important;
+    padding: 0px !important;
+}
 
 table.otdm__choices-table tr td {
     vertical-align: middle;

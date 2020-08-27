@@ -12,6 +12,10 @@ class Pregunta(Page):
     form_model = "player"
     form_fields = ["sgg_p1"]
 
+    def vars_for_template(self):
+        return {
+            "pregunta" : 1,
+            }
     def is_displayed(self):
         return self.round_number == 1
 
@@ -20,6 +24,10 @@ class Pregunta2(Page):
     form_model = "player"
     form_fields = ["sgg_p2"]
 
+    def vars_for_template(self):
+        return {
+            "pregunta" : 2,
+            }
     def is_displayed(self):
         return self.round_number == 1
 
@@ -28,6 +36,10 @@ class Pregunta3(Page):
     form_model = "player"
     form_fields = ["sgg_p3"]
 
+    def vars_for_template(self):
+        return {
+            "pregunta" : 3,
+            }
     def is_displayed(self):
         return self.round_number == 1
 
@@ -36,6 +48,10 @@ class Pregunta4(Page):
     form_model = "player"
     form_fields = ["sgg_p4"]
 
+    def vars_for_template(self):
+        return {
+            "pregunta" : 4,
+            }
     def is_displayed(self):
         return self.round_number == 1
 

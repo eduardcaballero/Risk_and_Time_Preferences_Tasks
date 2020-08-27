@@ -3,68 +3,63 @@
 {% load staticfiles %}
 
 {% block content %}
-
-<!-- <hr> -->
-
-<!-- <div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%">{{ player.current_step }} / 5</div>
-</div> -->
-
-<!-- <hr> -->
-
 <div class="otdm__choices-selection">
-    <h3 class="text-center">
-        Reciba {{ gain }} <em>cada semana</em>
-    </h3>
+    <br>
+    <h3 class="text-center ">
+        Reciba 
+        <div class="card d-inline-block border-0" style="width: 110px;">
+            <img width='100px' src="{% static 'dm/images/30mil.png' %}" />
+            {{ gain }}
+        </div>
+        <em>cada semana</em>
+    </h3><br>
 
     <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
         <thead>
-        <tr class="text-center">
-            <th>OPCIÓN A</th>
-            <th width="75">A</th>
-            <th width="75">B</th>
-            <th>OPCIÓN B</th>
-        </tr>
+            <tr class="text-center">
+                <th>OPCIÓN A</th>
+                <th width="75">A</th>
+                <th width="75">B</th>
+                <th>OPCIÓN B</th>
+            </tr>
         </thead>
         <tbody class="small">
-        {% for week, gain, rev_week, rev_gain in week_gain %}
-        <tr>
-            <td class="text-right">
-                {% if gain == 1 %}
-                Pago en la semana <b><span class="otdm__week">{{ week }}</span></b>
-                <br> [<span class="otdm__week">{{ gain }}</span></b> pago]
-                {% else %}
-                Pago inicial en la semana <b><span class="otdm__week">{{ week_start }}</span></b>
-                y pago final en la semana <b><span class="otdm__week">{{ week }}</span></b>
-                <br> [<span class="otdm__week">{{ gain }}</span> pagos]
-                {% endif %}
-            </td>
-            <td class="text-center otdm__choice-cell">
-                <label>
-                    <input type="radio" name="otdm__option_week{{forloop.counter}}"
-                           class="otdm__choice-input"
-                           value="A" data-week="{{ week }}" data-index="{{ forloop.counter }}">
-                </label>
-            </td>
-            <td class="text-center otdm__choice-cell">
-                <label>
-                    <input type="radio" name="otdm__option_week{{forloop.counter}}"
-                           class="otdm__choice-input"
-                           value="B" data-week="{{ week }}" data-index="{{ forloop.counter }}">
-                </label>
-            </td>
-            <td class="text-left">
-                {% if rev_gain == 1 %}
-                Pago en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
-                <br> [<b><span class="otdm__week">{{ rev_gain }}</span><b> pago]
-                {% else %}
-                Pago inicial en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
-                y pago final en la semana <b><span class="otdm__week">{{ week_end }}</span></b>
-                <br> [<span class="otdm__week">{{ rev_gain }}</span> pagos]
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
+            {% for week, gain, rev_week, rev_gain in week_gain %}
+            <tr>
+                <td class="text-right">
+                    {% if gain == 1 %}
+                    Pago en la semana <b><span class="otdm__week">{{ week }}</span></b>
+                    <br> [<span class="otdm__week">{{ gain }}</span></b> pago]
+                    {% else %}
+                    Pago inicial en la semana <b><span class="otdm__week">{{ week_start }}</span></b>
+                    y pago final en la semana <b><span class="otdm__week">{{ week }}</span></b>
+                    <br> [<span class="otdm__week">{{ gain }}</span> pagos]
+                    {% endif %}
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_week{{forloop.counter}}" class="otdm__choice-input"
+                            value="A" data-week="{{ week }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-center otdm__choice-cell">
+                    <label>
+                        <input type="radio" name="otdm__option_week{{forloop.counter}}" class="otdm__choice-input"
+                            value="B" data-week="{{ week }}" data-index="{{ forloop.counter }}">
+                    </label>
+                </td>
+                <td class="text-left">
+                    {% if rev_gain == 1 %}
+                    Pago en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
+                    <br> [<b><span class="otdm__week">{{ rev_gain }}</span><b> pago]
+                            {% else %}
+                            Pago inicial en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
+                            y pago final en la semana <b><span class="otdm__week">{{ week_end }}</span></b>
+                            <br> [<span class="otdm__week">{{ rev_gain }}</span> pagos]
+                            {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 
@@ -83,7 +78,7 @@
     <h5>De acuerdo a sus elecciones usted prefiere:</h5>
 
     <p class="text-center">
-        Recibir {{ gain | c }} <em>cada semana</em>, <span class="otdm__confirmation-either"></span>
+        Recibir {{ gain }} <em>cada semana</em>, <span class="otdm__confirmation-either"></span>
     </p>
 
     <p class="text-center">
@@ -91,7 +86,7 @@
     </p>
 
     <p class="text-center">
-        Recibir {{ gain | c }} <em>cada semana</em>, <span class="otdm__confirmation-other"></span>
+        Recibir {{ gain }} <em>cada semana</em>, <span class="otdm__confirmation-other"></span>
     </p>
 
     <br>
@@ -109,9 +104,9 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'otdm/styles/choices.css' %}"/>
+<link rel="stylesheet" href="{% static 'dm/styles/choices.css' %}" />
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'otdm/scripts/choices.js' %}"></script>
+<script src="{% static 'dm/scripts/choices.js' %}"></script>
 {% endblock %}

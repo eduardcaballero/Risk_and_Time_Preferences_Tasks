@@ -43,7 +43,7 @@ class ChoiceListPage(Page):
                         option_b_weeks, option_b_gain_count)
 
         return {
-            'gain': "{0:.0f}".format(GAIN_PER_WEEK),
+            'gain': "$"+format(int(str(GAIN_PER_WEEK)),",d"),
             'progress': self.player.get_current_step() / 5 * 100,
             'var_name': manager.get_step().get_field(),
 
