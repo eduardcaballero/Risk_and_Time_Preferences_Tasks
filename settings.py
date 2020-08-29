@@ -41,7 +41,23 @@ SESSION_CONFIGS = [
         'name': 'ctb',
         'display_name': "CTB",
         'num_demo_participants': 2,
-        'app_sequence': ['ctb']
+        'app_sequence': ['ctb'],
+        'Rounds':None
+    },
+    {
+        'name': 'mpl',
+        'display_name': "MPL",
+        'num_demo_participants': 2,
+        'app_sequence': ['mpl'],
+        'Rounds':None
+    },
+    {
+        'name': 'torneo',
+        'display_name': 'Juego de encriptación',
+        'num_demo_participants': 4,
+        'app_sequence': ['torneo'],
+        'observabilidad': False,
+        'meritocracia': False,
     }
 ]
 
