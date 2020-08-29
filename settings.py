@@ -45,6 +45,13 @@ SESSION_CONFIGS = [
         'Rounds':None
     },
     {
+        'name': 'ctb_r',
+        'display_name': "CTB Random",
+        'num_demo_participants': 2,
+        'app_sequence': ['ctb_r'],
+        'Rounds':None
+    },
+    {
         'name': 'mpl',
         'display_name': "MPL",
         'num_demo_participants': 2,
