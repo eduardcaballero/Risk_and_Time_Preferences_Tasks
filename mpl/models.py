@@ -17,7 +17,7 @@ Your app description
 class Constants(BaseConstants):
     name_in_url = 'mpl'
     players_per_group = None
-    num_rounds = 24
+    num_rounds = 1
     semanas = 5
     pagos = {
         "p1" : [[50000, 0], [40000, 10000], [30000, 20000], [20000, 30000], [10000, 40000], [0, 50000]] ,
@@ -52,13 +52,6 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             for p in self.get_players():
                 p.pregunta_pago = random.randint(1,24)
-                p.participant.vars['orden_preguntas'] = json.dumps((np.random.choice(Constants.num_rounds, Constants.num_rounds, replace=False) + 1).tolist())
-        else:
-            for p in self.get_players():
-                p.pregunta_pago = p.in_round(1).pregunta_pago
-    def set_pago_jugadores(self):
-        for j in self.get_players():
-            j.set_pago()
 
 
 class Group(BaseGroup):
@@ -66,30 +59,30 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    ctb_p1 = models.StringField()
-    ctb_p2 = models.StringField()
-    ctb_p3 = models.StringField()
-    ctb_p4 = models.StringField()
-    ctb_p5 = models.StringField()
-    ctb_p6 = models.StringField()
-    ctb_p7 = models.StringField()
-    ctb_p8 = models.StringField()
-    ctb_p9 = models.StringField()
-    ctb_p10 = models.StringField()
-    ctb_p11 = models.StringField()
-    ctb_p12 = models.StringField()
-    ctb_p13 = models.StringField()
-    ctb_p14 = models.StringField()
-    ctb_p15 = models.StringField()
-    ctb_p16 = models.StringField()
-    ctb_p17 = models.StringField()
-    ctb_p18 = models.StringField()
-    ctb_p19 = models.StringField()
-    ctb_p20 = models.StringField()
-    ctb_p21 = models.StringField()
-    ctb_p22 = models.StringField()
-    ctb_p23 = models.StringField()
-    ctb_p24 = models.StringField()
+    mpl_p1 = models.StringField()
+    mpl_p2 = models.StringField()
+    mpl_p3 = models.StringField()
+    mpl_p4 = models.StringField()
+    mpl_p5 = models.StringField()
+    mpl_p6 = models.StringField()
+    mpl_p7 = models.StringField()
+    mpl_p8 = models.StringField()
+    mpl_p9 = models.StringField()
+    mpl_p10 = models.StringField()
+    mpl_p11 = models.StringField()
+    mpl_p12 = models.StringField()
+    mpl_p13 = models.StringField()
+    mpl_p14 = models.StringField()
+    mpl_p15 = models.StringField()
+    mpl_p16 = models.StringField()
+    mpl_p17 = models.StringField()
+    mpl_p18 = models.StringField()
+    mpl_p19 = models.StringField()
+    mpl_p20 = models.StringField()
+    mpl_p21 = models.StringField()
+    mpl_p22 = models.StringField()
+    mpl_p23 = models.StringField()
+    mpl_p24 = models.StringField()
     pregunta_pago = models.IntegerField()
     pago_hoy = models.CurrencyField(initial=0)
     pago_5 = models.CurrencyField(initial=0)
@@ -98,26 +91,16 @@ class Player(BasePlayer):
 
     def set_pago(self):
         if self.pregunta_pago < 7:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
         elif self.pregunta_pago < 13:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
         elif self.pregunta_pago < 19:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
         else:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
+            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
 
-        for ronda in range(1,Constants.num_rounds+1):
-            self.in_round(ronda).pago_hoy = self.pago_hoy
-            self.in_round(ronda).pago_5 = self.pago_5
-            self.in_round(ronda).pago_10 = self.pago_10
-            self.in_round(ronda).pago_15 = self.pago_15
 
-            
-
-    def rellenar_campos(self, campo):
-        for i in range(1, Constants.num_rounds+1):
-            setattr(self.in_round(i), campo, getattr(self, campo))
