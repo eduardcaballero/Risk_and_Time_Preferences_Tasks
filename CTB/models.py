@@ -91,16 +91,16 @@ class Player(BasePlayer):
 
     def set_pago(self):
         if self.pregunta_pago < 7:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][1])
         elif self.pregunta_pago < 13:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][1])
         elif self.pregunta_pago < 19:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][1])
         else:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][0])
-            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"ctb_p"+str(self.pregunta_pago)))-1][1])
 
 

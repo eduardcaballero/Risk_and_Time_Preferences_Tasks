@@ -20,30 +20,30 @@ class Constants(BaseConstants):
     num_rounds = 1
     semanas = 5
     pagos = {
-        "p1" : [[50000, 0], [40000, 10000], [30000, 20000], [20000, 30000], [10000, 40000], [0, 50000]] ,
-        "p2" : [[45000, 0], [36000, 10000], [27000, 20000], [18000,30000],	[9000 , 40000], [0,50000 ]],
-        "p3" : [[40000, 0], [32000, 10000], [24000, 20000], [16000,30000],	[8000 , 40000], [0,50000 ]],
-        "p4" : [[35000, 0], [28000, 10000], [21000, 20000], [14000,30000],	[7000 , 40000], [0,50000 ]],
-        "p5" : [[30000, 0], [24000, 10000], [18000, 20000], [12000,30000],	[6000 , 40000], [0,50000 ]],
-        "p6" : [[25000, 0], [20000, 10000], [15000, 20000], [10000,30000],	[5000 , 40000], [0,50000 ]],
-        "p7" : [[45000, 0], [36000, 10000], [27000, 20000], [18000,30000],	[9000 , 40000], [0,50000 ]],
-        "p8" : [[40000, 0], [32000, 10000], [24000, 20000], [16000,30000],	[8000 , 40000], [0,50000 ]],
-        "p9" : [[35000, 0], [28000, 10000], [21000, 20000], [14000,30000],	[7000 , 40000], [0,50000 ]],
-        "p10": [[30000, 0], [24000, 10000], [18000, 20000], [12000,30000],	[6000 , 40000], [0,50000 ]],
-        "p11": [[25000, 0], [20000, 10000], [15000, 20000], [10000,30000],	[5000 , 40000], [0,50000 ]],
-        "p12": [[20000, 0], [16000, 10000], [12000, 20000], [8000 ,30000], [4000 , 40000], [0,50000 ]],
-        "p13": [[50000, 0], [40000, 10000], [30000, 20000], [20000,30000],	[10000,	40000], [0, 50000]],
-        "p14": [[45000, 0], [36000, 10000], [27000, 20000], [18000,30000],	[9000 , 40000], [0,50000 ]],
-        "p15": [[40000, 0], [32000, 10000], [24000, 20000], [16000,30000],	[8000 , 40000], [0,50000 ]],
-        "p16": [[35000, 0], [28000, 10000], [21000, 20000], [14000,30000],	[7000 , 40000], [0,50000 ]],
-        "p17": [[30000, 0], [24000, 10000], [18000, 20000], [12000,30000],	[6000 , 40000], [0,50000 ]],
-        "p18": [[25000, 0], [20000, 10000], [15000, 20000], [10000,30000],	[5000 , 40000], [0,50000 ]],
-        "p19": [[45000, 0], [36000, 10000], [27000, 20000], [18000,30000],	[9000 , 40000], [0,50000 ]],
-        "p20": [[40000, 0], [32000, 10000], [24000, 20000], [16000,30000],	[8000 , 40000], [0,50000 ]],
-        "p21": [[35000, 0], [28000, 10000], [21000, 20000], [14000,30000],	[7000 , 40000], [0,50000 ]],
-        "p22": [[30000, 0], [24000, 10000], [18000, 20000], [12000,30000],	[6000 , 40000], [0,50000 ]],
-        "p23": [[25000, 0], [20000, 10000], [15000, 20000], [10000,30000],	[5000 , 40000], [0,50000 ]],
-        "p24": [[20000, 0], [16000, 10000], [12000, 20000], [8000 ,30000], [4000, 40000], [0, 50000 ]]
+        "p1" : [[50000, 0], [0,50000 ]] ,
+        "p2" : [[45000, 0], [0,50000 ]],
+        "p3" : [[40000, 0], [0,50000 ]],
+        "p4" : [[35000, 0], [0,50000 ]],
+        "p5" : [[30000, 0], [0,50000 ]],
+        "p6" : [[25000, 0], [0,50000 ]],
+        "p7" : [[45000, 0], [0,50000 ]],
+        "p8" : [[40000, 0], [0,50000 ]],
+        "p9" : [[35000, 0], [0,50000 ]],
+        "p10": [[30000, 0], [0,50000 ]],
+        "p11": [[25000, 0], [0,50000 ]],
+        "p12": [[20000, 0], [0,50000 ]],
+        "p13": [[50000, 0], [0,50000 ]],
+        "p14": [[45000, 0], [0,50000 ]],
+        "p15": [[40000, 0], [0,50000 ]],
+        "p16": [[35000, 0], [0,50000 ]],
+        "p17": [[30000, 0], [0,50000 ]],
+        "p18": [[25000, 0], [0,50000 ]],
+        "p19": [[45000, 0], [0,50000 ]],
+        "p20": [[40000, 0], [0,50000 ]],
+        "p21": [[35000, 0], [0,50000 ]],
+        "p22": [[30000, 0], [0,50000 ]],
+        "p23": [[25000, 0], [0,50000 ]],
+        "p24": [[20000, 0], [0,50000 ]]
   }
 
 
@@ -91,16 +91,16 @@ class Player(BasePlayer):
 
     def set_pago(self):
         if self.pregunta_pago < 7:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][1])
         elif self.pregunta_pago < 13:
-            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
+            self.pago_hoy = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][1])
         elif self.pregunta_pago < 19:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
-            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_10 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][1])
         else:
-            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][0])
-            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))][1])
+            self.pago_5 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][0])
+            self.pago_15 = c(Constants.pagos["p"+str(self.pregunta_pago)][int(getattr(self,"mpl_p"+str(self.pregunta_pago)))-1][1])
 
 
