@@ -16,45 +16,45 @@ SESSION_CONFIGS = [
     {
         'name': 'dm',
         'display_name': "DM",
-        'num_demo_participants': 1,
+        'num_demo_participants': 50,
         'app_sequence': ['dm']
     },
     {
         'name': 'bret',
         'display_name': "BRET",
-        'num_demo_participants': 1,
+        'num_demo_participants': 50,
         'app_sequence': ['bret']
     },
     {
         'name': 'sgg',
         'display_name': "SGG",
-        'num_demo_participants': 1,
+        'num_demo_participants': 50,
         'app_sequence': ['sgg']
     },
     {
         'name': 'hl',
         'display_name': "HL",
-        'num_demo_participants': 1,
+        'num_demo_participants': 50,
         'app_sequence': ['hl']
     },
     {
         'name': 'ctb',
         'display_name': "CTB",
-        'num_demo_participants': 2,
+        'num_demo_participants': 50,
         'app_sequence': ['ctb'],
         'Rounds':None
     },
     {
         'name': 'ctb_r',
         'display_name': "CTB Random",
-        'num_demo_participants': 2,
+        'num_demo_participants': 50,
         'app_sequence': ['ctb_r'],
         'Rounds':None
     },
     {
         'name': 'mpl',
         'display_name': "MPL",
-        'num_demo_participants': 2,
+        'num_demo_participants': 50,
         'app_sequence': ['mpl'],
         'Rounds':None
     },
