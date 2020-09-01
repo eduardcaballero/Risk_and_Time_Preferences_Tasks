@@ -210,7 +210,10 @@ class Player(BasePlayer):
                 self.probabilidad_contrato_A = 0
         else:
             if self.subsession.observabilidad == True:
-                self.probabilidad_contrato_A = self.palabras / self.group.get_palabras_torneo()
+                if self.group.get_palabras_torneo() == 0:
+                    self.probabilidad_contrato_A = 0.5
+                else:
+                    self.probabilidad_contrato_A = self.palabras / self.group.get_palabras_torneo()
             else:
                 self.probabilidad_contrato_A = 0.5
 
