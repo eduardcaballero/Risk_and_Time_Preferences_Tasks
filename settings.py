@@ -90,7 +90,7 @@ ROOMS = []
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-DEMO_PAGE_TITLE = "Risk and time preferences task"
+DEMO_PAGE_TITLE = "Risk and time preferences tasks"
 DEMO_PAGE_INTRO_HTML = """"""
 
 SECRET_KEY = '6k75xea8!xbc+)g%)zu&em-^(#*u38$5h1mu8o8t)7i4k5czsk'
