@@ -93,7 +93,7 @@ class resultados_torneo(Page):
             "posicion_grupo": self.player.posicion_grupo,
             "contrato_A": self.player.contrato_A,
             "posicion_contrato": self.player.posicion_contrato,
-            "probabilidad_contrato_A": "{0:.2f}".format(self.player.probabilidad_contrato_A)
+            "probabilidad_contrato_A": "{0}%".format(self.player.probabilidad_contrato_A*100)
         }
 
 class asignacion(Page):
