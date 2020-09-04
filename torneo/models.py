@@ -27,7 +27,7 @@ class Constants(BaseConstants):
     ronda_pagar = random.randint(2, num_rounds)
     letters_per_word = 5
     use_timeout = True
-    seconds_per_period = 30
+    seconds_per_period = 3000
 
 class Subsession(BaseSubsession):
     meritocracia = models.BooleanField()

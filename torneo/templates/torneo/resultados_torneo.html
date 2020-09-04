@@ -23,6 +23,8 @@
         {% endif %} 
     {% endif %} 
 
-    <p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda, es: {{probabilidad_contrato_A}} </p>
+    {% if ronda < 5 %}
+    	<p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda, es: {{probabilidad_contrato_A}} </p>
+    {% endif %} 
     {% next_button %}
 {% endblock %}
