@@ -3,13 +3,11 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 class bienvenida(Page):
-    timeout_seconds = 60
     def is_displayed(self):
         return self.round_number == 1
 
 
 class instrucciones_practica(Page):
-    timeout_seconds = 60
     def is_displayed(self):
         return self.round_number == 1
     
@@ -19,7 +17,6 @@ class instrucciones_practica(Page):
         }
 
 class instrucciones_torneo(Page):
-    timeout_seconds = 60
     def is_displayed(self):
         return self.round_number == 2
 
@@ -62,8 +59,8 @@ class tarea_torneo(Page):
         return {'legend_list': legend_list,
                 'task_list': task_list,
                 'task_width': task_width,
-                "pago_A": Constants.pago_A ,
-                "pago_B": Constants.pago_B,
+                "pago_A": "$"+format(int(str(Constants.pago_B).split(",")[0]), ',d'),
+                "pago_B": "$"+format(int(str(Constants.pago_B).split(",")[0]), ',d'),
                 "contrato_A": self.player.contrato_A}
 
 class calculos(WaitPage):
@@ -89,11 +86,11 @@ class resultados_torneo(Page):
         return {
             "ronda": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
             "palabras" : self.player.palabras,
-            "pago_ronda": self.player.pago_ronda,
+            "pago_ronda": "$"+format(int(str(self.player.pago_ronda).split(",")[0]),',d'),
             "posicion_grupo": self.player.posicion_grupo,
             "contrato_A": self.player.contrato_A,
             "posicion_contrato": self.player.posicion_contrato,
-            "probabilidad_contrato_A": "{0}%".format(self.player.probabilidad_contrato_A*100)
+            "probabilidad_contrato_A": "{0:.0f}%".format(self.player.probabilidad_contrato_A*100)
         }
 
 class asignacion(Page):
@@ -124,7 +121,7 @@ class pago_total(Page):
     def vars_for_template(self): 
         return {
             "ronda_pagar" :  Constants.ronda_pagar - 1,
-            "pago_total" : self.player.pago.to_real_world_currency(self.session)
+            "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
     
 class gracias(Page):
