@@ -22,7 +22,9 @@
         <p> Usted fue quien menos tareas realizó entre las personas con Contrato B de su grupo. </p>
         {% endif %} 
     {% endif %} 
+    {% if ronda < 5 %}
+    	<p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda, es: {{probabilidad_contrato_A}} </p>
+    {% endif %} 
 
-    <p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda, es: {{probabilidad_contrato_A}} </p>
     {% next_button %}
 {% endblock %}
