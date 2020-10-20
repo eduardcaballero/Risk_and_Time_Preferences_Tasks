@@ -175,6 +175,11 @@ td {
 
 
 <script>
+    $(document).keydown(function(objEvent) {
+       if (objEvent.keyCode == 9) {  //tab pressed
+           objEvent.preventDefault(); // stops its action
+       }
+    })
 
   letters_per_word = {{Constants.letters_per_word}};
   alphabet = genCharArray(5);
