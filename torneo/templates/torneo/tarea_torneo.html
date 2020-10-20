@@ -128,17 +128,24 @@ td {
 {% endblock %}
 
 {% block content %}
-<p>Usted tiene un Contrato  
-    {% if contrato_A %}
-    A, por cada tarea completa recibirá {{pago_A}}.
-    {% else %}
-    B, por cada tarea completa recibirá {{pago_B}}.
-    {% endif %} 
-</p>
 <input type="hidden" name="palabras" id="palabras" value="" />
 <input type="hidden" name="mistakes" id="mistakes" value="" />
 
 <div class="test" id="hide_task">
+    <p style="font-size: 1.5vw;text-align: center;">Claves</p>
+    <table>
+        <tr>
+         {% for l in legend_list %}
+        <th style="width:20%" id="lcid_{{l}}"></td>
+        {% endfor%}
+        </tr>
+        <tr>
+            {% for l in legend_list %}
+        <td style="width:20%" id="llid_{{l}}"></td>
+        {% endfor%}
+        </tr>
+    </table>
+    <br><br>
 
 <!-- <form id="test_frm"> -->
 <div class="task-container">
@@ -153,23 +160,14 @@ td {
         {% endfor %}
 </div>
 </div>
+
 <br><br>
-<p style="font-size: 1.5vw;text-align: center;">Claves</p>
-<table>
-<tr>
- {% for l in legend_list %}
-<th style="width:20%" id="lcid_{{l}}"></td>
-{% endfor%}
-</tr>
-<tr>
-    {% for l in legend_list %}
-<td style="width:20%" id="llid_{{l}}"></td>
-{% endfor%}
-</tr>
-</table>
-<br><br>
-<div class="otree-form-errors" id="error-form"></div><br>
-<input class="mx-auto d-block" type="button" onclick="myFunction()" value="Enviar">
+<div class="button-container">
+
+<input type="button" onclick="myFunction()" value="Enviar">
+<div class="otree-form-errors" id="error-form"></div>
+</div>
+
 <br><br>
 </div>
 
