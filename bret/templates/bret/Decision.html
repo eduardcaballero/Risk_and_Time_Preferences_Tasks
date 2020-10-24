@@ -25,6 +25,16 @@
 <script src="{% static 'bret/js/angular.min.js' %}"></script>
 <script src="{% static 'bret/js/bret.js' %}"></script>
 <script>
+    var div2 = document.getElementById("info2")
+    div2.style.display = "none";
+
+    function ocultar(){
+        var div = document.getElementById("info")
+        var div2 = document.getElementById("info2")
+        div.style.display = "none";
+        div2.style.display = "inline";
+
+    }
     (function an(angular) {
         var oVars = {{ otree_vars| json }};
     try {
@@ -60,15 +70,45 @@
 {% endblock %}
 
 {% block title %}
-{% trans "Decisión" %}
+{% trans "Resultados" %}
 {% endblock %}
 
 
 {% block content %}
-<p style="text-align:left;">Su tarea es elegir cuando parar el proceso de recolección de las cajas. Use los siguientes <i>botones</i>:
-<br><b>Iniciar:</b>  inicia la recolección de las cajas. 
-<br><b>Parar:</b>    detiene la recolección de las cajas.
-<br><b>Mostrar:</b>  permite ver el contenido de las cajas recolectadas. </p>
+<div id="info">
+    <p style="text-align:left;">Su tarea es elegir cuando parar el proceso de recolección de las cajas. Use los siguientes <i>botones</i>:
+    <br><b>Iniciar:</b>  inicia la recolección de las cajas. 
+    <br><b>Parar:</b>    detiene la recolección de las cajas.
+    <br><b>Mostrar:</b>  permite ver el contenido de las cajas recolectadas. </p>
+</div>
+<div id="info2">
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+        <div class="d-flex">
+            <div style="background-color: #DFE7DF; padding-top: 10px; color: #346934; border-bottom: 5px solid #5cb85c; width: 50px !important; height: 50px !important;">
+                <i class="icon fas fa-dollar-sign"></i>
+            </div>
+            <h1>=</h1>
+            <img width='100px' src='https://drive.google.com/uc?id=1lU9CNMJouxKbvEwdxPJuTzSKkZh5jPER' />
+        </div>
+        <p style="margin-left: -50px">Recibe hoy $1,000</p>
+    </div>
+    <div class="col-md-auto">
+        <div class="d-flex">
+            <div style="background-color: #DFE7DF; padding-top: 10px; color: #692b28; border-bottom: 5px solid #d9534f; width: 50px !important; height: 50px !important;">
+                <i class="icon fas fa-bomb"></i>
+            </div>
+            <h1>=</h1>
+            <h3 style="color: #692b28; margin-top: 10px; margin-bottom: 22px; ">Pierde todo</h3>
+        </div>
+        <p style="margin-left: -130px">Recibe hoy $0</p>
+    </div>
+  </div>
+</div>
+   
+    
+</div>
 <div class="panel panel-primary">
     <div id="bomb-task" class="ng-cloak" data-ng-app="bombTask"
         data-ng-controller="BombTaskController as bombTaskController">
@@ -115,7 +155,7 @@
 
                     <button type="button" href="javascript:void(0)" class="btn btn-primary btn-md resolve"
                         data-ng-if="bombTaskController.feedback" data-ng-click="bombTaskController.resolve()"
-                        data-ng-disabled="!bombTaskController.stopped">
+                        data-ng-disabled="!bombTaskController.stopped" onclick="ocultar()">
                         <span>
                             {% trans "Mostrar" %}
                         </span>
