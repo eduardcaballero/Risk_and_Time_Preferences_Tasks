@@ -13,8 +13,9 @@
         </div>
         <em>cada semana</em>
     </h3><br>
+    <p style="font-size: 19px;">Por favor seleccione la OPCIÓN A (A) o la OPCIÓN B (B) en cada fila</p>
 
-    <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed;">
+    <table class="otdm__choices-table table table-bordered table-striped" style="table-layout: fixed; font-size: 19px !important;">
         <thead>
             <tr class="text-center">
                 <th>OPCIÓN A</th>
@@ -51,7 +52,7 @@
                 <td class="text-left">
                     {% if rev_gain == 1 %}
                     Pago en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
-                    <br> [<b><span class="otdm__week">{{ rev_gain }}</span><b> pago]
+                    <br> [<span class="otdm__week">{{ rev_gain }}</span> pago]
                             {% else %}
                             Pago inicial en la semana <b><span class="otdm__week">{{ rev_week }}</span></b>
                             y pago final en la semana <b><span class="otdm__week">{{ week_end }}</span></b>
