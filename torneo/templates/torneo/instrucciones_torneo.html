@@ -12,8 +12,8 @@
     <p> En cada ronda usted tendrá 90 segundos para realizar el mayor número de tareas posibles. El pago por cada tarea completada dependerá del contrato al que fue asignado en la ronda anterior: </p>
     
     <ul>
-        <li> Contrato A: recibe $2.000 por tarea. </li>
-        <li> Contrato B: recibe $1.000 por tarea. </li>
+        <li> Contrato A: recibe $2.000 por tarea correcta. </li>
+        <li> Contrato B: recibe $1.000 por tarea correcta. </li>
     </ul>
 
     <p> Al final de cada ronda se reasignarán los Contratos A y B según el número de tareas completadas respecto a los otros miembros del grupo. </p>
@@ -24,14 +24,14 @@
         <li> Primer puesto de los jugadores con Contrato A: 100% </li> 
         <li> Segundo puesto de los jugadores con Contrato A: 
             {% if observabilidad %}
-                Depende de las tareas realizadas por el jugador en esta posición y en el primer puesto de los jugadores con Contrato B.
+                Repechaje.]
             {% else %}
                 50%
             {% endif %}     
         </li> 
         <li> Primer puesto jugadores con Contrato B:
             {% if observabilidad %}
-                Depende de las tareas realizadas por el jugador en esta posición y en el segundo puesto de los jugadores con Contrato A.
+                Repechaje.]
             {% else %}
                 50%
             {% endif %}
@@ -39,16 +39,13 @@
         <li> Segundo puesto jugadores con Contrato B: 0% </li> 
     </ul>
 
-    <p> En caso de empate en el número de tareas completas para dos participantes con el mismo contrato, las posiciones se definirán al azar. </p>
+    <p> <b>Nota:</b> Si los dos participantes con el mismo contrato tienen el mismo número de tareas completas, el primer puesto del contrato se define al azar. </p>
     
-    <p> En otras palabras, la persona con más tareas completas de los dos que tienen el Contrato A va a mantener este contrato; y la persona con menos tareas completas de los dos que tienen el Contrato B va a mantener ese contrato. </p>
-
-    <p>
-        Para las otras dos personas, es posible que quién tiene el Contrato A sea reasignado a un Contrato B, y viceversa. 
+    <p> En otras palabras, el “ganador” con el Contrato A y el “perdedor” del Contrato B van a mantener sus contratos. Para las otras dos personas del grupo, es posible que haya un cambio en el contrato.   
         {% if observabilidad %}
-            La probabilidad de ser reasignado dependerá del número de tareas realizadas, a mayor número de tareas es más alta la posibilidad de obtener el Contrato A para el próximo periodo
+            La probabilidad de ser reasignado dependerá del número relativo de tareas realizadas, en algo que llamaremos “repechaje”.
         {% else %}    
-            La probabilidad de ser reasignado para ellos dos será del 50%.
+            La probabilidad de ser reasignado erá del 50% para ambos.
         {% endif %} 
     </p>
     {% next_button %}

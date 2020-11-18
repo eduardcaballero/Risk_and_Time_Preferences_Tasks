@@ -16,6 +16,10 @@ class instrucciones_practica(Page):
             "meritocracia" : self.session.config["meritocracia"]
         }
 
+class instrucciones_tarea(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 class instrucciones_torneo(Page):
     def is_displayed(self):
         return self.round_number == 2
@@ -136,6 +140,7 @@ class ruleta(Page):
 page_sequence = [
 	bienvenida, 
 	instrucciones_practica,
+    instrucciones_tarea,
     instrucciones_torneo,
 	tarea_practica,
     tarea_torneo,
