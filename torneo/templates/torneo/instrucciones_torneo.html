@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Torneo
+    Etapa 2: Torneo
 {% endblock %}
 
 {% block content %}
@@ -24,14 +24,14 @@
         <li> Primer puesto de los jugadores con Contrato A: 100% </li> 
         <li> Segundo puesto de los jugadores con Contrato A: 
             {% if observabilidad %}
-                Repechaje.]
+                Repechaje
             {% else %}
                 50%
             {% endif %}     
         </li> 
         <li> Primer puesto jugadores con Contrato B:
             {% if observabilidad %}
-                Repechaje.]
+                Repechaje
             {% else %}
                 50%
             {% endif %}
@@ -44,10 +44,26 @@
     <p> En otras palabras, el “ganador” con el Contrato A y el “perdedor” del Contrato B van a mantener sus contratos. Para las otras dos personas del grupo, es posible que haya un cambio en el contrato.   
         {% if observabilidad %}
             La probabilidad de ser reasignado dependerá del número relativo de tareas realizadas, en algo que llamaremos “repechaje”.
+
+            <p><i> ¿En qué consiste el repechaje? <p></i>
+
+            <p>Entre más tareas correctas haga, y menos haga el otro participante en repechaje, más chance de quedarse con el Contrato A. Su probabilidad es igual a sus tareas completas, dividido en las tareas completas de los dos participantes en repechaje: </p>
+
+            <div class="eq-c">
+            <i>Probabilidad del Contrato A</i> =
+            <div class="fraction">
+            <span class="fup"><i>Mis tareas</i></span>
+            <span class="bar">/</span>
+            <span class="fdn"><i>Mis tareas+Tareas del otro</i></span>
+            </div>
+            </div>
+       
         {% else %}    
             La probabilidad de ser reasignado erá del 50% para ambos.
         {% endif %} 
     </p>
     {% next_button %}
+
+
 
 {% endblock %}
