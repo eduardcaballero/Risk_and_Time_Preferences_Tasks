@@ -102,7 +102,7 @@ DEMO_PAGE_INTRO_HTML = """"""
 SECRET_KEY = '6k75xea8!xbc+)g%)zu&em-^(#*u38$5h1mu8o8t)7i4k5czsk'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
-INSTALLED_APPS = ['otree' , 'django_user_agents', 'numpy']
+INSTALLED_APPS = ['otree' , 'django_user_agents']
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
