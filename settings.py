@@ -1,4 +1,5 @@
 from os import environ
+import os
 
 environ.__setitem__('OTREE_PRODUCTION','0') ################
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
@@ -45,6 +46,13 @@ SESSION_CONFIGS = [
         'Rounds':None
     },
     {
+        'name': 'ctb_2',
+        'display_name': "CTB2",
+        'num_demo_participants': 50,
+        'app_sequence': ['ctb_2'],
+        'Rounds':None
+    },
+    {
         'name': 'ctb_r',
         'display_name': "CTB Random",
         'num_demo_participants': 50,
@@ -71,6 +79,13 @@ SESSION_CONFIGS = [
         'display_name': 'Tarea',
         'num_demo_participants': 1,
         'app_sequence': ['tarea'],
+    },
+    {
+        'name': 'app',
+        'display_name': 'App',
+        'num_demo_participants': 1, 
+        # sequence 0 = [ctb,hl,mpl,bret], sequence 1 = [mpl_2,hl,ctb_2,bret]
+        'app_sequence': ['home','ctb','mpl_2','hl','mpl','ctb_2','bret','resultados'],
     }
 ]
 
