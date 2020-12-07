@@ -441,7 +441,7 @@ class Resultados(Page):
 
 class Gracias(Page):
      def is_displayed(self):
-         app = False
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
                  app = True
