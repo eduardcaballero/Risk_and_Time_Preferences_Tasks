@@ -1,0 +1,87 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+Pregunta {{ pregunta }}
+{% endblock %}
+
+{% block content %} <p style="font-size: 21px;">Por favor seleccione una fila</p>
+
+<style>
+    .otree-title {
+        font-size: 50px;
+    }
+    
+    .otree-btn {
+        float: right;
+    }
+    
+    .opcion {
+        font-size: 20px;
+    }
+    
+    td.ancho {
+        width: 50px;
+    }
+</style>
+
+<script>
+    function clickaction(b) {
+
+        switch (b) {
+            case 1:
+                {
+                    document.getElementById("select-text").innerHTML =
+                    "<p> Ha seleccionado la opción 1. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                    En {{Constants.semanas}} semanas $35.000 y en 15 semanas $0. Total $35.000 <br> <br>\
+                    ¿Está seguro de su elección? </p>";
+                    break;
+                }
+            case 2:
+                {
+                    document.getElementById("select-text").innerHTML =
+                    "<p> Ha seleccionado la opción 2. Es decir, si esta pregunta es seleccionada para el pago, usted recibe: <br> <br>\
+                    En {{Constants.semanas}} semanas $0 y además dentro de 15 semanas $50.000. Total $50.000 <br> <br>\
+                    ¿Está seguro de su elección? </p>";
+                    break;
+                }
+        }
+    }
+</script>
+
+<table class="table">
+    <tr>
+        <td rowspan="6" class="col-sm-4 ancho"> <img style="max-width:700px;" src="{% static 'mpl/21.PNG' %}" alt=""> </td>
+        <td>
+             <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(1)" type="radio" name="mpl_p21" value="1">        </td>
+    </tr>
+    <tr>
+            <td>
+                 <input class="radio" data-toggle="modal" data-target="#staticBackdrop" onclick="clickaction(2)" type="radio" name="mpl_p21" value="2">
+            </td>
+        </tr>
+</table>
+
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Confirme su elección</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <p class="opcion" id="select-text"> </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> No </button>
+                <button class="btn btn-primary otree-btn"> Si </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<button class="btn btn-primary otree-btn" onclick="confirmar()"> Siguiente </button>-->
+
+{% endblock %}

@@ -7,29 +7,29 @@ from .models import Constants
 
 class Bienvenido(Page):
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
 class Instrucciones(Page):
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
 class Pregunta_1(Page):
     form_model = 'player'
-    form_fields = ['mpl_p1']
+    form_fields = ['ctb_p1']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -38,13 +38,13 @@ class Pregunta_1(Page):
         }
 class Pregunta_2(Page):
     form_model = 'player'
-    form_fields = ['mpl_p2']
+    form_fields = ['ctb_p2']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -53,13 +53,13 @@ class Pregunta_2(Page):
         }
 class Pregunta_3(Page):
     form_model = 'player'
-    form_fields = ['mpl_p3']
+    form_fields = ['ctb_p3']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -68,13 +68,13 @@ class Pregunta_3(Page):
         }
 class Pregunta_4(Page):
     form_model = 'player'
-    form_fields = ['mpl_p4']
+    form_fields = ['ctb_p4']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -83,13 +83,13 @@ class Pregunta_4(Page):
         }
 class Pregunta_5(Page):
     form_model = 'player'
-    form_fields = ['mpl_p5']
+    form_fields = ['ctb_p5']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -98,13 +98,13 @@ class Pregunta_5(Page):
         }
 class Pregunta_6(Page):
     form_model = 'player'
-    form_fields = ['mpl_p6']
+    form_fields = ['ctb_p6']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -113,13 +113,13 @@ class Pregunta_6(Page):
         }
 class Pregunta_7(Page):
     form_model = 'player'
-    form_fields = ['mpl_p7']
+    form_fields = ['ctb_p7']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -128,13 +128,13 @@ class Pregunta_7(Page):
         }
 class Pregunta_8(Page):
     form_model = 'player'
-    form_fields = ['mpl_p8']
+    form_fields = ['ctb_p8']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -143,13 +143,13 @@ class Pregunta_8(Page):
         }
 class Pregunta_9(Page):
     form_model = 'player'
-    form_fields = ['mpl_p9']
+    form_fields = ['ctb_p9']
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -158,12 +158,12 @@ class Pregunta_9(Page):
         }
 class Pregunta_10(Page):
     form_model = 'player'
-    form_fields = ['mpl_p10']
+    form_fields = ['ctb_p10']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -173,12 +173,12 @@ class Pregunta_10(Page):
 
 class Pregunta_11(Page):
     form_model = 'player'
-    form_fields = ['mpl_p11']
+    form_fields = ['ctb_p11']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -188,12 +188,12 @@ class Pregunta_11(Page):
 
 class Pregunta_12(Page):
     form_model = 'player'
-    form_fields = ['mpl_p12']
+    form_fields = ['ctb_p12']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -203,12 +203,12 @@ class Pregunta_12(Page):
 
 class Pregunta_13(Page):
     form_model = 'player'
-    form_fields = ['mpl_p13']
+    form_fields = ['ctb_p13']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -218,12 +218,12 @@ class Pregunta_13(Page):
 
 class Pregunta_14(Page):
     form_model = 'player'
-    form_fields = ['mpl_p14']
+    form_fields = ['ctb_p14']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -233,12 +233,12 @@ class Pregunta_14(Page):
 
 class Pregunta_15(Page):
     form_model = 'player'
-    form_fields = ['mpl_p15']
+    form_fields = ['ctb_p15']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -248,12 +248,12 @@ class Pregunta_15(Page):
 
 class Pregunta_16(Page):
     form_model = 'player'
-    form_fields = ['mpl_p16']
+    form_fields = ['ctb_p16']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -263,12 +263,12 @@ class Pregunta_16(Page):
 
 class Pregunta_17(Page):
     form_model = 'player'
-    form_fields = ['mpl_p17']
+    form_fields = ['ctb_p17']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -278,12 +278,12 @@ class Pregunta_17(Page):
 
 class Pregunta_18(Page):
     form_model = 'player'
-    form_fields = ['mpl_p18']
+    form_fields = ['ctb_p18']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -293,12 +293,12 @@ class Pregunta_18(Page):
 
 class Pregunta_19(Page):
     form_model = 'player'
-    form_fields = ['mpl_p19']
+    form_fields = ['ctb_p19']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -308,12 +308,12 @@ class Pregunta_19(Page):
 
 class Pregunta_20(Page):
     form_model = 'player'
-    form_fields = ['mpl_p20']
+    form_fields = ['ctb_p20']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -323,12 +323,12 @@ class Pregunta_20(Page):
 
 class Pregunta_21(Page):
     form_model = 'player'
-    form_fields = ['mpl_p21']
+    form_fields = ['ctb_p21']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -338,12 +338,12 @@ class Pregunta_21(Page):
 
 class Pregunta_22(Page):
     form_model = 'player'
-    form_fields = ['mpl_p22']
+    form_fields = ['ctb_p22']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -353,12 +353,12 @@ class Pregunta_22(Page):
 
 class Pregunta_23(Page):
     form_model = 'player'
-    form_fields = ['mpl_p23']
+    form_fields = ['ctb_p23']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -368,12 +368,12 @@ class Pregunta_23(Page):
 
 class Pregunta_24(Page):
     form_model = 'player'
-    form_fields = ['mpl_p24']
+    form_fields = ['ctb_p24']
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
     def vars_for_template(self):
@@ -383,10 +383,10 @@ class Pregunta_24(Page):
 
 class Resultados(Page):
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
     def vars_for_template(self):
         self.player.set_pago()
@@ -397,7 +397,7 @@ class Resultados(Page):
                 "pago_10" : False,
                 "pago_15" : False,
                 "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "mpl_p"+str(self.player.pregunta_pago))
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         elif self.player.pregunta_pago < 13:
@@ -407,7 +407,7 @@ class Resultados(Page):
                 "pago_5" : False,
                 "pago_15" : False,
                 "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "mpl_p"+str(self.player.pregunta_pago))
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         elif self.player.pregunta_pago < 19:
@@ -417,7 +417,7 @@ class Resultados(Page):
                 "pago_15" : False,
                 "pago_hoy" : False,
                 "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "mpl_p"+str(self.player.pregunta_pago))
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
         else:
@@ -427,24 +427,24 @@ class Resultados(Page):
                 "pago_hoy" : False,
                 "pago_10" : False,
                 "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "mpl_p"+str(self.player.pregunta_pago))
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
                 
             }
 
     def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
 
 class Gracias(Page):
      def is_displayed(self):
-        app = True
+        app = False
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app =False
+                 app = True
         return self.round_number == 1 and app
 
 
