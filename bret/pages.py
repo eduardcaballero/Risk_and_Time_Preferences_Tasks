@@ -13,8 +13,14 @@ from .models import Constants
 class Instructions(Page):
 
     # only display instruction in round 1
+
     def is_displayed(self):
-        return self.subsession.round_number == 1
+        app = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order2'] == 1:
+                app = False
+        return self.round_number == 1 and app
+
 
     # variables for use in template
     def vars_for_template(self):

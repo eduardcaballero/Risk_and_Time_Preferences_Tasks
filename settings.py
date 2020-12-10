@@ -87,6 +87,14 @@ SESSION_CONFIGS = [
         # sequence 0 = [ctb,hl,mpl,bret], sequence 1 = [mpl_2,hl,ctb_2,bret]
         'app_sequence': ['home','ctb','mpl_2','hl','mpl','ctb_2','bret','resultados'],
     }
+    {
+        'name': 'app_2',
+        'display_name': 'App_2',
+        'num_demo_participants': 1,
+        # sequence 0 = [ctb,hl,mpl,bret,dm], sequence 1 = [mpl_2,hl,ctb_2,bret,dm]
+        # sequence 2 = [ctb,hl,mpl,sgg,dm], sequence 3 = [mpl_2,hl,ctb_2,sgg,dm]
+        'app_sequence': ['home', 'ctb', 'mpl_2', 'hl', 'mpl', 'ctb_2', 'bret', 'sgg', 'dm', 'resultados'],
+    },
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
