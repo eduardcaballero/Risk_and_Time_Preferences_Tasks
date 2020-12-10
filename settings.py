@@ -86,7 +86,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1, 
         # sequence 0 = [ctb,hl,mpl,bret], sequence 1 = [mpl_2,hl,ctb_2,bret]
         'app_sequence': ['home','ctb','mpl_2','hl','mpl','ctb_2','bret','resultados'],
-    }
+    },
     {
         'name': 'app_2',
         'display_name': 'App 2',
