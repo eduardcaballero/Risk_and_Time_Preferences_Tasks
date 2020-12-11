@@ -27,35 +27,40 @@
     <div class="instructions">
         <p>
             {% blocktrans trimmed %}
-                A continuación, usted verá en la pantalla aparecerá un cuadro {{ num_rows }}x{{ num_cols }} que contiene
+                Usted verá en la siguiente pantalla un cuadro {{ num_rows }}x{{ num_cols }} que contiene
                 {{ num_boxes }} cajas.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-                Tan pronto como inicie la tarea, dando clic en el botón 'Iniciar',
-                se recolectará al azar una caja cada segundo.
-                Las cajas recolectadas aparecerán en AZUL y por cada caja usted recibe un pago de {{ box_value }}.
+            Tan pronto como inicie la tarea, dando clic en el botón "Iniciar", se recolectará al azar una caja cada segundo. 
+            Por cada caja recolectada usted recibirá un pago de \$1.000 y cada una de estas cajas aparecerán de color AZUL. 
+            En cualquier momento usted puede ver el número de cajas recolectadas en la parte superior.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
                 Detrás de UNA de las cajas se esconde una BOMBA que destruye todo lo que se recogió.
-                Las {{ num_nobomb }} cajas restantes valen {{ box_value }} cada una.
                 Al inicio de la recolección usted no sabe en que caja está oculta la bomba, sólo sabe que puede estar en cualquier caja del cuadro con igual probabilidad. 
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-                Su tarea es elegir cuándo detener el proceso de recolección de cajas. Seleccionado el botón "Parar" usted puede detener la recolección en cualquier momento. 
-                Si usted recoge la caja en donde se encuentra la bomba, la bomba explotará y usted no tendrá ganancias.
-                Si usted para la recolección antes de recoger la bomba, usted ganará la cantidad acumulada hasta ese momento.
+                Si usted recoge la caja en donde se encuentra la bomba, la bomba explotará y usted no tendrá ganancias. 
+                Si usted detiene la recolección antes de recoger la bomba, usted ganará la cantidad acumulada hasta ese momento.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-                Luego de que usted de clic en "Parar" se habilitará el botón "Mostrar" que le permitirá ver el contenido de las cajas recolectadas.
-                Un símbolo de peso ({{ box_value}}) o un símbolo de bomba ("pierde todo") será mostrado en cada caja que haya recogido.
+                Su tarea es elegir cuándo detener el proceso de recolección de cajas. 
+                Puede seleccionar el botón "Parar" en cualquier momento para detener la recolección.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+                Luego de que usted de clic en "Parar" se habilitará el botón "Mostrar" que le permitirá ver el contenido de las cajas recolectadas. 
+                Un símbolo de pesos ({{ box_value}}) o un símbolo de bomba ("pierde todo") será mostrado en cada caja que haya recogido. 
+                Solo hasta este momento usted sabrá dónde está la bomba.
             {% endblocktrans %}
         </p>
     </div>

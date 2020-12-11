@@ -27,22 +27,27 @@
     <div class="instructions">
         <p>
             {% blocktrans trimmed %}
-            En esta tarea usted puede ganar dinero que depende sus elecciones y de la suerte.
+                En esta tarea usted puede ganar dinero que depende sus elecciones y de la suerte. Usted debe responder cuatro (4) preguntas, donde cada una tiene diez (10) opciones entre las que debe elegir. Al final del juego solo una de las decisiones será elegida, así que debe darle la misma importancia a todas las decisiones.            
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-            En cada pregunta tendrá diez (10) opciones. Cada opción representa una bolsa en la que se colocan pelotas blancas y pelotas azules, y de la que luego se seleccionará al azar una pelota. Si sale una pelota BLANCA no gana nada. Si sale una pelota AZUL gana la cantidad de dinero que se muestra en la columna de la derecha. 
+                Cada opción representa una bolsa en la que se colocan diez (10) pelotas, distribuidas entre BLANCAS y AZULES. La cantidad de pelotas BLANCAS y AZULES varían según la opción. Si sale una pelota BLANCA no gana nada. Si sale una pelota AZUL gana la cantidad de dinero que se muestra en la columna de la derecha. Es importante aclarar que todas las decisiones y pelotas tienen la misma probabilidad de ser elegidas.
             {% endblocktrans %}
         </p>
        	<p>
             {% blocktrans trimmed %}
-            En la opción 1 (fila) gana $2000 con una probabilidad del 100%, en otras palabras, es seguro que gana dos mil pesos. En las siguientes filas aumenta la cantidad de dinero que puede recibir si sale una pelota AZUL pero también se reduce la probabilidad de ganar dicho monto (hay menos pelotas azules).
+                Por ejemplo, la decisión 1 despliega 10 opciones. 
+                La primera opción tiene diez (10) pelotas azules, pagándole $2.000 con total seguridad. 
+                La segunda opción tiene una (1) pelota blanca y nueve (9) azules, recibiendo $2.200 si la pelota elegida es azul y $0 si la pelota es blanca. 
+                El número de pelotas azules disminuye en uno (1) a medida de que aumentan las opciones, de esta misma forma el pago de la pelota azul aumenta, hasta llegar a la decima opción donde hay nueve (9) pelotas blancas y una (1) pelota azul, con valor de $21.800.            
+                Las preguntas siguientes que usted tomará son similares, solo que el valor de las pelotas azules variará entre decisiones.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-          	Una de las cuatro (4) preguntas será seleccionada para el pago. Recuerde que los pagos dependen de la opción (fila) que usted eligió.
+              Una de las cuatro (4) preguntas será seleccionada para el pago. Recuerde que los pagos dependen de la opción (de la fila) que usted eligió. 
+              Para cada una de las decisiones usted deberá elegir alguna opción oprimiendo el botón indicado.
             {% endblocktrans %}
         </p>
     </div>
