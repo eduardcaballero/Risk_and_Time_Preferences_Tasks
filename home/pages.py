@@ -9,6 +9,7 @@ class MyPage(Page):
         # sequence 0 = [ctb,hl,mpl,bret], sequence 1 = [mpl_2,hl,ctb_2,bret]
         self.participant.vars['order'] = random.randint(0,1)
         self.participant.vars['order2'] = random.randint(0,1)
+        print(self.participant.__dict__)
 
 
 page_sequence = [MyPage]

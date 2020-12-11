@@ -91,7 +91,10 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    pass
+    def vars_for_template(self):
+        self.participant.vars['dm_pago'] = {
+            "pago": self.player.payoff, 
+        }
 
 
 page_sequence = [

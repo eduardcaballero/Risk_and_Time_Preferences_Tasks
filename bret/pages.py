@@ -16,7 +16,7 @@ class Instructions(Page):
 
     def is_displayed(self):
         app = True
-        if 'order' in self.participant.vars:
+        if 'order2' in self.participant.vars:
             if self.participant.vars['order2'] == 1:
                 app = False
         return self.round_number == 1 and app
@@ -47,6 +47,12 @@ class Decision(Page):
         'bomb_row',
         'bomb_col',
     ]
+    def is_displayed(self):
+        app = True
+        if 'order2' in self.participant.vars:
+            if self.participant.vars['order2'] == 1:
+                app = False
+        return app
 
     # BRET settings for Javascript application
     def vars_for_template(self):
@@ -86,13 +92,22 @@ class Results(Page):
 
     # only display results after all rounds have been played
     def is_displayed(self):
-        return self.subsession.round_number == Constants.num_rounds
+        app = True
+        if 'order2' in self.participant.vars:
+            if self.participant.vars['order2'] == 1:
+                app = False
+        return self.subsession.round_number == Constants.num_rounds and app
 
     # variables for use in template
     def vars_for_template(self):
         total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
         self.participant.vars['bret_payoff'] = total_payoff
-
+        self.participant.vars['bret_pago'] = {
+            'round_result':           self.player.round_result,
+            'round_to_pay':           self.participant.vars['round_to_pay'],
+            'payoff':                 self.player.payoff,
+            'total_payoff':           total_payoff
+        }
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),
             'box_value':              Constants.box_value,

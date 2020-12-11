@@ -3,16 +3,10 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
-    pass
-
-
-class ResultsWaitPage(WaitPage):
-    pass
-
-
 class Resultados(Page):
-    pass
+    def vars_for_template(self):
+        return self.participant.vars['ctb_pago']
+        
 
 
-page_sequence = [MyPage, ResultsWaitPage, Resultados]
+page_sequence = [Resultados]

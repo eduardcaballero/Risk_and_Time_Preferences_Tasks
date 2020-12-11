@@ -391,6 +391,14 @@ class Resultados(Page):
     def vars_for_template(self):
         self.player.set_pago()
         if self.player.pregunta_pago < 7:
+            self.participant.vars['ctb_pago'] = {
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_10" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+            }
             return {
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
@@ -401,6 +409,14 @@ class Resultados(Page):
                 
             }
         elif self.player.pregunta_pago < 13:
+            self.participant.vars['ctb_pago'] = {
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
+                "pago_5" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+            }
             return {
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
                 "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
@@ -411,6 +427,14 @@ class Resultados(Page):
                 
             }
         elif self.player.pregunta_pago < 19:
+            self.participant.vars['ctb_pago'] = {
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
+                "pago_15" : False,
+                "pago_hoy" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+            }
             return {
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
@@ -421,6 +445,14 @@ class Resultados(Page):
                 
             }
         else:
+            self.participant.vars['ctb_pago'] = {
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_15" : "$"+format(int(str(self.player.pago_15).split(",")[0]), ',d'),
+                "pago_hoy" : False,
+                "pago_10" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+            }
             return {
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_15" : "$"+format(int(str(self.player.pago_15).split(",")[0]), ',d'),
