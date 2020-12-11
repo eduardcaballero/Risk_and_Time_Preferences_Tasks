@@ -24,8 +24,10 @@ for (var j = 0; j < filas; j++) {
       circle2.classList.add("dot", "color1");
       circle2.innerText = valor4;
     }
+    circle.setAttribute("data-toggle", "tooltip");
     row.appendChild(circle);
     row.classList.add("div-circles")
+    circle2.setAttribute("data-toggle", "tooltip");
     row2.appendChild(circle2);
     row2.classList.add("div-circles")
   }

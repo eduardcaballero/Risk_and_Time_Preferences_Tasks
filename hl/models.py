@@ -48,13 +48,10 @@ class Player(BasePlayer):
     hl_t2_p1, hl_t2_p2, hl_t2_p3, hl_t2_p4, hl_t2_p5, hl_t2_p6, hl_t2_p7, hl_t2_p8, hl_t2_p9, hl_t2_p10 = (models.StringField() for _ in range(10))
 
     def set_pago(self):
+        tarea = [getattr(p, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago)) for p in self.in_all_rounds()]
         if random.random() < self.pregunta_pago/10 :
-            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[
-                getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
-                ][0]
+            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[tarea[0]][0]
         else:
-            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[
-                getattr(self, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago))
-                ][1]
+            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[tarea[0]][1]
         self.participant.vars["pago_hl"] = self.payoff
 

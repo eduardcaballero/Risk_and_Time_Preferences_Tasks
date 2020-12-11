@@ -1,8 +1,10 @@
 {% extends "global/Page.html" %}
-{% load otree static %}
+{% load staticfiles otree %}
+{% load i18n %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'sgg/pregunta.css' %}" />
+<link href="{% static 'bret/css/custom.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block title %}
