@@ -103,10 +103,18 @@ class Results(Page):
         total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
         self.participant.vars['bret_payoff'] = total_payoff
         self.participant.vars['bret_pago'] = {
+            'app' : 'bret',
+            'player_in_all_rounds':   self.player.in_all_rounds(),
+            'box_value':              Constants.box_value,
+            'boxes_total':            Constants.num_rows * Constants.num_cols,
+            'boxes_collected':        self.player.boxes_collected,
+            'bomb':                   self.player.bomb,
+            'bomb_row':               self.player.bomb_row,
+            'bomb_col':               self.player.bomb_col,
             'round_result':           self.player.round_result,
             'round_to_pay':           self.participant.vars['round_to_pay'],
             'payoff':                 self.player.payoff,
-            'total_payoff':           total_payoff
+            'total_payoff':           total_payoff,
         }
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),

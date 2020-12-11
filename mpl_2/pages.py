@@ -392,6 +392,7 @@ class Resultados(Page):
         self.player.set_pago()
         if self.player.pregunta_pago < 7:
             self.participant.vars['mpl2_pago'] = {
+                "app" : "mpl_2",
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_10" : False,
@@ -411,6 +412,7 @@ class Resultados(Page):
             }
         elif self.player.pregunta_pago < 13:
             self.participant.vars['mpl2_pago'] = {
+                "app" : "mpl_2",
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
                 "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
                 "pago_5" : False,
@@ -430,6 +432,7 @@ class Resultados(Page):
             }
         elif self.player.pregunta_pago < 19:
             self.participant.vars['mpl2_pago'] = {
+                "app" : "mpl_2",
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
                 "pago_15" : False,
@@ -449,6 +452,7 @@ class Resultados(Page):
             }
         else:
             self.participant.vars['mpl2_pago'] = {
+                "app" : "mpl_2",
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_15" : "$"+format(int(str(self.player.pago_15).split(",")[0]), ',d'),
                 "pago_hoy" : False,

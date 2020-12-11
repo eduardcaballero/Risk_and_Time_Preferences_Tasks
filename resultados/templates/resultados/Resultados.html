@@ -10,41 +10,204 @@
 {% endblock %}
 
 {% block content %}
-    <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
-    <table class="table table-bordered text-center">
-        <thead class="thead-light">
-        <tr>
-            {% if pago_hoy %}
-                <th scope="col"><p class="m-0" id="pago_hoy"></p></th>
+
+    <!--
+    ..######..########.########...........##.....######..########.########...........#######.
+    .##....##....##....##.....##.........##.....##....##....##....##.....##.........##.....##
+    .##..........##....##.....##........##......##..........##....##.....##................##
+    .##..........##....########........##.......##..........##....########...........#######.
+    .##..........##....##.....##......##........##..........##....##.....##.........##.......
+    .##....##....##....##.....##.....##.........##....##....##....##.....##.........##.......
+    ..######.....##....########.....##...........######.....##....########..#######.#########
+    -->
+    <!--
+    .##.....##.########..##................##....##.....##.########..##................#######.
+    .###...###.##.....##.##...............##.....###...###.##.....##.##...............##.....##
+    .####.####.##.....##.##..............##......####.####.##.....##.##......................##
+    .##.###.##.########..##.............##.......##.###.##.########..##................#######.
+    .##.....##.##........##............##........##.....##.##........##...............##.......
+    .##.....##.##........##...........##.........##.....##.##........##...............##.......
+    .##.....##.##........########....##..........##.....##.##........########.#######.#########
+    -->
+    {% if app == "ctb" or app == "ctb_2" or app == "mpl" or app == "mpl_2" %}
+        <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
+        <table class="table table-bordered text-center">
+            <thead class="thead-light">
+            <tr>
+                {% if pago_hoy %}
+                    <th scope="col"><p class="m-0" id="pago_hoy"></p></th>
+                {% endif %}
+                {% if pago_5 %}
+                    <th scope="col"><p class="m-0" id="pago_5"></p></th>
+                {% endif %}
+                {% if pago_10 %}
+                    <th scope="col"><p class="m-0" id="pago_10"></p></th>
+                {% endif %}
+                {% if pago_15 %}
+                    <th scope="col"><p class="m-0" id="pago_15"></p></th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% if pago_hoy %}
+                    <td>{{ pago_hoy }}</td>
+                {% endif %}
+                {% if pago_5 %}
+                    <td>{{ pago_5 }}</td>
+                {% endif %}
+                {% if pago_10 %}
+                    <td>{{ pago_10 }}</td>
+                {% endif %}
+                {% if pago_15 %}
+                    <td>{{ pago_15 }}</td>
+                {% endif %}
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
+    <!--
+    .########..########..########.########
+    .##.....##.##.....##.##..........##...
+    .##.....##.##.....##.##..........##...
+    .########..########..######......##...
+    .##.....##.##...##...##..........##...
+    .##.....##.##....##..##..........##...
+    .########..##.....##.########....##...
+    -->
+    {% if app == "bret" %}
+        {% if Constants.num_rounds == 1 %}
+            <div class="card card-info">
+                {% blocktrans trimmed %}
+                    Usted recolectó {{ boxes_collected }} de las {{ boxes_total }} cajas.
+                {% endblocktrans %}
+
+                <br/>
+                {% blocktrans trimmed %}
+                    La bomba estaba oculta en la caja ubicada en la fila {{ bomb_row }}, columna {{ bomb_col }} del cuadro.
+                {% endblocktrans %}
+
+                <br/><br/>
+                {% if bomb %}
+                    {% blocktrans trimmed %}
+                        La bomba estaba dentro de las {{ boxes_collected }} cajas que usted recolectó.<br/>
+                        De acuerdo a las instrucciones, todas sus ganancias en esta tarea fueron destruidas. Su pago total es {{ payoff }}.
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans trimmed %}
+                        Las cajas que usted recolectó no contenían la bomba.<br/>
+                        Debido a eso, usted recibe {{ box_value }} por cada una de las {{ boxes_collected }} cajas que usted recolectó. Su pago total es <b>{{ payoff }}</b>.
+                    {% endblocktrans %}
+                {% endif %}
+            </div>
+
+        {% else %}
+            <div class="card card-info">
+                {% blocktrans trimmed with num_rounds=Constants.num_rounds %}
+                    La siguiente tabla resume los resultados de sus decisiones en las {{ num_rounds }} rondas jugadas.
+                {% endblocktrans %}
+            </div>
+        {% endif %}
+
+
+        <!-- ----------------------------------------------------------------------------------------------------------- -->
+        <!-- history table -->
+        <!-- ----------------------------------------------------------------------------------------------------------- -->
+        {% if Constants.num_rounds > 1 %}
+            <div class="card">
+                <div class="card-header">
+                    <b>{% trans "Resúmen por ronda" %}</b>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <th>{% trans "No. Ronda" %}</th>
+                            <th>{% trans "No. de cajas recolectadas" %}</th>
+                            <th>{% trans "Bomba recogida" %}</th>
+                            <th>{% trans "Ganancia por ronda" %}</th>
+                        </tr>
+                        {% for p in player_in_all_rounds %}
+                        <tr>
+                            <td>{{ p.subsession.round_number }}</td>
+                            <td>{{ p.boxes_collected }}</td>
+                            <td>
+                                {% if p.bomb %}
+                                    {% trans "Si" %}
+                                {% else %}
+                                    {% trans "No" %}
+                                {% endif %}
+                            </td>
+                            <td>{{ p.round_result }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+            <div class="card card-info">
+            {% if Constants.random_payoff %}
+                    {% blocktrans trimmed %}
+                        La ronda número {{ round_to_pay }} fue seleccionada al azar para el pago. <br/>
+                        Usted recibe {{ total_payoff }} como pago en esta tarea.
+                    {% endblocktrans %}
+            {% else %}
+                    {% blocktrans trimmed %}
+                        Su pago total corresponde a la suma de sus ganancias en cada ronda. Usted recibe {{ total_payoff }} como pago en esta tarea.
+                    {% endblocktrans %}
             {% endif %}
-            {% if pago_5 %}
-                <th scope="col"><p class="m-0" id="pago_5"></p></th>
-            {% endif %}
-            {% if pago_10 %}
-                <th scope="col"><p class="m-0" id="pago_10"></p></th>
-            {% endif %}
-            {% if pago_15 %}
-                <th scope="col"><p class="m-0" id="pago_15"></p></th>
-            {% endif %}
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            {% if pago_hoy %}
-                <td>{{ pago_hoy }}</td>
-            {% endif %}
-            {% if pago_5 %}
-                <td>{{ pago_5 }}</td>
-            {% endif %}
-            {% if pago_10 %}
-                <td>{{ pago_10 }}</td>
-            {% endif %}
-            {% if pago_15 %}
-                <td>{{ pago_15 }}</td>
-            {% endif %}
-        </tr>
-        </tbody>
-    </table>
+            </div>
+        {% endif %}
+
+        <br/>
+    {% endif %}
+
+    <!--
+    .##.....##.##......
+    .##.....##.##......
+    .##.....##.##......
+    .#########.##......
+    .##.....##.##......
+    .##.....##.##......
+    .##.....##.########
+    -->
+    {% if app == "hl" %}
+    {% endif %}
+
+    <!--
+    ..######...######....######..
+    .##....##.##....##..##....##.
+    .##.......##........##.......
+    ..######..##...####.##...####
+    .......##.##....##..##....##.
+    .##....##.##....##..##....##.
+    ..######...######....######..
+    -->
+    {% if app == "sgg" %}
+        <p>Se le pagará por la pregunta #{{ pregunta }}: </p>
+        <p>Ha salido la pelota </p>
+
+        {% if valor != '0' %}
+            <span class="dot color2">${{ valor }}</span>
+        {% else %}
+            <span class="dot color1">${{ valor }}</span>
+        {% endif %}
+
+        <p>Usted ha ganado: {{ pago }}</p>
+    {% endif %}
+
+    <!--
+    .########..##.....##
+    .##.....##.###...###
+    .##.....##.####.####
+    .##.....##.##.###.##
+    .##.....##.##.....##
+    .##.....##.##.....##
+    .########..##.....##
+    -->
+    {% if app == "dm" %}
+    {% endif %}
+
     {% next_button %}
 {% endblock %}
 

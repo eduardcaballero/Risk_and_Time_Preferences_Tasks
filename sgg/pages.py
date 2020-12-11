@@ -89,6 +89,7 @@ class Calculos(WaitPage):
 class Resultados(Page):
     def vars_for_template(self):
         self.participant.vars['sgg_pago'] = {
+            "app" : "sgg",
             "pago" : self.player.payoff,
             "pregunta" : self.player.pregunta_pago,
             "valor" : str(self.player.payoff).split(",")[0]

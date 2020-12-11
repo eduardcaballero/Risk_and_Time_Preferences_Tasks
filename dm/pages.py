@@ -93,6 +93,7 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     def vars_for_template(self):
         self.participant.vars['dm_pago'] = {
+            "app" : "dm",
             "pago": self.player.payoff, 
         }
 
