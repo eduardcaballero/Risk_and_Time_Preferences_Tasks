@@ -24,8 +24,8 @@ class Tarea2(Page):
         return (self.player.tarea_inicial == 2 and self.round_number == 1) or (self.player.tarea_inicial != 2 and self.round_number != 1)
 
 class Calculos(WaitPage):
-    def after_all_players_arrive(self):
-        self.subsession.set_pago_jugadores()
+    # def after_all_players_arrive(self):
+    #     self.subsession.set_pago_jugadores()
 
     def is_displayed(self):
         return self.round_number == 2
@@ -42,4 +42,6 @@ class Resultados(Page):
         }
 
 
+# page_sequence = [Instrucciones, Tarea1, Tarea2, Calculos, Resultados]
 page_sequence = [Instrucciones, Tarea1, Tarea2, Calculos, Resultados]
+
