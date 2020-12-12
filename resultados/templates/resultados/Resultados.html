@@ -174,7 +174,16 @@
     .##.....##.########
     -->
     {% if app == "hl" %}
-    
+        <p>Se le pagará por la fila {{ pregunta_pago }} de la tarea #{{ tarea_pago }}: </p>
+        <p>Ha salido la pelota </p>
+
+        {% if pago != '0' %}
+            <span class="dot color2">${{ pago }}</span>
+        {% else %}
+            <span class="dot color1">${{ pago }}</span>
+        {% endif %}
+
+        <p>Usted ha ganado: {{ pago }} pesos</p>
     {% endif %}
 
     <!--

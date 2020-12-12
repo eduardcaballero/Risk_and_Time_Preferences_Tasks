@@ -31,10 +31,10 @@ class Calculos(WaitPage):
         return self.round_number == 2
 
 class Resultados(Page):
-    def before_next_page(self):
-        self.subsession.set_pago_jugadores()
+    # def before_next_page(self):
 
     def is_displayed(self):
+        self.subsession.set_pago_jugadores()
         self.participant.vars['hl_pago'] = {
             "pago": self.player.payoff, 
             "tarea_pago": self.player.tarea_pago, 
@@ -45,12 +45,12 @@ class Resultados(Page):
             results = False
         return self.round_number == 2 and results
     
-    # def vars_for_template(self):
-    #     self.participant.vars['hl_pago'] = {
-    #         "pago": self.player.payoff, 
-    #         "tarea_pago": self.player.tarea_pago, 
-    #         "pregunta_pago": self.player.pregunta_pago
-    #     }
+    def vars_for_template(self):
+        return {
+            "pago": format(int(str(self.player.payoff).split(",")[0]), ',d'),
+            "tarea_pago": self.player.tarea_pago, 
+            "pregunta_pago": self.player.pregunta_pago
+        }
 
 
 # page_sequence = [Instrucciones, Tarea1, Tarea2, Calculos, Resultados]

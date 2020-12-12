@@ -1,12 +1,25 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'sgg/pregunta.css' %}" />
+{% endblock %}
+
 {% block title %}
     Resultados
 {% endblock %}
 
 {% block content %}
+    <p>Se le pagará por la fila {{ pregunta_pago }} de la tarea #{{ tarea_pago }}: </p>
+    <p>Ha salido la pelota </p>
 
+    {% if pago != '0' %}
+        <span class="dot color2">${{ pago }}</span>
+    {% else %}
+        <span class="dot color1">${{ pago }}</span>
+    {% endif %}
+
+    <p>Usted ha ganado: {{ pago }} pesos</p>
     {% next_button %}
 {% endblock %}
 
