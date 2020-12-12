@@ -26,14 +26,14 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    def creating_session(self):
-        for j in self.get_players():
-            j.tarea_inicial = random.randint(1,2)
-            j.tarea_pago = random.randint(1,2)
-            j.pregunta_pago = random.randint(1,10)
+    # def creating_session(self):
+    #     if self.round_number == 1:
+           
     
     def set_pago_jugadores(self):
         for j in self.get_players():
+            print(j.__dict__)
+            # if j.
             j.set_pago()
 
 class Group(BaseGroup):
@@ -41,17 +41,23 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    tarea_inicial = models.IntegerField()
-    tarea_pago = models.IntegerField()
-    pregunta_pago = models.IntegerField()
+    # tarea_inicial = models.IntegerField()
+    # tarea_pago = models.IntegerField()
+    # pregunta_pago = models.IntegerField()
     hl_t1_p1, hl_t1_p2, hl_t1_p3, hl_t1_p4, hl_t1_p5, hl_t1_p6, hl_t1_p7, hl_t1_p8, hl_t1_p9, hl_t1_p10 = (models.StringField() for _ in range(10))
     hl_t2_p1, hl_t2_p2, hl_t2_p3, hl_t2_p4, hl_t2_p5, hl_t2_p6, hl_t2_p7, hl_t2_p8, hl_t2_p9, hl_t2_p10 = (models.StringField() for _ in range(10))
 
     def set_pago(self):
-        tarea = [getattr(p, "hl_t{i}_p{j}".format(i=self.tarea_pago, j= self.pregunta_pago)) for p in self.in_all_rounds()]
-        if random.random() < self.pregunta_pago/10 :
-            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[tarea[0]][0]
+        # print(self.participant.__dict__)
+        tarea = [getattr(p, "hl_t{i}_p{j}".format(i=self.participant.vars['tarea_pago'], j= self.participant.vars['pregunta_pago'])) for p in self.in_all_rounds()]
+        num = 1
+        # print(tarea,self.participant.vars['pregunta_pago'])
+        if self.participant.vars['tarea_inicial'] == self.participant.vars['tarea_pago']:
+            num = 0
+        
+        if random.random() < self.participant.vars['pregunta_pago']/10 :
+            self.payoff = getattr(Constants,"pago_tarea{}".format(self.participant.vars['tarea_pago']))[tarea[num]][0]
         else:
-            self.payoff = getattr(Constants,"pago_tarea{}".format(self.tarea_pago))[tarea[0]][1]
+            self.payoff = getattr(Constants,"pago_tarea{}".format(self.participant.vars['tarea_pago']))[tarea[num]][1]
         self.participant.vars["pago_hl"] = self.payoff
 
