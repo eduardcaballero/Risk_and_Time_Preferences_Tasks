@@ -9,6 +9,7 @@ class Resultados(Page):
         # sequence 0 = [ctb,hl,mpl,bret,dm], sequence 1 = [mpl_2,hl,ctb_2,bret,dm]
         # sequence 2 = [ctb,hl,mpl,sgg,dm], sequence 3 = [mpl_2,hl,ctb_2,sgg,dm]
         sequence = []
+        print(self.participant.__dict__)
         if self.participant.vars['order']:
             if self.participant.vars['order2']:
                 sequence = ['mpl_2','hl','ctb_2','sgg','dm']

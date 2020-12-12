@@ -382,8 +382,11 @@ class Pregunta_24(Page):
             }
 
 class Resultados(Page):
-    def is_displayed(self):
+    def before_next_page(self):
         self.player.set_pago()
+
+    def is_displayed(self):
+        # self.player.set_pago()
         if self.player.pregunta_pago < 7:
             self.participant.vars['ctb_pago'] = {
                 "app" : "ctb",

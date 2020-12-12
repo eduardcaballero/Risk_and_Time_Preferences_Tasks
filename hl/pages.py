@@ -31,8 +31,10 @@ class Calculos(WaitPage):
         return self.round_number == 2
 
 class Resultados(Page):
-    def is_displayed(self):
+    def before_next_page(self):
         self.subsession.set_pago_jugadores()
+
+    def is_displayed(self):
         self.participant.vars['hl_pago'] = {
             "pago": self.player.payoff, 
             "tarea_pago": self.player.tarea_pago, 

@@ -89,9 +89,8 @@ class Decision(Page):
 # *** CLASS RESULTS *** #
 # ******************************************************************************************************************** #
 class Results(Page):
-
-    # only display results after all rounds have been played
-    def is_displayed(self):
+    def before_next_page(self):
+        self.participant.vars['total_payoff'] = total_payoff
         self.participant.vars['bret_pago'] = {
             'app' : 'bret',
             'player_in_all_rounds':   self.player.in_all_rounds(),
@@ -106,6 +105,9 @@ class Results(Page):
             'payoff':                 self.player.payoff,
             'total_payoff':           total_payoff,
         }
+
+    # only display results after all rounds have been played
+    def is_displayed(self):
         app = True
         results = True
         if 'order2' in self.participant.vars:
