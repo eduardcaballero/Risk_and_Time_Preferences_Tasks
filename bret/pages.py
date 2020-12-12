@@ -92,19 +92,6 @@ class Results(Page):
 
     # only display results after all rounds have been played
     def is_displayed(self):
-        app = True
-        results = True
-        if 'order2' in self.participant.vars:
-            if self.participant.vars['order2'] == 1:
-                app = False
-            else:
-                results = False
-        return self.subsession.round_number == Constants.num_rounds and app and results
-
-    # variables for use in template
-    def vars_for_template(self):
-        total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
-        self.participant.vars['bret_payoff'] = total_payoff
         self.participant.vars['bret_pago'] = {
             'app' : 'bret',
             'player_in_all_rounds':   self.player.in_all_rounds(),
@@ -119,6 +106,19 @@ class Results(Page):
             'payoff':                 self.player.payoff,
             'total_payoff':           total_payoff,
         }
+        app = True
+        results = True
+        if 'order2' in self.participant.vars:
+            if self.participant.vars['order2'] == 1:
+                app = False
+            else:
+                results = False
+        return self.subsession.round_number == Constants.num_rounds and app and results
+
+    # variables for use in template
+    def vars_for_template(self):
+        total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
+        
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),
             'box_value':              Constants.box_value,

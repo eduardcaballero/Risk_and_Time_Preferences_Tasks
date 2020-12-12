@@ -383,16 +383,6 @@ class Pregunta_24(Page):
 
 class Resultados(Page):
     def is_displayed(self):
-        app = True
-        results = True
-        if 'order' in self.participant.vars:
-            if self.participant.vars['order'] == 1:
-                app = False
-            else:
-                results = False
-        return self.round_number == 1 and app and results
-        
-    def vars_for_template(self):
         self.player.set_pago()
         if self.player.pregunta_pago < 7:
             self.participant.vars['ctb_pago'] = {
@@ -404,15 +394,6 @@ class Resultados(Page):
                 "pregunta_pago" : self.player.pregunta_pago,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
             }
-            return {
-                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
-                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
-                "pago_10" : False,
-                "pago_15" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
-                
-            }
         elif self.player.pregunta_pago < 13:
             self.participant.vars['ctb_pago'] = {
                 "app" : "ctb",
@@ -422,15 +403,6 @@ class Resultados(Page):
                 "pago_15" : False,
                 "pregunta_pago" : self.player.pregunta_pago,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
-            }
-            return {
-                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
-                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
-                "pago_5" : False,
-                "pago_15" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
-                
             }
         elif self.player.pregunta_pago < 19:
             self.participant.vars['ctb_pago'] = {
@@ -442,15 +414,6 @@ class Resultados(Page):
                 "pregunta_pago" : self.player.pregunta_pago,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
             }
-            return {
-                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
-                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
-                "pago_15" : False,
-                "pago_hoy" : False,
-                "pregunta_pago" : self.player.pregunta_pago,
-                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
-                
-            }
         else:
             self.participant.vars['ctb_pago'] = {
                 "app" : "ctb",
@@ -461,6 +424,47 @@ class Resultados(Page):
                 "pregunta_pago" : self.player.pregunta_pago,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
             }
+        app = True
+        results = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] == 1:
+                app = False
+            else:
+                results = False
+        return self.round_number == 1 and app and results
+        
+    def vars_for_template(self):
+        if self.player.pregunta_pago < 7:
+            return {
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_10" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        elif self.player.pregunta_pago < 13:
+            return {
+                "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
+                "pago_5" : False,
+                "pago_15" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        elif self.player.pregunta_pago < 19:
+            return {
+                "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
+                "pago_10" : "$"+format(int(str(self.player.pago_10).split(",")[0]),',d'),
+                "pago_15" : False,
+                "pago_hoy" : False,
+                "pregunta_pago" : self.player.pregunta_pago,
+                "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
+                
+            }
+        else:
             return {
                 "pago_5" : "$"+format(int(str(self.player.pago_5).split(",")[0]), ',d'),
                 "pago_15" : "$"+format(int(str(self.player.pago_15).split(",")[0]), ',d'),

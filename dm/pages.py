@@ -91,11 +91,20 @@ class ResultsWaitPage(WaitPage):
 
 
 class Results(Page):
-    def vars_for_template(self):
+    def is_displayed(self):
         self.participant.vars['dm_pago'] = {
             "app" : "dm",
             "pago": self.player.payoff, 
         }
+        results = True
+        if 'order' in self.participant.vars:
+            results = False
+        return self.round_number == 1 and results
+    # def vars_for_template(self):
+    #     self.participant.vars['dm_pago'] = {
+    #         "app" : "dm",
+    #         "pago": self.player.payoff, 
+    #     }
 
 
 page_sequence = [
