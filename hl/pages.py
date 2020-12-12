@@ -32,7 +32,11 @@ class Calculos(WaitPage):
 
 class Resultados(Page):
     def is_displayed(self):
-        return self.round_number == 2
+        self.subsession.set_pago_jugadores()
+        results = True
+        if 'order' in self.participant.vars:
+            results = False
+        return self.round_number == 2 and results
     
     def vars_for_template(self):
         self.participant.vars['hl_pago'] = {
@@ -43,5 +47,5 @@ class Resultados(Page):
 
 
 # page_sequence = [Instrucciones, Tarea1, Tarea2, Calculos, Resultados]
-page_sequence = [Instrucciones, Tarea1, Tarea2, Calculos, Resultados]
+page_sequence = [Instrucciones, Tarea1, Tarea2, Resultados]
 

@@ -75,16 +75,17 @@ class Pregunta4(Page):
                 app = False
         return self.round_number == 1 and app
 
-class Calculos(WaitPage):
-    def after_all_players_arrive(self):
-        self.subsession.set_pago_jugadores()
+# class Calculos(WaitPage):
+    # def after_all_players_arrive(self):
+    #     self.subsession.set_pago_jugadores()
 
-    def is_displayed(self):
-        app = True
-        if 'order2' in self.participant.vars:
-            if self.participant.vars['order2'] != 1:
-                app = False
-        return self.round_number == 1 and app
+    # def is_displayed(self):
+    #     app = True
+    #     self.subsession.set_pago_jugadores()
+    #     if 'order2' in self.participant.vars:
+    #         if self.participant.vars['order2'] != 1:
+    #             app = False
+    #     return self.round_number == 1 and app
 
 class Resultados(Page):
     def vars_for_template(self):
@@ -99,12 +100,16 @@ class Resultados(Page):
             "pregunta" : self.player.pregunta_pago,
             "valor" : str(self.player.payoff).split(",")[0]
         }
+
     def is_displayed(self):
         app = True
+        results = True
         if 'order2' in self.participant.vars:
             if self.participant.vars['order2'] != 1:
                 app = False
-        return self.round_number == 1 and app
+            else:
+                results = False
+        return self.round_number == 1 and app and results
 
 
-page_sequence = [Instrucciones, Pregunta, Pregunta2, Pregunta3, Pregunta4, Calculos, Resultados]
+page_sequence = [Instrucciones, Pregunta, Pregunta2, Pregunta3, Pregunta4, Resultados]

@@ -93,10 +93,13 @@ class Results(Page):
     # only display results after all rounds have been played
     def is_displayed(self):
         app = True
+        results = True
         if 'order2' in self.participant.vars:
             if self.participant.vars['order2'] == 1:
                 app = False
-        return self.subsession.round_number == Constants.num_rounds and app
+            else:
+                results = False
+        return self.subsession.round_number == Constants.num_rounds and app and results
 
     # variables for use in template
     def vars_for_template(self):

@@ -383,11 +383,15 @@ class Pregunta_24(Page):
 
 class Resultados(Page):
     def is_displayed(self):
-        app = False
+        app = True
+        results = True
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app = True
-        return self.round_number == 1 and app
+                app = False
+            else:
+                results = False
+        return self.round_number == 1 and app and results
+        
     def vars_for_template(self):
         self.player.set_pago()
         if self.player.pregunta_pago < 7:
@@ -471,21 +475,17 @@ class Resultados(Page):
                 
             }
 
-    def is_displayed(self):
-        app = False
-        if 'order' in self.participant.vars:
-            if self.participant.vars['order'] == 1:
-                 app = True
-        return self.round_number == 1 and app
-
 
 class Gracias(Page):
-     def is_displayed(self):
-        app = False
+    def is_displayed(self):
+        app = True
+        results = True
         if 'order' in self.participant.vars:
             if self.participant.vars['order'] == 1:
-                 app = True
-        return self.round_number == 1 and app
+                app =False
+            else:
+                results = False
+        return self.round_number == 1 and app and results
 
 
 page_sequence = [Instrucciones]

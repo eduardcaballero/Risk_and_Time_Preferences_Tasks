@@ -105,6 +105,6 @@ page_sequence = [
     ChoiceListPage,  # elicit c34
     ChoiceListPage,  # elicit c18
     ChoiceListPage,  # elicit c78
-    ResultsWaitPage,
+    # ResultsWaitPage,
     Results
 ]
