@@ -32,6 +32,7 @@
     .##.....##.##........########....##..........##.....##.##........########.#######.#########
     -->
     {% if app == "ctb" or app == "ctb_2" or app == "mpl" or app == "mpl_2" %}
+        <h3>{{app}}</h3>
         <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
         <table class="table table-bordered text-center">
             <thead class="thead-light">
@@ -78,6 +79,7 @@
     .########..##.....##.########....##...
     -->
     {% if app == "bret" %}
+        <h3>BRET</h3>
         {% if Constants.num_rounds == 1 %}
             <div class="card card-info">
                 {% blocktrans trimmed %}
@@ -174,6 +176,7 @@
     .##.....##.########
     -->
     {% if app == "hl" %}
+        <h3>HL</h3>
         <p>Se le pagará por la fila {{ pregunta_pago }} de la tarea #{{ tarea_pago }}: </p>
         <p>Ha salido la pelota </p>
 
@@ -196,6 +199,7 @@
     ..######...######....######..
     -->
     {% if app == "sgg" %}
+        <h3>SGG</h3>
         <p>Se le pagará por la pregunta #{{ pregunta }}: </p>
         <p>Ha salido la pelota </p>
 
@@ -218,6 +222,7 @@
     .########..##.....##
     -->
     {% if app == "dm" %}
+    <h3>DM</h3>
     {% endif %}
 
     {% next_button %}

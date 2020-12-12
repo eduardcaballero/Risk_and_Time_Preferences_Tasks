@@ -96,6 +96,7 @@ class Resultados(Page):
         }
 
     def is_displayed(self):
+        self.player.set_pago()
         self.participant.vars['sgg_pago'] = {
             "app" : "sgg",
             "pago" : self.player.payoff,
