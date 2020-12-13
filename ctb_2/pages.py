@@ -385,7 +385,16 @@ class Resultados(Page):
     # def before_next_page(self):
 
     def is_displayed(self):
-        # self.player.set_pago()
+        # 
+        app = True
+        results = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] != 1:
+                app = False
+            else:
+                self.player.set_pago()
+                results = False
+
         if self.player.pregunta_pago < 7:
             self.participant.vars['ctb2_pago'] = {
                 "app" : "ctb",
@@ -426,13 +435,7 @@ class Resultados(Page):
                 "pregunta_pago" : self.player.pregunta_pago,
                 "fila_pago" : getattr(self.player, "ctb_p"+str(self.player.pregunta_pago))
             }
-        app = True
-        results = True
-        if 'order' in self.participant.vars:
-            if self.participant.vars['order'] != 1:
-                app = False
-            else:
-                results = False
+        
         return self.round_number == 1 and app and results
         
     def vars_for_template(self):

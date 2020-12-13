@@ -382,11 +382,20 @@ class Pregunta_24(Page):
             }
 
 class Resultados(Page):
-    def before_next_page(self):
-        self.player.set_pago()
+    # def before_next_page(self):
+        
         
     def is_displayed(self):
         # self.player.set_pago()
+        app = True
+        results = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] == 1:
+                app = False
+            else:
+                self.player.set_pago()
+                results = False
+                
         if self.player.pregunta_pago < 7:
             self.participant.vars['mpl_pago'] = {
                 "app" : "mpl",
@@ -435,16 +444,11 @@ class Resultados(Page):
                 
             }
             
-        app = True
-        results = True
-        if 'order' in self.participant.vars:
-            if self.participant.vars['order'] == 1:
-                app = False
-            else:
-                results = False
+        
         return self.round_number == 1 and app and results
 
     def vars_for_template(self):
+        self.player.set_pago()
         if self.player.pregunta_pago < 7:
             return {
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),
