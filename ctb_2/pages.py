@@ -381,9 +381,10 @@ class Pregunta_24(Page):
                 "pregunta": 24,
             }
 
-class Resultados(Page):
-    # def before_next_page(self):
+    def before_next_page(self):
+        self.player.set_pago()
 
+class Resultados(Page):
     def is_displayed(self):
         # 
         app = True
@@ -439,7 +440,6 @@ class Resultados(Page):
         return self.round_number == 1 and app and results
         
     def vars_for_template(self):
-        self.player.set_pago()
         if self.player.pregunta_pago < 7:
             return {
                 "pago_hoy" : "$"+format(int(str(self.player.pago_hoy).split(",")[0]),',d'),

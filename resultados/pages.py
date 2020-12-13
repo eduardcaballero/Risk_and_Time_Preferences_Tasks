@@ -30,6 +30,7 @@ class Resultados(Page):
                     sequence = ['ctb','hl','mpl','bret','dm']
         # app_to_pay = 'sgg'
             app_to_pay = sequence[random.randint(0,4)]
+        print(app_to_pay)
         if app_to_pay == "ctb":
             return self.participant.vars['ctb_pago']
         elif app_to_pay == "ctb_2":
