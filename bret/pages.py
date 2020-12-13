@@ -83,13 +83,6 @@ class Decision(Page):
     def before_next_page(self):
         self.participant.vars['reset'] = True
         self.player.set_payoff()
-
-
-# ******************************************************************************************************************** #
-# *** CLASS RESULTS *** #
-# ******************************************************************************************************************** #
-class Results(Page):
-    def before_next_page(self):
         self.participant.vars['total_payoff'] = total_payoff
         self.participant.vars['bret_pago'] = {
             'app' : 'bret',
@@ -105,6 +98,13 @@ class Results(Page):
             'payoff':                 self.player.payoff,
             'total_payoff':           total_payoff,
         }
+
+
+# ******************************************************************************************************************** #
+# *** CLASS RESULTS *** #
+# ******************************************************************************************************************** #
+class Results(Page):
+       
 
     # only display results after all rounds have been played
     def is_displayed(self):
