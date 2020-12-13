@@ -83,6 +83,7 @@ class Decision(Page):
     def before_next_page(self):
         self.participant.vars['reset'] = True
         self.player.set_payoff()
+        total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
         self.participant.vars['total_payoff'] = total_payoff
         self.participant.vars['bret_pago'] = {
             'app' : 'bret',
@@ -118,9 +119,8 @@ class Results(Page):
         return self.subsession.round_number == Constants.num_rounds and app and results
 
     # variables for use in template
-    def vars_for_template(self):
+    def vars_for_template(self):        
         total_payoff = sum([p.payoff for p in self.player.in_all_rounds()])
-        
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),
             'box_value':              Constants.box_value,
