@@ -98,6 +98,7 @@ class Decision(Page):
             'round_to_pay':           self.participant.vars['round_to_pay'],
             'payoff':                 self.player.payoff,
             'total_payoff':           total_payoff,
+            'num_rounds' :            Constants.num_rounds
         }
 
 
@@ -134,7 +135,8 @@ class Results(Page):
             'round_result':           self.player.round_result,
             'round_to_pay':           self.participant.vars['round_to_pay'],
             'payoff':                 self.player.payoff,
-            'total_payoff':           total_payoff,
+            'total_payoff':           total_payoff
+            
         }
 
 

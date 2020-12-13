@@ -84,44 +84,15 @@
     <!-- ----------------------------------------------------------------------------------------------------------- -->
     <!-- information about results -->
     <!-- ----------------------------------------------------------------------------------------------------------- -->
-        {% if Constants.num_rounds == 1 %}
+        
         <div class="card card-info">
-            {% blocktrans trimmed %}
-                Usted recolectó {{ boxes_collected }} de las {{ boxes_total }} cajas.
-            {% endblocktrans %}
-
-            <br/>
-            {% blocktrans trimmed %}
-                La bomba estaba oculta en la caja ubicada en la fila {{ bomb_row }}, columna {{ bomb_col }} del cuadro.
-            {% endblocktrans %}
-
-            <br/><br/>
-            {% if bomb %}
-                {% blocktrans trimmed %}
-                    La bomba estaba dentro de las {{ boxes_collected }} cajas que usted recolectó.<br/>
-                    De acuerdo a las instrucciones, todas sus ganancias en esta tarea fueron destruidas. Su pago total es {{ payoff }}.
-                {% endblocktrans %}
-            {% else %}
-                {% blocktrans trimmed %}
-                    Las cajas que usted recolectó no contenían la bomba.<br/>
-                    Debido a eso, usted recibe {{ box_value }} por cada una de las {{ boxes_collected }} cajas que usted recolectó. Su pago total es <b>{{ payoff }}</b>.
-                {% endblocktrans %}
-            {% endif %}
+                La siguiente tabla resume los resultados de sus decisiones en las {{ num_rounds }} rondas jugadas.
         </div>
-
-        {% else %}
-            <div class="card card-info">
-                {% blocktrans trimmed with num_rounds=Constants.num_rounds %}
-                    La siguiente tabla resume los resultados de sus decisiones en las {{ num_rounds }} rondas jugadas.
-                {% endblocktrans %}
-            </div>
-        {% endif %}
 
 
         <!-- ----------------------------------------------------------------------------------------------------------- -->
         <!-- history table -->
         <!-- ----------------------------------------------------------------------------------------------------------- -->
-        {% if Constants.num_rounds > 1 %}
             <div class="card">
                 <div class="card-header">
                     <b>{% trans "Resúmen por ronda" %}</b>
@@ -154,18 +125,9 @@
             </div>
 
             <div class="card card-info">
-            {% if Constants.random_payoff %}
-                    {% blocktrans trimmed %}
                         La ronda número {{ round_to_pay }} fue seleccionada al azar para el pago. <br/>
                         Usted recibe {{ total_payoff }} como pago en esta tarea.
-                    {% endblocktrans %}
-            {% else %}
-                    {% blocktrans trimmed %}
-                        Su pago total corresponde a la suma de sus ganancias en cada ronda. Usted recibe {{ total_payoff }} como pago en esta tarea.
-                    {% endblocktrans %}
-            {% endif %}
             </div>
-        {% endif %}
 
         <br/>
     {% endif %}
