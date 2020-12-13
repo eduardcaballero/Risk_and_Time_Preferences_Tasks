@@ -48,6 +48,7 @@ class Resultados(Page):
             self.player.set_pago()
 
         self.participant.vars['hl_pago'] = {
+            "app": "hl",
             "pago": self.player.payoff, 
             "tarea_pago": self.participant.vars['tarea_pago'], 
             "pregunta_pago": self.participant.vars['pregunta_pago']
