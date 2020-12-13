@@ -111,6 +111,8 @@ class Results(Page):
     def is_displayed(self):
         app = True
         results = True
+        if 'order' in self.participant.vars:
+            results = False
         if 'order2' in self.participant.vars:
             if self.participant.vars['order2'] == 1:
                 app = False

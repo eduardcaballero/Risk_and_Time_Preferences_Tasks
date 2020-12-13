@@ -80,30 +80,34 @@
     -->
     {% if app == "bret" %}
         <h3>BRET</h3>
+        
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- information about results -->
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
         {% if Constants.num_rounds == 1 %}
-            <div class="card card-info">
-                {% blocktrans trimmed %}
-                    Usted recolectó {{ boxes_collected }} de las {{ boxes_total }} cajas.
-                {% endblocktrans %}
+        <div class="card card-info">
+            {% blocktrans trimmed %}
+                Usted recolectó {{ boxes_collected }} de las {{ boxes_total }} cajas.
+            {% endblocktrans %}
 
-                <br/>
-                {% blocktrans trimmed %}
-                    La bomba estaba oculta en la caja ubicada en la fila {{ bomb_row }}, columna {{ bomb_col }} del cuadro.
-                {% endblocktrans %}
+            <br/>
+            {% blocktrans trimmed %}
+                La bomba estaba oculta en la caja ubicada en la fila {{ bomb_row }}, columna {{ bomb_col }} del cuadro.
+            {% endblocktrans %}
 
-                <br/><br/>
-                {% if bomb %}
-                    {% blocktrans trimmed %}
-                        La bomba estaba dentro de las {{ boxes_collected }} cajas que usted recolectó.<br/>
-                        De acuerdo a las instrucciones, todas sus ganancias en esta tarea fueron destruidas. Su pago total es {{ payoff }}.
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans trimmed %}
-                        Las cajas que usted recolectó no contenían la bomba.<br/>
-                        Debido a eso, usted recibe {{ box_value }} por cada una de las {{ boxes_collected }} cajas que usted recolectó. Su pago total es <b>{{ payoff }}</b>.
-                    {% endblocktrans %}
-                {% endif %}
-            </div>
+            <br/><br/>
+            {% if bomb %}
+                {% blocktrans trimmed %}
+                    La bomba estaba dentro de las {{ boxes_collected }} cajas que usted recolectó.<br/>
+                    De acuerdo a las instrucciones, todas sus ganancias en esta tarea fueron destruidas. Su pago total es {{ payoff }}.
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans trimmed %}
+                    Las cajas que usted recolectó no contenían la bomba.<br/>
+                    Debido a eso, usted recibe {{ box_value }} por cada una de las {{ boxes_collected }} cajas que usted recolectó. Su pago total es <b>{{ payoff }}</b>.
+                {% endblocktrans %}
+            {% endif %}
+        </div>
 
         {% else %}
             <div class="card card-info">
