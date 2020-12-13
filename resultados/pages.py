@@ -9,19 +9,27 @@ class Resultados(Page):
         # sequence 0 = [ctb,hl,mpl,bret,dm], sequence 1 = [mpl_2,hl,ctb_2,bret,dm]
         # sequence 2 = [ctb,hl,mpl,sgg,dm], sequence 3 = [mpl_2,hl,ctb_2,sgg,dm]
         sequence = []
+        app_to_pay = ''
         # print(self.participant.__dict__)
-        if self.participant.vars['order']:
-            if self.participant.vars['order2']:
-                sequence = ['mpl_2','hl','ctb_2','sgg','dm']
+        if self.participant.vars['app']:
+            if self.participant.vars['order']:
+                sequence = ['mpl_2','hl','ctb_2','bret']
             else:
-                sequence = ['mpl_2','hl','ctb_2','bret','dm']
+                sequence = ['ctb','hl','mpl','bret']
+            app_to_pay = sequence[random.randint(0,3)]
         else:
-            if self.participant.vars['order2']:
-                sequence = ['ctb','hl','mpl','sgg','dm']
+            if self.participant.vars['order']:
+                if self.participant.vars['order2']:
+                    sequence = ['mpl_2','hl','ctb_2','sgg','dm']
+                else:
+                    sequence = ['mpl_2','hl','ctb_2','bret','dm']
             else:
-                sequence = ['ctb','hl','mpl','bret','dm']
+                if self.participant.vars['order2']:
+                    sequence = ['ctb','hl','mpl','sgg','dm']
+                else:
+                    sequence = ['ctb','hl','mpl','bret','dm']
         # app_to_pay = 'sgg'
-        app_to_pay = sequence[random.randint(0,4)]
+            app_to_pay = sequence[random.randint(0,4)]
         if app_to_pay == "ctb":
             return self.participant.vars['ctb_pago']
         elif app_to_pay == "ctb_2":
