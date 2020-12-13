@@ -20,6 +20,7 @@ class Resultados(Page):
                 sequence = ['ctb','hl','mpl','sgg','dm']
             else:
                 sequence = ['ctb','hl','mpl','bret','dm']
+        # app_to_pay = 'sgg'
         app_to_pay = sequence[random.randint(0,4)]
         if app_to_pay == "ctb":
             return self.participant.vars['ctb_pago']

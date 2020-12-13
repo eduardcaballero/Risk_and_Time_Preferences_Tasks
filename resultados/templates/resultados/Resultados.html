@@ -198,7 +198,19 @@
     .##....##.##....##..##....##.
     ..######...######....######..
     -->
+    {% if app == "sgg" %}
+        <h3>SGG</h3>
+        <p>Se le pagará por la pregunta #{{ pregunta }}: </p>
+        <p>Ha salido la pelota </p>
 
+        {% if valor != '0' %}
+            <span class="dot color2">${{ valor }}</span>
+        {% else %}
+            <span class="dot color1">${{ valor }}</span>
+        {% endif %}
+
+        <p>Usted ha ganado: {{ pago }}</p>
+    {% endif %}
     <!--
     .########..##.....##
     .##.....##.###...###

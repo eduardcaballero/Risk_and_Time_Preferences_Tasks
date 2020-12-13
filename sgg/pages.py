@@ -89,6 +89,7 @@ class Pregunta4(Page):
 
 class Resultados(Page):
     def vars_for_template(self):
+        self.player.set_pago()
         return {
             "pago" : self.player.payoff,
             "pregunta" : self.player.pregunta_pago,
@@ -96,7 +97,6 @@ class Resultados(Page):
         }
 
     def is_displayed(self):
-        self.player.set_pago()
         self.participant.vars['sgg_pago'] = {
             "app" : "sgg",
             "pago" : self.player.payoff,
@@ -109,6 +109,7 @@ class Resultados(Page):
             if self.participant.vars['order2'] != 1:
                 app = False
             else:
+                self.player.set_pago()
                 results = False
         return self.round_number == 1 and app and results
 
