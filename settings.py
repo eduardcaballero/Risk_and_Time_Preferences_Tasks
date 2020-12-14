@@ -1,11 +1,11 @@
 from os import environ
 import os
 
-environ.__setitem__('OTREE_PRODUCTION','0') ################
+environ.__setitem__('OTREE_PRODUCTION','1') ################
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-    DEBUG = False
-else:
     DEBUG = True
+else:
+    DEBUG = False
 
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
