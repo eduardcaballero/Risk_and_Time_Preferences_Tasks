@@ -5,7 +5,7 @@ environ.__setitem__('OTREE_PRODUCTION','0') ################
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
     DEBUG = False
 else:
-    DEBUG = False
+    DEBUG = True
 
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
