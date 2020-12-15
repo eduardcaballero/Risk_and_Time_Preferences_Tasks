@@ -32,10 +32,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-#    consentimiento = models.BooleanField(
-#    choices=[
-#        [False, 'No'],
-#        [True, 'Sí'],
-#    ], label="Consentimiento Informado")
-#)
-    pass
+    consentimiento = models.BooleanField(
+    choices=[
+        [True, 'Acepto (declaro que comprendo la información anterior y mis derechos y compromisos durante este experimento. También entiendo que puedo dejar el experimento en cualquier momento renunciando a recibir el dinero ganado en el experimento)'],
+        [False,'No Acepto'],
+    ], label="ACEPTACIÓN")
