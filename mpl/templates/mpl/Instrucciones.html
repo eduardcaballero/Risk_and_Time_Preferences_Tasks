@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Instrucciones" %}
+    {% trans "Actividad 3" %}
 {% endblock %}
 
 
@@ -27,15 +27,25 @@
     <div class="instructions">
         <p>
             {% blocktrans trimmed %}
-            Esta tarea consiste en 24 preguntas que implican la elección sobre algunos pagos a lo largo del tiempo. Esta tarea es similar a la primera tarea, la diferencia es que cada pregunta tiene 2 solo opciones.  Para cada pregunta, usted debe elegir la opción que prefiera.
+            Esta actividad consiste en 24 preguntas que implican la elección sobre algunos pagos a lo largo del tiempo.
+            Es similar a la <b>Actividad 1</b> la diferencia es que cada pregunta tiene solo dos (2)  opciones.  
+            En cada pregunta por favor elija la combinación de dinero para el <b>PRIMER pago</b> y el <b>SEGUNDO pago</b> que usted prefiera. 
+            En cada pregunta elija solo una opción de respuesta. 
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-            Recuerde que sólo se le pagará la opción que se seleccione en el sorteo. Las fechas en que se hará el PRIMER y SEGUNDO pago dependerá de los resultados del sorteo.
+            <b>Si esta esta actividad es elegida para determinar el pago</b>, las 24 preguntas no se le pagarán. 
+            Una de las 24 preguntas se elegirá al azar y los pagos se realizarán de acuerdo a la opción seleccionada. 
+            Las fechas en las que se hará el PRIMER y SEGUNDO pago dependerán de la pregunta elegida.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed %}
+            Recuerde que también recibirá $10.000 por llegar a tiempo, este pago adicional estará <b>divido en dos partes</b>. 
+            De acuerdo con la pregunta seleccionda, $5.000 podrán ser retirados en la fecha del PRIMER pago y $5.000 en la fecha del SEGUNDO pago.
             {% endblocktrans %}
         </p>
     </div>
-
      {% next_button %}
 {% endblock %}
