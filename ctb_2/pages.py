@@ -21,6 +21,41 @@ class Instrucciones(Page):
                  app = False
         return self.round_number == 1 and app
 
+class Instrucciones_1a6(Page):
+    def is_displayed(self):
+        app = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] != 1:
+                 app = False
+        return self.round_number == 1 and app
+
+class Instrucciones_7a12(Page):
+    def is_displayed(self):
+        app = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] != 1:
+                 app = False
+        return self.round_number == 1 and app
+
+class Instrucciones_13a18(Page):
+    def is_displayed(self):
+        app = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] != 1:
+                 app = False
+        return self.round_number == 1 and app
+
+class Instrucciones_19a24(Page):
+    def is_displayed(self):
+        app = True
+        if 'order' in self.participant.vars:
+            if self.participant.vars['order'] != 1:
+                 app = False
+        return self.round_number == 1 and app
+
+
+
+
 class Pregunta_1(Page):
     form_model = 'player'
     form_fields = ['ctb_p1']
@@ -497,24 +532,28 @@ class Gracias(Page):
 page_sequence = [Instrucciones]
 
 preguntas = [
+    Instrucciones_1a6,
     Pregunta_1,
     Pregunta_2,
     Pregunta_3,
     Pregunta_4,
     Pregunta_5,
     Pregunta_6,
+    Instrucciones_7a12,
     Pregunta_7,
     Pregunta_8,
     Pregunta_9,
     Pregunta_10,
     Pregunta_11,
     Pregunta_12,
+    Instrucciones_13a18,
     Pregunta_13,
     Pregunta_14,
     Pregunta_15,
     Pregunta_16,
     Pregunta_17,
     Pregunta_18,
+    Instrucciones_19a24,
     Pregunta_19,
     Pregunta_20,
     Pregunta_21,

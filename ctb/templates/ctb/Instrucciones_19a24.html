@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Instrucciones" %}
+    {% trans "Pregunta 19 a 24" %}
 {% endblock %}
 
 
@@ -25,17 +25,10 @@
 {% block content %}
 
     <div class="instructions">
-        <p>
-            {% blocktrans trimmed %}
-            Esta tarea consiste en 24 preguntas que implican la elección sobre algunos pagos a lo largo del tiempo. Esta tarea es similar a la primera tarea, la diferencia es que cada pregunta tiene 6 solo opciones.  Para cada pregunta, usted debe elegir la opción que prefiera.
-            {% endblocktrans %}
-        </p>
-        <p>
-            {% blocktrans trimmed %}
-            Las 24 preguntas no se le pagarán. Se hará un sorteo para determinar la pregunta a pagar. Es decir, sólo se le va a pagar la opción que se seleccione en el sorteo. Las fechas en las que se hará el PRIMER y SEGUNDO pago dependerán del resultado del sorteo.
-            {% endblocktrans %}
-        </p>
-    </div>
+        {% blocktrans trimmed %}
+            De la pregunta diecinueve a la pregunta veinticuatro, se elige entre un PRIMER pago que recibirá en CINCO SEMANAS y otro SEGUNDO pago que recibirá en QUINCE SEMANAS.
+        {% endblocktrans %} 
+        </div>
 
      {% next_button %}
 {% endblock %}

@@ -1,11 +1,11 @@
 from os import environ
 import os
 
-environ.__setitem__('OTREE_PRODUCTION','0') ################
+environ.__setitem__('OTREE_PRODUCTION','1') ################
 if environ.get('OTREE_PRODUCTION') not in {None, '', '0'}:
-    DEBUG = False
-else:
     DEBUG = True
+else:
+    DEBUG = False
 
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
@@ -93,7 +93,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 5,
         # sequence 0 = [ctb,hl,mpl,bret,dm], sequence 1 = [mpl_2,hl,ctb_2,bret,dm]
         # sequence 2 = [ctb,hl,mpl,sgg,dm], sequence 3 = [mpl_2,hl,ctb_2,sgg,dm]
-        'app_sequence': ['home_2', 'ctb', 'mpl_2', 'hl', 'mpl', 'ctb_2','bret', 'sgg', 'dm', 'resultados'],
+        'app_sequence': ['home', 'ctb', 'mpl_2', 'hl', 'mpl', 'ctb_2', 'bret', 'sgg', 'dm', 'resultados'],
     },
 ]
 
