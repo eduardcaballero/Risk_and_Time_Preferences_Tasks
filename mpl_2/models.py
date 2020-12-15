@@ -13,7 +13,6 @@ doc = """
 Your app description
 """
 
-
 class Constants(BaseConstants):
     name_in_url = 'mpl_2'
     players_per_group = None

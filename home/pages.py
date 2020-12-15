@@ -16,7 +16,11 @@ class MyPage(Page):
                 sequence = ['mpl_2','hl','ctb_2','bret']
         else:
                 sequence = ['ctb','hl','mpl','bret']
-        self.participant.vars['app_to_pay'] = 'bret'
+        self.participant.vars['app_to_pay'] = sequence[random.randint(0,3)]
+
+#class Consentimiento(Page):
+#    form_model = 'player'
+#    form_fields = ['consentimiento'] 
 
 
 page_sequence = [MyPage]

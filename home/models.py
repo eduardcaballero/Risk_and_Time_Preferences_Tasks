@@ -32,4 +32,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+#    consentimiento = models.BooleanField(
+#    choices=[
+#        [False, 'No'],
+#        [True, 'Sí'],
+#    ], label="Consentimiento Informado")
+#)
     pass

@@ -67,7 +67,7 @@ class Player(BasePlayer):
     ], label="¿Cuál es el nivel educativo más alto que ha completado?")
     p9 = models.StringField(label="Escriba el nombre de su profesión/ocupación")
     p10 = models.IntegerField(
-        choices=[1, 2, 3, 4, 5, 6], label="Estrato del inmueble en el que vive (estrato de los recibos públicos)")
+        choices=[1, 2, 3, 4, 5, 6], label="Estrato del inmueble en el que vive (estrato por el que paga servicios públicos)")
     p11 = models.IntegerField(
     choices=[
         [1,'Subsidiado'],
