@@ -7,6 +7,21 @@ table {
   padding-right: 3rem;
   padding-top: 1rem;
 } */
+@media screen and (max-width: 1100px) {
+	.dot{
+    font-size: 11px !important;
+  }
+}
+/* .otree-form-errors{
+  display: block !important;
+  position: fixed;
+  bottom: 0 !important;
+} */
+.otree-title{
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
 .otree-body{
   padding-left: 40px !important;
   padding-right: 40px !important;
@@ -22,9 +37,9 @@ table {
 .right{
   padding-right: 50px !important;
 }
-.contentbody{
+/* .contentbody{
   margin-top: -50px !important;
-}
+} */
 
 td {
   padding: 5px !important;
