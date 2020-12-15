@@ -5,8 +5,12 @@
 <link rel="stylesheet" href="{% static 'hl/tareas.css' %}" />
 {% endblock %}
 
+{% block title %}
+ Tarea 2
+{% endblock %}
+
 {% block content %}
-<div class="container-fluid contentbody">
+<div>
     <div class="row">
         <div class="col-6">
             <div class="row">
@@ -40,10 +44,10 @@
             </div>
         </div>
     </div><br><br>
-    <p style="font-size: 21px;">Por favor seleccione la OPCIÓN A (A) o la OPCIÓN B (B) en cada fila</p>
+    <p style="font-size: 21px;">Por favor seleccione la <b>opción</b> que prefiera en cada fila</p>
     <table class="table table-striped table-bordered">
         <thead>
-            <tr style="font-size: 15px">
+            <tr class="font-circles">
                 <th scope="col">OPCIÓN A</th>
                 <th scope="col">A</th>
                 <th scope="col">B</th>

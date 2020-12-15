@@ -26,9 +26,13 @@ class Resultados(Page):
         else:
             return self.participant.vars['dm_pago']
 
+class Formulario(Page):
+    form_model = 'player'
+    form_fields = ['p1', 'p2', 'p3','p4', 'p5', 'p6','p7', 'p8', 'p9','p10', 'p11', 'p12'] 
 
-
+class Fin(Page):
+    pass
 
         
 
-page_sequence = [Resultados]
+page_sequence = [Resultados, Formulario, Fin]

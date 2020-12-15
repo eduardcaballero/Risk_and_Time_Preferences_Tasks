@@ -16,7 +16,7 @@ class MyPage(Page):
                 sequence = ['mpl_2','hl','ctb_2','bret']
         else:
                 sequence = ['ctb','hl','mpl','bret']
-        self.participant.vars['app_to_pay'] = sequence[random.randint(0,3)]
+        self.participant.vars['app_to_pay'] = 'bret'
 
 
 page_sequence = [MyPage]

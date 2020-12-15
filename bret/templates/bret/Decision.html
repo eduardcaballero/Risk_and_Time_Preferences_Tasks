@@ -76,10 +76,10 @@
 
 {% block content %}
 <div id="info">
-    <p style="text-align:left;">Su tarea es elegir cuando parar el proceso de recolección de las cajas. Use los siguientes <i>botones</i>:
-    <br><b>Iniciar:</b>  inicia la recolección de las cajas. 
-    <br><b>Parar:</b>    detiene la recolección de las cajas.
-    <br><b>Mostrar:</b>  permite ver el contenido de las cajas recolectadas. </p>
+    <p style="text-align:center;">Su tarea es elegir cuando parar el proceso de recolección de las cajas. Use los siguientes <i>botones</i>:
+    <br><b>Iniciar:</b>  Inicia la recolección |
+    <b>Parar:</b>    Detiene la recolección |
+    <b>Mostrar:</b>  Ver el contenido de las cajas. </p>
 </div>
 <div id="info2">
 <div class="container">
@@ -90,7 +90,7 @@
                 <i class="icon fas fa-dollar-sign"></i>
             </div>
             <h1>=</h1>
-            <img width='100px' src='https://drive.google.com/uc?id=1vTpiCE8ZNUDyAUs8aKg2sVUMSOAQWJnb' />
+            <img class="billete" src='https://drive.google.com/uc?id=1vTpiCE8ZNUDyAUs8aKg2sVUMSOAQWJnb' />
         </div>
         <p style="margin-left: -50px">Recibe hoy $1,000</p>
     </div>
@@ -118,8 +118,7 @@
 
                 <div data-ng-if="!bombTaskController.input">
                     {% trans "Número de cajas recolectadas:" %}
-                    <b><span data-ng-bind="bombTaskController.getCollectedBoxes()"></span></b>
-                    <br>
+                    <b><span data-ng-bind="bombTaskController.getCollectedBoxes()"></span></b> |
                     {% trans "Número de cajas restantes:" %}
                     <b><span data-ng-bind="bombTaskController.getRemainingBoxes()"></span></b>
                 </div>
@@ -167,7 +166,7 @@
                 </div>
 
             </div>
-
+            <div class="center-matrix">
             <div class="row" data-ng-repeat="(row,columns) in bombTaskController.matrix">
                 <div class="col" data-ng-repeat="(col,column) in columns">
                     <div class="holder" data-card="column" data-card-is-active="column.$$active"
@@ -197,7 +196,7 @@
                     </div>
                 </div>
             </div>
-
+        </div>
 
         </div>
 
