@@ -145,7 +145,7 @@
             <div class="card card-info">
                         La ronda número {{ round_to_pay }} fue seleccionada al azar para el pago. <br/>
                         Usted recibe {{ total_payoff }} como pago en esta tarea.<br/>
-                        Por llegar a tiempo y completar todas las actividades, usted recibe un pago de $10.000 pesos.
+                        Por llegar a tiempo y completar todas las actividades, usted recibe un pago adicional de $10.000 pesos.
             </div>
 
         <br/>
@@ -166,12 +166,12 @@
         <p>Ha salido la pelota </p>
 
         {% if pago != '0' %}
-            <span class="dot color2">${{ pago }}</span>
+            <span class="dot color2">{{ pago }}</span>
         {% else %}
-            <span class="dot color1">${{ pago }}</span>
+            <span class="dot color1">{{ pago }}</span>
         {% endif %}
 
-        <p>Usted ha ganado: {{ pago }} pesos. Por llegar a tiempo y completar todas las actividades, usted recibe un pago de $10.000 pesos.</p>
+        <p>Usted ha ganado: {{ pago }} pesos. Por llegar a tiempo y completar todas las actividades, usted recibe un pago adicional de $10.000 pesos.</p>
     {% endif %}
 
     <!--
