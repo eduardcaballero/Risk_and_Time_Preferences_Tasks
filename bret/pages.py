@@ -96,8 +96,8 @@ class Decision(Page):
             'bomb_col':               self.player.bomb_col,
             'round_result':           self.player.round_result,
             'round_to_pay':           self.participant.vars['round_to_pay'],
-            'payoff':                 self.player.payoff,
-            'total_payoff':           total_payoff,
+            'payoff':                 "$"+format(int(str(self.player.payoff).split(",")[0]),',d'),
+            'total_payoff':           "$"+format(int(str(total_payoff).split(",")[0]),',d'),
             'num_rounds' :            Constants.num_rounds
         }
 
@@ -134,8 +134,8 @@ class Results(Page):
             'bomb_col':               self.player.bomb_col,
             'round_result':           self.player.round_result,
             'round_to_pay':           self.participant.vars['round_to_pay'],
-            'payoff':                 self.player.payoff,
-            'total_payoff':           total_payoff
+            'payoff':                 "$"+format(int(str(self.player.payoff).split(",")[0]),',d'),
+            'total_payoff':           "$"+format(int(str(total_payoff).split(",")[0]),',d'),
             
         }
 

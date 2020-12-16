@@ -8,20 +8,55 @@ class Resultados(Page):
     def vars_for_template(self):
         # sequence 0 = [ctb,hl,mpl,bret,dm], sequence 1 = [mpl_2,hl,ctb_2,bret,dm]
         # sequence 2 = [ctb,hl,mpl,sgg,dm], sequence 3 = [mpl_2,hl,ctb_2,sgg,dm]
-        
+        self.player.app_pago = self.participant.vars['app_to_pay']
         if self.participant.vars['app_to_pay'] == "ctb":
+            if self.participant.vars['ctb_pago'].pago_hoy:
+                self.player.pago = c(int(self.participant.vars['ctb_pago'].pago_hoy.split("$")[1])+5000)
+            if self.participant.vars['ctb_pago'].pago_5:
+                self.player.pago_5 = c(int(self.participant.vars['ctb_pago'].pago_5.split("$")[1])+5000)
+            if self.participant.vars['ctb_pago'].pago_10:
+                self.player.pago_10 = c(int(self.participant.vars['ctb_pago'].pago_10.split("$")[1])+5000)
+            if self.participant.vars['ctb_pago'].pago_15:
+                self.player.pago_15 = c(int(self.participant.vars['ctb_pago'].pago_15.split("$")[1])+5000)
             return self.participant.vars['ctb_pago']
         elif self.participant.vars['app_to_pay'] == "ctb_2":
+            if self.participant.vars['ctb2_pago'].pago_hoy:
+                self.player.pago = c(int(self.participant.vars['ctb2_pago'].pago_hoy.split("$")[1])+5000)
+            if self.participant.vars['ctb2_pago'].pago_5:
+                self.player.pago_5 = c(int(self.participant.vars['ctb2_pago'].pago_5.split("$")[1])+5000)
+            if self.participant.vars['ctb2_pago'].pago_10:
+                self.player.pago_10 = c(int(self.participant.vars['ctb2_pago'].pago_10.split("$")[1])+5000)
+            if self.participant.vars['ctb2_pago'].pago_15:
+                self.player.pago_15 = c(int(self.participant.vars['ctb2_pago'].pago_15.split("$")[1])+5000)
             return self.participant.vars['ctb2_pago']
         elif self.participant.vars['app_to_pay'] == "mpl":
+            if self.participant.vars['mpl_pago'].pago_hoy:
+                self.player.pago = c(int(self.participant.vars['mpl_pago'].pago_hoy.split("$")[1])+5000)
+            if self.participant.vars['mpl_pago'].pago_5:
+                self.player.pago_5 = c(int(self.participant.vars['mpl_pago'].pago_5.split("$")[1])+5000)
+            if self.participant.vars['mpl_pago'].pago_10:
+                self.player.pago_10 = c(int(self.participant.vars['mpl_pago'].pago_10.split("$")[1])+5000)
+            if self.participant.vars['mpl_pago'].pago_15:
+                self.player.pago_15 = c(int(self.participant.vars['mpl_pago'].pago_15.split("$")[1])+5000)
             return self.participant.vars['mpl_pago']
         elif self.participant.vars['app_to_pay'] == "mpl_2":
+            if self.participant.vars['mpl2_pago'].pago_hoy:
+                self.player.pago = c(int(self.participant.vars['mpl2_pago'].pago_hoy.split("$")[1])+5000)
+            if self.participant.vars['mpl2_pago'].pago_5:
+                self.player.pago_5 = c(int(self.participant.vars['mpl2_pago'].pago_5.split("$")[1])+5000)
+            if self.participant.vars['mpl2_pago'].pago_10:
+                self.player.pago_10 = c(int(self.participant.vars['mpl2_pago'].pago_10.split("$")[1])+5000)
+            if self.participant.vars['mpl2_pago'].pago_15:
+                self.player.pago_15 = c(int(self.participant.vars['mpl2_pago'].pago_15.split("$")[1])+5000)
             return self.participant.vars['mpl2_pago']
         elif self.participant.vars['app_to_pay'] == "hl":
+            self.player.pago = c(int(self.participant.vars['hl_pago'].pago.split("$")[1])+10000)
             return self.participant.vars['hl_pago']
         elif self.participant.vars['app_to_pay'] == "bret":
+            self.player.pago = c(int(self.participant.vars['bret_pago'].payoff.pago.split("$")[1])+10000)
             return self.participant.vars['bret_pago']
         elif self.participant.vars['app_to_pay'] == "sgg":
+            
             return self.participant.vars['sgg_pago']
         else:
             return self.participant.vars['dm_pago']

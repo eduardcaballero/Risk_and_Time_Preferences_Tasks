@@ -49,7 +49,7 @@ class Resultados(Page):
 
         self.participant.vars['hl_pago'] = {
             "app": "hl",
-            "pago": self.player.payoff, 
+            "pago": "$"+format(int(str(self.player.payoff).split(",")[0]),',d'), 
             "tarea_pago": self.participant.vars['tarea_pago'], 
             "pregunta_pago": self.participant.vars['pregunta_pago']
         }
