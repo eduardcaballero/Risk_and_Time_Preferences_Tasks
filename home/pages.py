@@ -10,7 +10,7 @@ class MyPage(Page):
         # self.participant.vars['app'] = True
         self.participant.vars['order'] = random.randint(0,1)
         cod = str(random.choice(string.ascii_lowercase)).upper()+str(random.randint(0, 9))+str(random.randint(0, 9))+str(random.randint(0, 9))
-        self.player.codigo = cod
+        self.participant.vars['codigo']  = cod
         # print(self.participant.__dict__)
         # if self.participant.vars['app']:
         sequence = []

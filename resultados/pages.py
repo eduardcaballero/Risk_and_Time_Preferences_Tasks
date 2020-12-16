@@ -68,9 +68,8 @@ class Formulario(Page):
 
 
 class Fin(Page):
-    # def vars_for_template(self):
-    #     cod = str(random.choice(string.ascii_lowercase)).upper()+str(random.randint(0, 9))+str(random.randint(0, 9))+str(random.randint(0, 9))
-    #     self.player.codigo = cod
+    def vars_for_template(self):
+        self.player.codigo = self.participant.vars['codigo']
     pass
 
         
