@@ -32,7 +32,7 @@
     .##.....##.##........########....##..........##.....##.##........########.#######.#########
     -->
     {% if app == "ctb" or app == "ctb_2" or app == "mpl" or app == "mpl_2" %}
-        <h4>
+        <h3>
             {% if app == "ctb" %}
                 Actividad 1
             {% endif %}
@@ -48,7 +48,7 @@
             {% if app == "mpl_2" %}
                 Actividad 1
             {% endif %}
-        </h4>
+        </h3>
         <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
         <table class="table table-bordered text-center">
             <thead class="thead-light">
@@ -83,7 +83,7 @@
                 {% endif %}
             </tr>
             </tbody>
-        </table>
+        </table><br>
     <p> También recibirá $10.000 por llegar a tiempo, este pago adicional estará <b>divido en dos partes</b>. 
         De acuerdo con la pregunta seleccionada, recibirá $5.000 en la fecha del PRIMER pago y $5.000 en la fecha del SEGUNDO pago. </p>
     {% endif %}
@@ -220,10 +220,10 @@
           </thead>
           <tbody>
             <tr>
-              <td>${{player.pago}}</td>
-              <td>${{player.pago_5}}</td>
-              <td>${{player.pago_10}}</td>
-              <td>${{player.pago_15}}</td>
+              <td>${{player.pago|default_if_none:'0'}}</td>
+              <td>${{player.pago_5|default_if_none:'0'}}</td>
+              <td>${{player.pago_10|default_if_none:'0'}}</td>
+              <td>${{player.pago_15|default_if_none:'0'}}</td>
             </tr>
           </tbody>
     </table>

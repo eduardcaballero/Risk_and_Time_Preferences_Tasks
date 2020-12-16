@@ -87,6 +87,7 @@ class Player(BasePlayer):
     pago_10 =  models.StringField()
     pago_15 =  models.StringField()
     pago_total = models.StringField()
+    codigo = models.StringField()
 
 
     def get_juego_pagar():
