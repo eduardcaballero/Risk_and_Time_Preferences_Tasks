@@ -208,7 +208,7 @@
     {% if app == "dm" %}
     <h3>Actividad 5</h3>
     {% endif %}
-
+    <h3>Resumen de pagos</h3>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -220,13 +220,14 @@
           </thead>
           <tbody>
             <tr>
-              <th>{{player.pago}}</th>
+              <td>{{player.pago}}</td>
               <td>{{player.pago_5}}</td>
               <td>{{player.pago_10}}</td>
               <td>{{player.pago_15}}</td>
             </tr>
           </tbody>
     </table>
+    <br>
 
     {% next_button %}
     

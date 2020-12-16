@@ -82,11 +82,11 @@ class Player(BasePlayer):
         [5,'Mayor a $ 4.000.000'],
     ], label="¿Cuál es el rango de su ingreso mensual?")
     app_pago = models.StringField()
-    pago =  models.CurrencyField(initial=0)
-    pago_5 =  models.CurrencyField(initial=0)
-    pago_10 =  models.CurrencyField(initial=0)
-    pago_15 =  models.CurrencyField(initial=0)
-    pago_total = models.CurrencyField(initial=0)
+    pago =  models.StringField()
+    pago_5 =  models.StringField()
+    pago_10 =  models.StringField()
+    pago_15 =  models.StringField()
+    pago_total = models.StringField()
 
 
     def get_juego_pagar():
