@@ -25,7 +25,6 @@
 {% block content %}
 
     <div class="instructions">
-        <img class="billetes" src="https://drive.google.com/uc?id=1LwDS3hfOdwjNI7TkSQvxVW-QX73yGZXz" width="100%" />
         <p>
             {% blocktrans trimmed %}
             Esta actividad consiste en 24 preguntas que implican la elección sobre algunos pagos a lo largo del tiempo.
@@ -36,14 +35,21 @@
         </p>
         <p>
             {% blocktrans trimmed %}
-            <b>Si esta esta actividad es elegida para determinar el pago</b>, las 24 preguntas no se le pagarán. 
+                A continuación se presenta una imagen que ilustra la estructura de las preguntas. 
+            {% endblocktrans %}
+        </p>
+        <img class="billetes" src="https://drive.google.com/uc?id=1LwDS3hfOdwjNI7TkSQvxVW-QX73yGZXz" width="100%" />
+        <p>
+            {% blocktrans trimmed %}
+            <b>Si esta actividad es elegida para determinar el pago</b>. 
             Una de las 24 preguntas se elegirá al azar y los pagos se realizarán de acuerdo a la opción seleccionada. 
             Las fechas en las que se hará el PRIMER y SEGUNDO pago dependerán de la pregunta elegida.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed %}
-            Recuerde que también recibirá $10.000 por llegar a tiempo, este pago adicional estará <b>divido en dos partes</b>. 
+            Recuerde que también recibirá $10.000 por llegar a tiempo. 
+            En caso de que esta actividad sea seleccionada para el pago, los $10.000 serán <b>dividos en dos partes</b>. 
             De acuerdo con la pregunta seleccionada, $5.000 podrán ser retirados en la fecha del PRIMER pago y $5.000 en la fecha del SEGUNDO pago.
             {% endblocktrans %}
         </p>

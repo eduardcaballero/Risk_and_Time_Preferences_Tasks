@@ -33,8 +33,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     p1 = models.StringField(label="¿Qué entiende usted como probabilidad?")
-    p2 = models.StringField(label="¿Hubo algo que no entendiera en alguna de las actividades? Si es así, ¿qué no entendió?")
-    p3 = models.StringField(label="¿Hubo algo que entendiera de forma errónea en alguna de las actividades? Si es así, ¿qué entendió erróneamente?")
+    p2 = models.StringField(label="¿Hubo algo que no entendiera en alguna de las actividades? Si es así, ¿qué no entendió? (Recuerde que son 4 actividades)")
+    p3 = models.StringField(label="¿Hubo algo que le pareciera confuso en alguna de las actividades? Si es así, ¿qué le pareció confuso?")
     p4 = models.StringField(label="¿Hubo algo que le pareciera difícil en alguna de las actividades? Si es así, ¿qué se le dificultó?")
     p5 = models.IntegerField(
     choices=[

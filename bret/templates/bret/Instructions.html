@@ -25,7 +25,6 @@
 {% block content %}
 
     <div class="instructions">
-        <img class="billetes" src="https://drive.google.com/uc?id=1XRR55kdt4Vzz3hfiefRCxoIhIwzTaeNm" width="100%" />
         <p>
             {% blocktrans trimmed %}
                 Usted verá en la siguiente pantalla un cuadro {{ num_rows }}x{{ num_cols }} que contiene
@@ -39,6 +38,12 @@
                 En cualquier momento usted puede ver el número de cajas recolectadas en la parte superior.
             {% endblocktrans %}
         </p>
+        <p>
+            {% blocktrans trimmed %}
+                A continuación se presenta una imagen que ilustra la estructura de los cuadros. 
+            {% endblocktrans %}
+        </p>
+        <img class="billetes" src="https://drive.google.com/uc?id=1XRR55kdt4Vzz3hfiefRCxoIhIwzTaeNm" width="100%" />
         <p>
             {% blocktrans trimmed %}
                 <b>Detrás de UNA de las cajas se esconde una BOMBA que destruye todo lo que se recogió.</b>
