@@ -32,7 +32,7 @@
     .##.....##.##........########....##..........##.....##.##........########.#######.#########
     -->
     {% if app == "ctb" or app == "ctb_2" or app == "mpl" or app == "mpl_2" %}
-        <h1>
+        <h4>
             {% if app == "ctb" %}
                 Actividad 1
             {% endif %}
@@ -48,7 +48,7 @@
             {% if app == "mpl_2" %}
                 Actividad 1
             {% endif %}
-        </h1>
+        </h4>
         <p>Se le pagará por la pregunta {{ pregunta_pago }}, en esa pregunta usted escogió la opción {{ fila_pago }}.</p>
         <table class="table table-bordered text-center">
             <thead class="thead-light">
@@ -220,10 +220,10 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{player.pago}}</td>
-              <td>{{player.pago_5}}</td>
-              <td>{{player.pago_10}}</td>
-              <td>{{player.pago_15}}</td>
+              <td>${{player.pago}}</td>
+              <td>${{player.pago_5}}</td>
+              <td>${{player.pago_10}}</td>
+              <td>${{player.pago_15}}</td>
             </tr>
           </tbody>
     </table>
