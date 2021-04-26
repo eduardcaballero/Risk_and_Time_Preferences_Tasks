@@ -68,11 +68,11 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'torneo',
-        'display_name': 'Juego de encriptación',
+        'display_name': 'Juego de encriptacion',
         'num_demo_participants': 4,
         'app_sequence': ['torneo'],
-        'observabilidad': False,
-        'meritocracia': False,
+        'discrimination': 0,
+        'merit': False,
     },
     {
         'name': 'tarea',
@@ -103,7 +103,9 @@ SESSION_CONFIGS = [
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
+    real_world_currency_per_point=1.00, 
+    participation_fee=0.00, 
+    doc=""
 )
 
 # ISO-639 code

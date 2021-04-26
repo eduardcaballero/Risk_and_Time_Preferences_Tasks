@@ -23,17 +23,17 @@
     <ul>
         <li> Primer puesto de los jugadores con Contrato A: 100% </li> 
         <li> Segundo puesto de los jugadores con Contrato A: 
-            {% if observabilidad %}
-                Repechaje
-            {% else %}
+            {% if discrimination == 0 %}
                 50%
+            {% else %}
+                Repechaje
             {% endif %}     
         </li> 
         <li> Primer puesto jugadores con Contrato B:
-            {% if observabilidad %}
-                Repechaje
-            {% else %}
+            {% if discrimination == 0 %}
                 50%
+            {% else %}
+                Repechaje
             {% endif %}
         </li> 
         <li> Segundo puesto jugadores con Contrato B: 0% </li> 
@@ -42,7 +42,7 @@
     <p> <b>Nota:</b> Si los dos participantes con el mismo contrato tienen el mismo número de tareas completas, el primer puesto del contrato se define al azar. </p>
     
     <p> En otras palabras, el “ganador” con el Contrato A y el “perdedor” del Contrato B van a mantener sus contratos. Para las otras dos personas del grupo, es posible que haya un cambio en el contrato.   
-        {% if observabilidad %}
+        {% if discrimination %}
             La probabilidad de ser reasignado dependerá del número relativo de tareas realizadas, en algo que llamaremos “repechaje”.
 
             <p><i> ¿En qué consiste el repechaje? <p></i>

@@ -128,7 +128,7 @@ td {
 {% endblock %}
 
 {% block content %}
-<input type="hidden" name="palabras" id="palabras" value="" />
+<input type="hidden" name="tasks" id="tasks" value="" />
 <input type="hidden" name="mistakes" id="mistakes" value="" />
 
 <div class="test" id="hide_task">
@@ -163,7 +163,6 @@ td {
 
 <br><br>
 <div class="button-container">
-
 <input type="button" onclick="myFunction()" value="Enviar">
 <div class="otree-form-errors" id="error-form"></div>
 </div>
@@ -207,8 +206,8 @@ function myFunction() {
     errors=checkSolution();
 
   if (errors == 0) {
-      var temp = Number(document.getElementById("palabras").value) + 1
-      document.getElementById("palabras").value = temp;
+      var temp = Number(document.getElementById("tasks").value) + 1
+      document.getElementById("tasks").value = temp;
       document.getElementById("error-form").style.display = "none";
 
       word = genNewWord();
@@ -236,7 +235,7 @@ function myFunction() {
       document.getElementById("error-form").style.display = "block";
   }
   else {
-        document.getElementById("palabras").value = "0";
+        document.getElementById("tasks").value = "0";
   }
 }
 

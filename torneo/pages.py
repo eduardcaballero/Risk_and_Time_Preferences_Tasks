@@ -2,39 +2,39 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
-class bienvenida(Page):
+class welcome(Page):
     def is_displayed(self):
         return self.round_number == 1
 
 
-class instrucciones_practica(Page):
+class instructions_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
     
     def vars_for_template(self):
         return {
-            "meritocracia" : self.session.config["meritocracia"]
+            "merit" : self.session.config["merit"]
         }
 
-class instrucciones_tarea(Page):
+class instructions_task(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class instrucciones_torneo(Page):
+class instructions_tournament(Page):
     def is_displayed(self):
         return self.round_number == 2
 
     def vars_for_template(self): 
         return {
-            "observabilidad" : self.session.config["observabilidad"]
+            "discrimination" : self.session.config["discrimination"]
         }
 
-class tarea_practica(Page):
+class task_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
 
     form_model = 'player'
-    form_fields = ['palabras', 'mistakes']
+    form_fields = ['tasks', 'mistakes']
     if Constants.use_timeout:
         timeout_seconds = Constants.seconds_per_period
 
@@ -47,12 +47,12 @@ class tarea_practica(Page):
                 'task_width': task_width,
                 }
            
-class tarea_torneo(Page):
+class task_tournament(Page):
     def is_displayed(self):
         return self.round_number > 1
 
     form_model = 'player'
-    form_fields = ['palabras', 'mistakes']
+    form_fields = ['tasks', 'mistakes']
     if Constants.use_timeout:
         timeout_seconds = Constants.seconds_per_period
 
@@ -63,72 +63,72 @@ class tarea_torneo(Page):
         return {'legend_list': legend_list,
                 'task_list': task_list,
                 'task_width': task_width,
-                "pago_A": "$"+format(int(str(Constants.pago_B).split(",")[0]), ',d'),
-                "pago_B": "$"+format(int(str(Constants.pago_B).split(",")[0]), ',d'),
-                "contrato_A": self.player.contrato_A}
+                "payoff_A": "$"+format(int(str(Constants.payoff_A).split(",")[0]), ',d'),
+                "payoff_B": "$"+format(int(str(Constants.payoff_B).split(",")[0]), ',d'),
+                "contract_A": self.player.contract_A}
 
-class calculos(WaitPage):
+class calculations(WaitPage):
     wait_for_all_groups = True
     def after_all_players_arrive(self):
         self.subsession.set_ranking()
-        self.subsession.set_ranking_grupos()
-        self.subsession.set_posiciones_jugadores()
+        self.subsession.set_ranking_groups()
+        self.subsession.set_positions_players()
 
-class resultados_practica(Page):
+class results_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
     def vars_for_template(self):
         return {
-            "palabras": self.player.palabras,
-            "ronda": self.round_number - 1,
+            "tasks": self.player.tasks,
+            "round": self.round_number - 1,
         }
 
-class resultados_torneo(Page):
+class results_tournament(Page):
     def is_displayed(self):
         return self.round_number > 1
     def vars_for_template(self):
         return {
-            "ronda": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
-            "palabras" : self.player.palabras,
-            "pago_ronda": "$"+format(int(str(self.player.pago_ronda).split(",")[0]),',d'),
-            "posicion_grupo": self.player.posicion_grupo,
-            "contrato_A": self.player.contrato_A,
-            "posicion_contrato": self.player.posicion_contrato,
-            "probabilidad_contrato_A": "{0:.0f}%".format(self.player.probabilidad_contrato_A*100)
+            "round": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
+            "tasks" : self.player.tasks,
+            "payoff_round": "$"+format(int(str(self.player.payoff_round).split(",")[0]),',d'),
+            "position_group": self.player.position_group,
+            "contract_A": self.player.contract_A,
+            "position_contract": self.player.position_contract,
+            "likelihood_contract_A": "{0:.0f}%".format(self.player.likelihood_contract_A*100)
         }
 
-class asignacion(Page):
+class allocation(Page):
     def is_displayed(self):
         return self.round_number < Constants.num_rounds
     def vars_for_template(self): 
         return {
-            "ronda": self.round_number,
-            "contrato_A_torneo" : self.player.contrato_A_torneo,
+            "round": self.round_number,
+            "contract_A_tournament" : self.player.contract_A_tournament,
         }
 
-class espera_grupos(WaitPage):
+class wait_groups(WaitPage):
     wait_for_all_groups = True
     after_all_players_arrive = 'creating_groups'
     def is_displayed(self):
         return self.round_number < Constants.num_rounds
 
-class espera_pago_total(WaitPage):
+class wait_payoff_total(WaitPage):
     wait_for_all_groups = True
     def after_all_players_arrive(self):
-        self.subsession.set_pago_jugadores()
+        self.subsession.set_payoff_players()
     def is_displayed(self):
         return self.round_number == Constants.num_rounds 
 		
-class pago_total(Page):
+class payoff_total(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
     def vars_for_template(self): 
         return {
-            "ronda_pagar" :  Constants.ronda_pagar - 1,
-            "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
+            "round_payoff" :  Constants.round_payoff - 1,
+            "payoff_total" :  self.player.pago,
         }
     
-class gracias(Page):
+class thanks(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
@@ -138,18 +138,18 @@ class ruleta(Page):
         return self.round_number == 1
 
 page_sequence = [
-	bienvenida, 
-	instrucciones_practica,
-    instrucciones_tarea,
-    instrucciones_torneo,
-	tarea_practica,
-    tarea_torneo,
-    calculos,
-    resultados_practica,
-    resultados_torneo,
-    asignacion,
-    espera_grupos,
-    espera_pago_total,
-	pago_total,
-    gracias,
+	welcome, 
+	instructions_practice,
+    instructions_task,
+    instructions_tournament,
+	task_practice,
+    task_tournament,
+    calculations,
+    results_practice,
+    results_tournament,
+    allocation,
+    wait_groups,
+    wait_payoff_total,
+	payoff_total,
+    thanks,
 ]
