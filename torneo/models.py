@@ -155,13 +155,15 @@ class Group(BaseGroup):
         tasks_tournament = p2 + p3
         return tasks_tournament
 
-    def set_allocation_contract_A(self):
+    def set_winner_contract_A(self):
         rankA = json.loads(self.rankA)
         rankB = json.loads(self.rankB)
         p2 = self.get_player_by_id(int(rankA.keys()[1].split('j')[1]))
         p3 = self.get_player_by_id(int(rankB.keys()[0].split('j')[1]))
         self.winner_contract_A = random.choices([rankA.keys()[1].split('j')[1], rankB.keys()[0].split('j')[1]],
                                                  weights=(p2.likelihood_contract_A, p3.likelihood_contract_A))
+        return self.winner_contract_A
+        
 
     def sort(self, rank):
         l = list(rank.items())
@@ -178,7 +180,7 @@ class Group(BaseGroup):
         self.rank = json.dumps(self.sort(rank))
         # '{'j1':7, 'j2':5 }'
 
-    def set_allocation_random(self):
+    def set_contract_A_tournament_random(self):
         if (self.subsession.discrimination == 0):
             players = self.get_players()
             rank = {}

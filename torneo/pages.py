@@ -75,6 +75,10 @@ class calculations(WaitPage):
         self.subsession.set_ranking()
         self.subsession.set_ranking_groups()
         self.subsession.set_positions_players()
+        self.group.set_contract_A_tournament_random()
+        self.player.set_contract_A_tournament()
+                
+
 
 class results_practice(Page):
     def is_displayed(self):
