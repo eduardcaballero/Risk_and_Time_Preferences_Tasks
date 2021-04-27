@@ -43,6 +43,7 @@ class task_practice(Page):
         task_list = [j for j in range(Constants.letters_per_word)]
         task_width = 90 / Constants.letters_per_word
         return {'legend_list': legend_list,
+                "round": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
                 'task_list': task_list,
                 'task_width': task_width,
                 }
@@ -61,6 +62,7 @@ class task_tournament(Page):
         task_list = [j for j in range(Constants.letters_per_word)]
         task_width = 90 / Constants.letters_per_word
         return {'legend_list': legend_list,
+                "round": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
                 'task_list': task_list,
                 'task_width': task_width,
                 "payoff_A": "$"+format(int(str(Constants.payoff_A).split(",")[0]), ',d'),
@@ -126,6 +128,7 @@ class payoff_total(Page):
         return {
             "round_payoff" :  Constants.round_payoff - 1,
             "payoff_total" :  self.player.pago,
+            # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
     
 class thanks(Page):

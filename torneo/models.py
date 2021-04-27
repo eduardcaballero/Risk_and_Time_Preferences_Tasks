@@ -97,7 +97,7 @@ class Subsession(BaseSubsession):
         if (self.merit and self.round_number==1) or (self.discrimination > 0 and 
             self.round_number!=1):
             rank = self.sort(rank)
-        else:
+        else: 
             l = list(rank.items())
             random.shuffle(l)
             rank = dict(l)
@@ -178,6 +178,31 @@ class Group(BaseGroup):
         self.rank = json.dumps(self.sort(rank))
         # '{'j1':7, 'j2':5 }'
 
+    def set_allocation_random(self):
+        if (self.subsession.discrimination == 0):
+            players = self.get_players()
+            rank = {}
+            for k, j in enumerate(players):
+                rank['j' + str(k)] = j.tasks
+                l = list(rank.items())
+                random.shuffle(l)
+                rank = dict(l)
+            for j, i in enumerate(rank.keys()):
+                jugador = players[int(i.split('j')[1])]
+                if j < len(players)//2:
+                    jugador.contract_A_tournament = True
+                    if j < len(players)//4:
+                        jugador.position_contract_tournament = 1
+                    else:
+                        jugador.position_contract_tournament = 2
+                else:
+                    jugador.contract_A_tournament= False
+                    if j < 3*len(players)//4:
+                        jugador.position_contract_tournament = 1
+                    else:
+                        jugador.position_contract_tournament = 2   
+    
+
     def set_ranking_contract(self):
         rankA = {}
         rankB = {}
@@ -199,7 +224,7 @@ class Player(BasePlayer):
     payoff_round = models.CurrencyField()
     pago = models.CurrencyField()
     mistakes = models.IntegerField(initial=0)
-    tasks = models.IntegerField(initial=0) 
+    tasks = models.IntegerField(initial=0)  
 
     #Esta función define el pago final
     def set_payoff(self):
@@ -249,20 +274,21 @@ class Player(BasePlayer):
             self.position_contract = list(rankB).index('j' + str(self.id_in_group)) + 1
 
     def set_contract_A_tournament(self):
-        winner = self.group.set_winner_contract_A()
-        if (self.contract_A == True and self.position_contract == 1) or (self.contract_A == False and self.position_contract == 2):
-            self.contract_A_tournament = self.contract_A
-            if self.position_contract == 1:
-                self.position_contract_tournament = 1
+        if (self.subsession.discrimination > 0):
+            winner = self.group.set_winner_contract_A()
+            if (self.contract_A == True and self.position_contract == 1) or (self.contract_A == False and self.position_contract == 2):
+                self.contract_A_tournament = self.contract_A
+                if self.position_contract == 1:
+                    self.position_contract_tournament = 1
+                else:
+                    self.position_contract_tournament = 2
             else:
-                self.position_contract_tournament = 2
-        else:
-            if self.id_in_group == int(winner):
-                self.contract_A_tournament = True
-                self.position_contract_tournament = 2
-            else:
-                self.contract_A_tournament = False
-                self.position_contract_tournament = 1
+                if self.id_in_group == int(winner):
+                    self.contract_A_tournament = True
+                    self.position_contract_tournament = 2
+                else:
+                    self.contract_A_tournament = False
+                    self.position_contract_tournament = 1
 
 
     def set_payoff_round(self):
