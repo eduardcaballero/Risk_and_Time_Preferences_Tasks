@@ -7,6 +7,9 @@ class consent(Page):
     form_fields = ['consent','consent_count'] 
 
 class welcome(Page):
+    form_model = 'player'
+    form_fields = ['identificador']
+
     def is_displayed(self):
         return self.round_number == 1
     def is_displayed(self):
