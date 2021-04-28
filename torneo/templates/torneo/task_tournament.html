@@ -129,13 +129,13 @@ td {
 
 {% block content %}
 <p> Se le ha asignado un <b>Contrato
-{% if contract_A_tournament %}
+{% if contract_A %}
     A
 {% else %}
     B 
 {% endif %} 
 </b>:  recibe <b>
-{% if contract_A_tournament %}
+{% if contract_A %}
     {{payoff_A}}
 {% else %}
     {{payoff_B}}
@@ -204,8 +204,6 @@ td {
   dict = genNewDict();
   legend_letters = genNewList();
   b = numbers();
-
-  var use_word_target = {{Constants.use_word_target | json}};
 
 
 

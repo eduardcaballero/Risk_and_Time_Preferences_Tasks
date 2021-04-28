@@ -1,6 +1,6 @@
 from __future__ import division
 
-from otree.common import Currency as c
+from otree.api import Currency as c
 
 from . import models
 from ._builtin import Page, WaitPage

@@ -4,11 +4,6 @@
 
 {% block content %}
 
-{% if request|is_mobile or request|is_tablet %}
-<h1>Lo sentimos!</h1>
-La participación en este estudio NO está permitida en dispositivos móviles o tabletas.
-
-{% else %}
 <h1>Consentimiento Informado</h1>
 <p>Usted participará en un juego de decisiones económicas. 
     Sus ganancias en esta actividad estarán en un rango entre $10.000 y $30.000 pesos. 
@@ -32,18 +27,17 @@ La participación en este estudio NO está permitida en dispositivos móviles o 
 <p>ACEPTACIÓN:</p>
 <p>
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="1" name="consent">
-    <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="1" name="consent" id="consent">
+    <label class="form-check-label" for="consent">
       Comprendo la información anterior y mis derechos y compromisos durante este ejercicio. 
     </label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="1" name="consent_count">
-    <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="1" name="consent_count" id="consent_count">
+    <label class="form-check-label" for="consent_count">
       Comprendo que recibiré mi pago en las 48 horas hábiles luego de enviar correctamente mi información bancaria.
     </label>
   </div>
 </p>
 {% next_button %} 
-{% endif %}
 {% endblock %}

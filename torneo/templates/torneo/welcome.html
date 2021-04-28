@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% if consent %}
+{% if consent && consent_count %}
     <h1>Bienvenida</h1>
 
     <p> Bienvenid@ a esta actividad en la que tendrá que realizar, varias veces, la siguiente tarea: <b> pasar una serie de números a letras </b>. Por su participación recibirá unas ganancias que dependerán del azar, y de la cantidad de tareas que usted y otros participantes realicen. </p> 
@@ -31,9 +31,9 @@
     <p> Su participación en el experimento es anónima. Esto quiere decir que su identidad y sus ganancias no le serán reveladas a los demás participantes. Al final de la actividad le haremos unas preguntas sobre usted. La información allí recopilada también se utilizará de forma anónima, no se entregará a terceros, y sólo la utilizaremos con fines académicos. </p>
 
     <p>
-    {% formfields %}
-</p>
-{% next_button %} 
+        {% formfields %}
+    </p>
+    {% next_button %} 
 
 {% else %}
     <h1>Muchas gracias!</h1>

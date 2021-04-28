@@ -82,7 +82,8 @@ class task_tournament(Page):
                 'task_width': task_width,
                 "payoff_A": "$"+format(int(str(Constants.payoff_A).split(",")[0]), ',d'),
                 "payoff_B": "$"+format(int(str(Constants.payoff_B).split(",")[0]), ',d'),
-                "contract_A": self.player.contract_A}
+                "contract_A": self.player.contract_A,
+                }
 
 class calculations(WaitPage):
     wait_for_all_groups = True

@@ -23,13 +23,13 @@ Mobility and productivity in a Dual Labor Market: a lab experiment.
 class Constants(BaseConstants):
     name_in_url = 'Torneo'
     players_per_group = 4
-    num_rounds = 6
+    num_rounds = 2
     payoff_A = c(2000)
     payoff_B = c(1000)
     round_payoff = random.randint(2, num_rounds)
     letters_per_word = 5
     use_timeout = True
-    seconds_per_period = 10
+    seconds_per_period = 5
 
 class Subsession(BaseSubsession):
     merit = models.BooleanField(
@@ -170,7 +170,8 @@ class Group(BaseGroup):
         rankB = json.loads(self.rankB)
         p2 = self.get_player_by_id(int(list(rankA.keys())[1].split('j')[1]))
         p3 = self.get_player_by_id(int(list(rankB.keys())[0].split('j')[1]))
-        self.winner_contract_A = random.choices([list(rankA.keys())[1].split('j')[1], list(rankB.keys())[0].split('j')[1]], weights=[p2.likelihood_contract_A, p3.likelihood_contract_A])
+        p_choise = [str(list(rankA.keys())[1]).split('j')[1], str(list(rankB.keys())[0]).split('j')[1]]
+        self.winner_contract_A = int(random.choices(p_choise, weights=[p2.likelihood_contract_A, p3.likelihood_contract_A], k = 1)[0])
         return self.winner_contract_A
         
     def sort(self, rank):
