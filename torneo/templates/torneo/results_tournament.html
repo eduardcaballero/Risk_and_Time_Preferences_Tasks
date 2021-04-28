@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <p> Usted completó {{tasks}} tareas. Sus ganancias en esta ronda son {{pay_round}} </p>
+    <p> Usted completó {{tasks}} tareas. Sus ganancias en esta ronda son {{payoff_round}} </p>
     <p> Su posición en el ranking grupal es {{position_group}} de 4. </p>
 
     {% if contract_A %}
@@ -23,7 +23,7 @@
         {% endif %} 
     {% endif %} 
     {% if round < 5 %}
-    	<p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda, es: {{likelihood_contract_A}} </p>
+    	<p> La probabilidad de que usted obtenga un Contrato A en la siguiente ronda es: {{likelihood_contract_A}} </p>
     {% endif %} 
 
     {% next_button %}

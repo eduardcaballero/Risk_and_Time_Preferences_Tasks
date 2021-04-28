@@ -2,11 +2,20 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class consent(Page):
+    form_model = 'player'
+    form_fields = ['consent','consent_count'] 
+
 class welcome(Page):
     def is_displayed(self):
         return self.round_number == 1
-
-
+    def is_displayed(self):
+        return self.round_number == 1
+    def vars_for_template(self): 
+        return {
+            "consent" : self.player.consent,
+            "consent_count" : self.player.consent_count,
+        }
 class instructions_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
@@ -75,11 +84,9 @@ class calculations(WaitPage):
         self.subsession.set_ranking()
         self.subsession.set_ranking_groups()
         self.subsession.set_positions_players()
-        self.group.set_contract_A_tournament_random()
-        self.player.set_contract_A_tournament()
+        self.subsession.set_contract_A_players()
+        
                 
-
-
 class results_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
@@ -131,7 +138,7 @@ class payoff_total(Page):
     def vars_for_template(self): 
         return {
             "round_payoff" :  Constants.round_payoff - 1,
-            "payoff_total" :  self.player.pago,
+            "payoff_total" :  self.player.pago
             # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
     
@@ -145,6 +152,7 @@ class ruleta(Page):
         return self.round_number == 1
 
 page_sequence = [
+    consent,
 	welcome, 
 	instructions_practice,
     instructions_task,

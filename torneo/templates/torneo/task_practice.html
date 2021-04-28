@@ -114,6 +114,8 @@ td {
     grid-template-columns: 6em auto;
     grid-template-rows: 1;
     grid-column-gap: 1vw
+    width: 10%;
+margin-left: 47%;
 }
 
 
@@ -124,7 +126,7 @@ td {
 
 
 {% block title %}
-    Tarea
+    Ronda {{round}} 
 {% endblock %}
 
 {% block content %}
@@ -158,13 +160,14 @@ td {
         {% for l in task_list%}
                 <input type="text" onkeyup="this.value = this.value.toUpperCase();" class="task-letter" id="task_letter_{{l}}" >
         {% endfor %}
+    </div>
 </div>
-</div>
+
+        <div class="otree-form-errors" id="error-form"></div>
 
 <br><br>
 <div class="button-container">
 <input type="button" onclick="myFunction()" value="Enviar">
-<div class="otree-form-errors" id="error-form"></div>
 </div>
 
 <br><br>

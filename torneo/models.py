@@ -12,6 +12,8 @@ import numpy as np
 import random
 import json
 
+from otree.models import subsession
+
 author = 'Cesar Mantilla & Ferley Rincon'
 
 doc = """
@@ -31,18 +33,18 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     merit = models.BooleanField(
-    choices=[
-            [False, 'luck'],
-            [True, 'merit'],
-        ]
+        choices=[
+                [False, 'luck'],
+                [True, 'merit'],
+            ]
     )
     discrimination = models.IntegerField(
-    choices=[
-            [1, 'random'],
-            [2, 'perfect'],
-            [3, 'noisy'],
-        ]
-    )
+        choices=[
+                [1, 'random'],
+                [2, 'perfect'],
+                [3, 'noisy'],
+            ]
+        )
     tournament = models.BooleanField()
     round_payoff = models.IntegerField()
 
@@ -138,13 +140,21 @@ class Subsession(BaseSubsession):
     def set_payoff_players(self):
         for j in self.get_players():
             j.set_payoff()
+    
+    def set_contract_A_players(self):
+        if (self.round_number!=1):
+            if (self.discrimination > 0):
+                for j in self.get_players():
+                    j.set_contract_A_tournament()
+            else:
+                for g in self.get_groups():
+                    g.set_contract_A_tournament_random()
 
 class Group(BaseGroup):
     #solo deben declararse variables por medio de models.
     rank = models.StringField()
     rankA = models.StringField()
     rankB = models.StringField()
-
     winner_contract_A = models.IntegerField(initial=0)
 
     def get_tasks_tournament(self):
@@ -158,13 +168,11 @@ class Group(BaseGroup):
     def set_winner_contract_A(self):
         rankA = json.loads(self.rankA)
         rankB = json.loads(self.rankB)
-        p2 = self.get_player_by_id(int(rankA.keys()[1].split('j')[1]))
-        p3 = self.get_player_by_id(int(rankB.keys()[0].split('j')[1]))
-        self.winner_contract_A = random.choices([rankA.keys()[1].split('j')[1], rankB.keys()[0].split('j')[1]],
-                                                 weights=(p2.likelihood_contract_A, p3.likelihood_contract_A))
+        p2 = self.get_player_by_id(int(list(rankA.keys())[1].split('j')[1]))
+        p3 = self.get_player_by_id(int(list(rankB.keys())[0].split('j')[1]))
+        self.winner_contract_A = random.choices([list(rankA.keys())[1].split('j')[1], list(rankB.keys())[0].split('j')[1]], weights=[p2.likelihood_contract_A, p3.likelihood_contract_A])
         return self.winner_contract_A
         
-
     def sort(self, rank):
         l = list(rank.items())
         random.shuffle(l)
@@ -181,7 +189,6 @@ class Group(BaseGroup):
         # '{'j1':7, 'j2':5 }'
 
     def set_contract_A_tournament_random(self):
-        if (self.subsession.discrimination == 0):
             players = self.get_players()
             rank = {}
             for k, j in enumerate(players):
@@ -226,19 +233,19 @@ class Player(BasePlayer):
     payoff_round = models.CurrencyField()
     pago = models.CurrencyField()
     mistakes = models.IntegerField(initial=0)
-    tasks = models.IntegerField(initial=0)  
-
+    tasks = models.IntegerField(initial=0)
+    consent = models.BooleanField(blank=False, initial=False)
+    
     #Esta función define el pago final
     def set_payoff(self):
         if (self.round_number==Constants.num_rounds):
-#           players = self.get_players()
-            round = self.subsession.round_payoff
+            ronda = self.subsession.round_payoff
             payoff_rounds = []
             for j in self.in_all_rounds():
                 payoff_rounds.append(j.payoff_round)
-            self.payoff= payoff_rounds[round- 1]
+            self.pago= payoff_rounds[ronda- 1]
         else:
-            self.pago=0
+            self.pago= 0
  #           j.pago = j.pago_ronda.in_all_rounds()[ronda - 1]
         
     def set_likelihood_contract_A(self):
@@ -276,7 +283,6 @@ class Player(BasePlayer):
             self.position_contract = list(rankB).index('j' + str(self.id_in_group)) + 1
 
     def set_contract_A_tournament(self):
-        if (self.subsession.discrimination > 0):
             winner = self.group.set_winner_contract_A()
             if (self.contract_A == True and self.position_contract == 1) or (self.contract_A == False and self.position_contract == 2):
                 self.contract_A_tournament = self.contract_A
