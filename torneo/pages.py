@@ -5,7 +5,7 @@ from .models import Constants
 class consent(Page):
     form_model = 'player'
     form_fields = ['consent','consent_count']
-    
+
     def is_displayed(self):
         return self.round_number == 1
 
@@ -21,6 +21,7 @@ class welcome(Page):
             "consent" : self.player.consent,
             "consent_count" : self.player.consent_count,
         }
+
 class instructions_practice(Page):
     def is_displayed(self):
         return self.round_number == 1

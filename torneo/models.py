@@ -235,9 +235,8 @@ class Player(BasePlayer):
     mistakes = models.IntegerField(initial=0)
     tasks = models.IntegerField(initial=0)
     consent = models.BooleanField(blank=False, initial=False)
-    consent_contract = models.BooleanField(blank=False, initial=False)
+    consent_count = models.BooleanField(blank=False, initial=False)
     identificador = models.StringField(label='Para iniciar por favor ingrese las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, debe ingresar LR11021995. Escriba todo en mayúscula. Esta etiqueta es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
-
     
     #Esta función define el pago final
     def set_payoff(self):
