@@ -4,39 +4,39 @@
 {% block content %}
 
 {% if consent %}
-<h1>Bienvenida</h1>
+    <h1>Bienvenida</h1>
 
-<p> Bienvenid@ a esta actividad en la que tendrá que realizar, varias veces, la siguiente tarea: <b> pasar una serie de números a letras </b>. Por su participación recibirá unas ganancias que dependerán del azar, y de la cantidad de tareas que usted y otros participantes realicen. </p> 
+    <p> Bienvenid@ a esta actividad en la que tendrá que realizar, varias veces, la siguiente tarea: <b> pasar una serie de números a letras </b>. Por su participación recibirá unas ganancias que dependerán del azar, y de la cantidad de tareas que usted y otros participantes realicen. </p> 
 
-<p><i> Las ganancias hacen que sus decisiones tengan consecuencias económicas, y así sea más parecida a las decisiones que toma en su vida diaria. Las ganancias del juego no corresponden a un pago por participar, por lo que esperamos que participe en futuras actividades de otros investigadores, aún si no hay un pago de por medio. </i></p> 
+    <p><i> Las ganancias hacen que sus decisiones tengan consecuencias económicas, y así sea más parecida a las decisiones que toma en su vida diaria. Las ganancias del juego no corresponden a un pago por participar, por lo que esperamos que participe en futuras actividades de otros investigadores, aún si no hay un pago de por medio. </i></p> 
 
-<p> Silencie su teléfono móvil y evite cualquier elemento distractor que pueda interrumpirlo en los siguientes 30 minutos. </p>
+    <p> Silencie su teléfono móvil y evite cualquier elemento distractor que pueda interrumpirlo en los siguientes 30 minutos. </p>
 
-<p> La actividad tendrá seis (6) rondas dividas en dos (2) Etapas: </p>
+    <p> La actividad tendrá seis (6) rondas dividas en dos (2) Etapas: </p>
 
-<p> <b>Etapa 1. Ronda de Práctica (Ronda 0)</b>: Tendrá 90 segundos para familiarizarse con la tarea de pasar números a letras. Debe tomarla en serio y realizar correctamente el mayor número de tareas posibles. </p>
+    <p> <b>Etapa 1. Ronda de Práctica (Ronda 0)</b>: Tendrá 90 segundos para familiarizarse con la tarea de pasar números a letras. Debe tomarla en serio y realizar correctamente el mayor número de tareas posibles. </p>
 
-<p> <b>Etapa 2. Torneo (Rondas 1 a 5)</b>: Por cada tarea completa usted recibirá una suma de dinero, que dependerá de si usted tiene un Contrato A o un Contrato B. Las tareas son iguales en ambos contratos, pero pagan de forma diferente. El Contrato A pagará el doble por tarea, respecto al Contrato B. </p>
+    <p> <b>Etapa 2. Torneo (Rondas 1 a 5)</b>: Por cada tarea completa usted recibirá una suma de dinero, que dependerá de si usted tiene un Contrato A o un Contrato B. Las tareas son iguales en ambos contratos, pero pagan de forma diferente. El Contrato A pagará el doble por tarea, respecto al Contrato B. </p>
 
-<p><i>¿Por qué le llamamos torneo?</i></p>
+    <p><i>¿Por qué le llamamos torneo?</i></p>
 
-<p>Al final de las rondas 1 a 4, los participantes podrán ser reasignados entre los Contratos A y B según su rendimiento. Es decir, participantes que comiencen con el Contrato A pueden ser relegados al Contrato B, y participantes que comiencen con el Contrato B pueden ser promovidos al Contrato A.</p>
+    <p>Al final de las rondas 1 a 4, los participantes podrán ser reasignados entre los Contratos A y B según su rendimiento. Es decir, participantes que comiencen con el Contrato A pueden ser relegados al Contrato B, y participantes que comiencen con el Contrato B pueden ser promovidos al Contrato A.</p>
 
-<p>Al inicio de la Etapa 2 se explicará en detalle los cambios de contrato.</p>
+    <p>Al inicio de la Etapa 2 se explicará en detalle los cambios de contrato.</p>
 
-<p> Al final de la actividad se escogerá al azar una ronda del Torneo para calcular sus ganancias de la actividad. El pago dependerá de cuántas tareas realizó, y del tipo de contrato que usted tenía, en la ronda seleccionada.</p>
+    <p> Al final de la actividad se escogerá al azar una ronda del Torneo para calcular sus ganancias de la actividad. El pago dependerá de cuántas tareas realizó, y del tipo de contrato que usted tenía, en la ronda seleccionada.</p>
 
-<p> Por favor, escribanos por chat si tiene preguntas. Uno de los monitores se comunicará con usted y le ayudará individualmente.</p> 
+    <p> Por favor, escribanos por chat si tiene preguntas. Uno de los monitores se comunicará con usted y le ayudará individualmente.</p> 
 
-<p> Su participación en el experimento es anónima. Esto quiere decir que su identidad y sus ganancias no le serán reveladas a los demás participantes. Al final de la actividad le haremos unas preguntas sobre usted. La información allí recopilada también se utilizará de forma anónima, no se entregará a terceros, y sólo la utilizaremos con fines académicos. </p>
+    <p> Su participación en el experimento es anónima. Esto quiere decir que su identidad y sus ganancias no le serán reveladas a los demás participantes. Al final de la actividad le haremos unas preguntas sobre usted. La información allí recopilada también se utilizará de forma anónima, no se entregará a terceros, y sólo la utilizaremos con fines académicos. </p>
 
-<p>
-{% formfields %}
+    <p>
+    {% formfields %}
 </p>
-
 {% next_button %} 
+
 {% else %}
-<h1>Muchas gracias!</h1>
-<p>Su participación en este estudio terminó.</p>
+    <h1>Muchas gracias!</h1>
+    <p>Su participación en este estudio terminó.</p>
 {% endif %}
 {% endblock %}
