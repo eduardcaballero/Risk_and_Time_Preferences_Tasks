@@ -5,25 +5,28 @@
 {% block title %} Descripción de la tarea{% endblock %} 
 
 {% block content %}
-    <p>Usted debe que pasar una serie de números a letras.</p>
+    <p>A continuación, usted va a ver una secuencia de cinco (5) números que debe traducir a una serie de consonantes (Z, D, J, K, L).</p>
 
-    <p>Le aparecerán 5 letras (Z, D, J, K, L) y una tabla que indica qué letra representa cada número.</p>
+    <p>Sólo hay 5 letras en la traducción, y serán las mismas en todas las traducciones. 
+        La siguiente imagen muestra la ubicación de esas cinco letra. Esto lo puede ver debajo y confirmar en su teclado.</p>
+    
+        <p class="aligncenter" >
+            <img  class="imagen" src = "{% static 'torneo/Teclado.jpeg' %}"/>
+            </p>    
 
-    <p>Usted debe escribir la LETRA que corresponde a cada NÚMERO como respuesta en cada casilla. Cada vez que termine una secuencia, cambiará la LETRA que corresponde a cada NÚMERO. </p>
+    <p>Como a cada <b>NÚMERO le corresponde una LETRA</b>, debe escribir esta LETRA como respuesta en cada casilla vacía.</p>
 
-    <p> Usted dispondrá de <b>90 segundos</b> para completar correctamente todas las tareas que pueda. Cada vez que complete una tarea, haga <i>click</i> en el botón “Enviar”.</p>
+    <p>Cada vez que complete una secuencia, haga <i>click</i> en “Enviar” </p>
 
-    <p> Si no tiene errores, la tarea quedará completa y al hacer <i>click</i> en “Enviar” le aparecerá una nueva tabla, para otra tarea similar. En esta nueva tabla cambian las claves. Es decir, la letra que corresponde a cada número.</p>
+    <p> Si la traducción tiene errores, el computador le pedirá que los corrija. <b>Si no tiene errores, la tarea quedará completa.</b></p>
 
-    <p> Si hay errores, el computador le pedirá que los corrija para poder proceder.</p>
+    <p> Cada vez que complete una secuencia cambiarán la LETRA que corresponde a cada NÚMERO. Cada traducción es diferente a la anterior.</p>
 
-    <p> En la siguiente imagen se muestra en verde la ubicación de las consonantes de la tarea. Como puede confirmar, en las traducciones sólo utilizará cinco consonantes. Las letras a utilizar serán las mismas en todo el estudio.</p>
+    <p> Usted dispondrá de 90 segundos para completar todas las traducciones que pueda.</p>
 
-<p class="aligncenter" >
-<img  class="imagen" src = "{% static 'torneo/Teclado.jpeg' %}"/>
-</p>
 
-<p> Por favor oprima siguiente para comenzar. Una vez haga click empezará a correr el tiempo.</p>
+
+<p> Por favor oprima “Siguiente”  para comenzar. Una vez haga <i>click</i> empezará a correr el tiempo.</p>
 
 {% next_button %}
 

@@ -152,7 +152,7 @@ class thanks(Page):
         return {
             "round_payoff" :  Constants.round_payoff - 1,
             "payoff_total" :  self.player.pago,
-            "payoff_complete": self.player.payoff_complete
+            'payoff_complete': self.player.payoff_complete,
             # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
 

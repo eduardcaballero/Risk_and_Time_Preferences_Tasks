@@ -140,6 +140,7 @@ class Subsession(BaseSubsession):
     def set_payoff_players(self):
         for j in self.get_players():
             j.set_payoff()
+            j.set_payoff_complete()
     
     def set_contract_A_players(self):
         if (self.round_number!=1):
@@ -233,6 +234,7 @@ class Player(BasePlayer):
     position_contract_tournament = models.IntegerField() #De 1-2
     payoff_round = models.CurrencyField()
     pago = models.CurrencyField()
+    payoff_complete  = models.CurrencyField()
     mistakes = models.IntegerField(initial=0)
     tasks = models.IntegerField(initial=0)
     consent = models.BooleanField(blank=True)
@@ -354,4 +356,5 @@ class Player(BasePlayer):
 
     def set_payoff_complete(self):
         if (self.round_number==Constants.num_rounds):
-            self.payoff_complete = self.pago + 5000
+            self.payoff_complete = self.pago + 4000
+        return self.payoff_complete 
