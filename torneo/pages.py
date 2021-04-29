@@ -4,7 +4,7 @@ from .models import Constants
 
 class consent(Page):
     form_model = 'player'
-    form_fields = ['consent','consent_count']
+    form_fields = ['consent','consent_account']
 
     def is_displayed(self):
         return self.round_number == 1
@@ -19,7 +19,7 @@ class welcome(Page):
     def vars_for_template(self): 
         return {
             "consent" : self.player.consent,
-            "consent_count" : self.player.consent_count,
+            "consent_account" : self.player.consent_account
         }
 
 class instructions_practice(Page):
@@ -131,6 +131,10 @@ class wait_groups(WaitPage):
     after_all_players_arrive = 'creating_groups'
     def is_displayed(self):
         return self.round_number < Constants.num_rounds
+	
+class questions(Page):
+    form_model = 'player'
+    form_fields = ['p1', 'p2', 'p3','p4', 'p5', 'p6','p7'] 
 
 class wait_payoff_total(WaitPage):
     wait_for_all_groups = True
@@ -138,25 +142,17 @@ class wait_payoff_total(WaitPage):
         self.subsession.set_payoff_players()
     def is_displayed(self):
         return self.round_number == Constants.num_rounds 
-		
-class payoff_total(Page):
+
+class thanks(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
     def vars_for_template(self): 
         return {
             "round_payoff" :  Constants.round_payoff - 1,
-            "payoff_total" :  self.player.pago
+            "payoff_total" :  self.player.pago,
+            "payoff_complete": self.player.payoff_complete
             # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
-    
-class thanks(Page):
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
-
-class ruleta(Page):
-    timeout_seconds = 12000
-    def is_displayed(self):
-        return self.round_number == 1
 
 page_sequence = [
     consent,
@@ -171,7 +167,7 @@ page_sequence = [
     results_tournament,
     allocation,
     wait_groups,
+    questions,
     wait_payoff_total,
-	payoff_total,
     thanks,
 ]
