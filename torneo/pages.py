@@ -133,6 +133,8 @@ class wait_groups(WaitPage):
         return self.round_number < Constants.num_rounds
 	
 class questions(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
     form_model = 'player'
     form_fields = ['p1', 'p2', 'p3','p4', 'p5', 'p6','p7'] 
 

@@ -23,7 +23,7 @@ Mobility and productivity in a Dual Labor Market: a lab experiment.
 class Constants(BaseConstants):
     name_in_url = 'Torneo'
     players_per_group = 4
-    num_rounds = 2
+    num_rounds = 3
     payoff_A = c(2000)
     payoff_B = c(1000)
     round_payoff = random.randint(2, num_rounds)
