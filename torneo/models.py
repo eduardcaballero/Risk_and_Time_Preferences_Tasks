@@ -298,7 +298,54 @@ class Player(BasePlayer):
                                             [8, "8"],
                                             [9, "9"],
                                             [10, "10"]])
-
+    p_random1 = models.IntegerField(blank=9, widget=widgets.RadioSelectHorizontal, 
+                                 label="1. Usted hace 6 secuencias, y los otros participantes hace 4 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0%"],
+                                            [0, "30%"],
+                                            [1, "50%"],
+                                            [0, "60%"],
+                                            [0, "90%"],
+                                            [0, "100%"]])
+    p_random2 = models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
+                                 label="2. Usted hace 6 secuencias, y los otros participantes también hacen 6 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0"],
+                                            [0, "30%"],
+                                            [1, "50%"],
+                                            [0, "60%"],
+                                            [0, "90%"],
+                                            [0, "100%"]])
+    p_perfect1 = models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
+                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0%"],
+                                            [0, "30%"],
+                                            [0, "50%"],
+                                            [0, "60%"],
+                                            [0, "90%"],
+                                            [1, "100%"]])
+    p_perfect2 = models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
+                                 label="2. Usted hace 6 secuencias, y el otro participante también hace 6 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0%"],
+                                            [0, "30%"],
+                                            [1, "50%"],
+                                            [0, "60%"],
+                                            [0, "90%"],
+                                            [0, "100%"]])
+    p_noisy1= models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
+                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0%"],
+                                            [0, "30%"],
+                                            [0, "50%"],
+                                            [1, "60%"],
+                                            [0, "90%"],
+                                            [0, "100%"]])
+    p_noisy2= models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
+                                 label="2. Usted hace 6 secuencias, y el otro participante también hace 6 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 choices=[  [0, "0%"],
+                                            [0, "30%"],
+                                            [1, "50%"],
+                                            [0, "60%"],
+                                            [0, "90%"],
+                                            [0, "100%"]])
 
     #Esta función define el pago final
     def set_payoff(self):

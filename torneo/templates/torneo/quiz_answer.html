@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   Respuestas preguntas de control
+{% endblock %}
+
+{% block content %}
+<p>1. 
+{% if discrimination == 0 %}
+   {% if p_random1 == 1 %}
+   <b><font color="Green">Correcto</font></b>
+   {% else %}
+   <b><font color="Red">Incorrecto</font></b>
+   {% endif %}
+   <br>Si usted hace 6 secuencias, y los otros participantes hace 4 secuencias cada uno. Su probabilidad de tener el <i>Contrato A</i> la siguiente ronda es: <b>50%</b>. <br> 
+   <i>La probabilidad de cambiar de contrato es la misma para todos los participantes.</i> 
+   Es igual de probable que reciba el Contrato A o el Contrato B. 
+{% else %}
+   {% if discrimination == 1 %}
+      {% if p_perfect1 == 1 %}
+      <b><font color="Green">Correcto</font></b>
+      {% else %}
+      <b><font color="Red">Incorrecto</font></b>
+      {% endif %}
+      <br>Si usted hace 6 secuencias, y el otro participante en <i>repechaje</i> hace 4 secuencias. 
+      Su probabilidad de tener el <i>Contrato A</i> la siguiente ronda es: <b>100%</b>. <br>
+      <i>Se queda con el Contrato A el que haya completado más secuencias entre los participantes en Repechaje.</i>
+   {% else %}
+      {% if p_noisy1 == 1 %}
+      <b><font color="Green">Correcto</font></b>
+      {% else %}
+      <b><font color="Red">Incorrecto</font></b>
+      {% endif %}
+      <br>Si usted hace 6 secuencias, y el otro participante en <i>repechaje</i> hace 4 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es: <b>60%</b>. <br> 
+      Quedarse con el <i>Contrato A</i> depende de un sorteo. 
+      <i>Entre más secuencias correctas respecto a las del otro participante en el repechaje, más chances de ganar</i>. 
+   {% endif %}
+{% endif %}
+</p>
+
+<p>2.
+   {% if discrimination == 0 %}
+      {% if p_random2 == 1 %}
+      <b><font color="Green">Correcto</font></b>
+      {% else %}
+      <b><font color="Red">Incorrecto</font></b>
+      {% endif %}
+      <br>Si usted hace 6 secuencias, y los otros participantes hace 6 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es: <b>50%</b>.<br>
+      <i>La probabilidad quedarse con el Contrato A es la misma para todos los participantes (50%)</i>. 
+{% else %}
+   {% if discrimination == 1 %}
+      {% if p_perfect2 == 1 %}
+      <b><font color="Green">Correcto</font></b>
+      {% else %}
+      <b><font color="Red">Incorrecto</font></b>
+      {% endif %}
+      <br>Si usted hace 6 secuencias, y el otro participante en <i>repechaje</i> hace 6 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es: <b>50%</b>.<br>
+      <i>La probabilidad quedarse con el Contrato A es la misma para ambos los participantes (50%)</i>. 
+   {% else %}
+      {% if p_noisy2 == 1 %}
+      <b><font color="Green">Correcto</font></b>
+      {% else %}
+      <b><font color="Red">Incorrecto</font></b>
+      {% endif %}
+      <br>Si usted hace 6 secuencias, y el otro participante en <i>repechaje</i> hace 6 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es: <b>50%</b>.<br>
+      <i>La probabilidad quedarse con el Contrato A es la misma para ambos los participantes (50%)</i>. 
+   {% endif %}
+{% endif %}
+</p>
+
+{% next_button %}
+
+{% endblock %}

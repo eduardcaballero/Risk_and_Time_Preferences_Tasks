@@ -44,6 +44,30 @@ class instructions_tournament(Page):
             "discrimination" : self.session.config["discrimination"]
         }
 
+class quiz(Page):
+    def is_displayed(self):
+        return self.round_number == 2
+    form_model = 'player'
+    form_fields = ['p_random1', 'p_random2', 'p_perfect1', 'p_perfect2', 'p_noisy1', 'p_noisy2'] 
+
+    def vars_for_template(self): 
+        return {
+            "discrimination" : self.session.config["discrimination"]
+        }
+
+class quiz_answer(Page):
+    def is_displayed(self):
+        return self.round_number == 2
+    def vars_for_template(self): 
+        return {
+            "discrimination" : self.session.config["discrimination"],
+            "p_random1" : self.player.p_random1,
+            "p_random2" : self.player.p_random2,
+            "p_perfect1" : self.player.p_perfect1,
+            "p_perfect2" : self.player.p_perfect2,
+            "p_noisy1" : self.player.p_noisy1,
+            "p_noisy2" : self.player.p_noisy2,
+        }
 class task_practice(Page):
     def is_displayed(self):
         return self.round_number == 1
@@ -169,6 +193,8 @@ page_sequence = [
 	instructions_practice,
     instructions_task,
     instructions_tournament,
+    quiz,
+    quiz_answer,
 	task_practice,
     task_tournament,
     calculations,
