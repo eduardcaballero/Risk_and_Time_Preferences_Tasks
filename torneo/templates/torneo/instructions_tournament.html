@@ -18,7 +18,7 @@
         Los otros tres (3) miembros de su grupo irán cambiando ronda tras ronda, pero siempre habrá dos personas con el <i>Contrato A</i> y dos con el <i>Contrato B</i>. 
     </p> 
 
-    <p> En cada ronda tendrá 90 segundos para realizar el mayor número de secuencias que pueda. El pago por cada <i>secuencia</i> correcta dependerá del contrato al que fue asignado en la ronda anterior: </p>
+    <p> En cada ronda tendrá 90 segundos para realizar el mayor número de <i>secuencias</i> que pueda. El pago por cada <i>secuencia</i> correcta dependerá del contrato al que fue asignado en la ronda anterior: </p>
     
     <ul>
         <li> <i>Contrato A</i>: recibe $2.000 por <i>secuencia</i> correcta. </li>
@@ -27,9 +27,9 @@
 
     <h5> Ranking y probabilidad de tener un Contrato A en la siguiente ronda</h5>
     <p> 
-        Este es un torneo porque hace un ranking de los participantes con <i>Contrato A</i> y <i>Contrato B</i>
+        Este es un torneo porque hace un ranking de los participantes con <i>Contrato A</i> y <i>Contrato B</i> de su grupo 
         {% if discrimination > 0 %}
-            y define quién tendrá los contratos la próxima ronda
+            , y define quién tendrá los contratos la próxima ronda
         {% endif %}:
     </p>
 
@@ -135,7 +135,7 @@
                         Entre más secuencias correctas respecto a las del otro participante en el repechaje, más chances de ganar.
                         Si ambos hacen la misma cantidad de secuencias correctas, la probabilidad quedarse con el <i>Contrato A</i> es la misma para ambos los participantes (50%). <br>
 
-                        Así se ve la fórmula exacta: $$\text{Probabilidad Contrato A}  = {\text{Mis Tareas }  \over \text{Mis tareas }  + \text{Tareas del otro} }.$$
+                        Así se ve la fórmula exacta: $$\text{Probabilidad Contrato A}  = {\text{Sus tareas }  \over \text{Sus tareas }  + \text{Tareas del otro} }.$$
                             
                     {% endif %}
                 </p> 
