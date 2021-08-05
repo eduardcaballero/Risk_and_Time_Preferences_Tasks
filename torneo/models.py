@@ -77,11 +77,12 @@ class Subsession(BaseSubsession):
                     b2.append(i.in_round(self.round_number+1))
             i.in_round(self.round_number+1).contract_A = i.contract_A_tournament
 
-        matrix = np.c_[a1, a2, b1, b2]
+        matrix = np.c_[a1, a2, b1, b2] 
         for i in range(Constants.players_per_group):
             x = np.random.choice(num_groups, num_groups, replace=False)
             matrix[:, i] = matrix[x, i]
         self.in_round(self.round_number+1).set_group_matrix(matrix)
+#        print(matrix)
 
     def sort(self, rank):
         l = list(rank.items())
