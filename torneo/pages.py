@@ -146,6 +146,7 @@ class results_tournament(Page):
             "position_group": self.player.position_group,
             "contract_A": self.player.contract_A,
             "position_contract": self.player.position_contract,
+            "position_ranking":self.player.position_ranking,
             "likelihood_contract_A_p2": "{0:.0f}%".format(self.group.likelihood_contract_A_p2*100),
             "likelihood_contract_A_p3": "{0:.0f}%".format(100-self.group.likelihood_contract_A_p2*100),
             "likelihood_contract_A_number": self.player.likelihood_contract_A,

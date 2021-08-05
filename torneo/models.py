@@ -273,6 +273,7 @@ class Player(BasePlayer):
     likelihood_contract_A = models.FloatField()
     contract_A_tournament = models.BooleanField()
     position_group = models.IntegerField() #De 1-4
+    position_ranking= models.IntegerField()
     position_contract = models.IntegerField() #De 1-2
     position_contract_tournament = models.IntegerField() #De 1-2
     payoff_round = models.CurrencyField()
@@ -426,14 +427,16 @@ class Player(BasePlayer):
     def set_position_group(self):
         rank = json.loads(self.group.rank)
         self.position_group = list(rank.keys()).index('j' + str(self.id_in_group)) + 1
-
+    
     def set_position_contract(self):
         rankA = json.loads(self.group.rankA)
         rankB = json.loads(self.group.rankB)
         if self.contract_A:
             self.position_contract = list(rankA).index('j' + str(self.id_in_group)) + 1
+            self.position_ranking = list(rankA).index('j' + str(self.id_in_group)) + 1
         else:
             self.position_contract = list(rankB).index('j' + str(self.id_in_group)) + 1
+            self.position_ranking = list(rankB).index('j' + str(self.id_in_group)) + 3
 
     def set_contract_A_tournament(self):
             winner = self.group.set_winner_contract_A()
