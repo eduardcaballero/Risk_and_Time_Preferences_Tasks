@@ -77,12 +77,11 @@ class Subsession(BaseSubsession):
                     b2.append(i.in_round(self.round_number+1))
             i.in_round(self.round_number+1).contract_A = i.contract_A_tournament
 
-        matrix = np.c_[a1, a2, b1, b2] 
+        matrix = np.c_[a1, a2, b1, b2]
         for i in range(Constants.players_per_group):
             x = np.random.choice(num_groups, num_groups, replace=False)
             matrix[:, i] = matrix[x, i]
         self.in_round(self.round_number+1).set_group_matrix(matrix)
-#        print(matrix)
 
     def sort(self, rank):
         l = list(rank.items())
@@ -130,6 +129,7 @@ class Subsession(BaseSubsession):
         for g in self.get_groups():
             g.set_ranking()
             g.set_ranking_contract()
+            g.set_likelihood_contract_A_p2()
     
     def set_positions_players(self):
         for j in self.get_players():
@@ -158,15 +158,56 @@ class Group(BaseGroup):
     rankA = models.StringField()
     rankB = models.StringField()
     winner_contract_A = models.IntegerField(initial=0)
+    tasks_p1= models.IntegerField(initial=0)
+    tasks_p2= models.IntegerField(initial=0)
+    tasks_p3= models.IntegerField(initial=0)
+    tasks_p4= models.IntegerField(initial=0)
     tasks_tournament = models.IntegerField(initial=0)
+    likelihood_contract_A_p2= models.FloatField()
+
+    def get_tasks_p1(self):
+        rankA = json.loads(self.rankA)
+        p1 = list(rankA.values())[0] 
+        return tasks_p1
+    
+    def get_tasks_p2(self):
+        rankA = json.loads(self.rankA)
+        p1 = list(rankA.values())[1] 
+        return tasks_p2
+
+    def get_tasks_p3(self):
+        rankA = json.loads(self.rankB)
+        p1 = list(rankB.values())[0] 
+        return tasks_p3
+    
+    def get_tasks_p4(self):
+        rankA = json.loads(self.rankB)
+        p1 = list(rankB.values())[1] 
+        return tasks_p4
 
     def get_tasks_tournament(self):
         rankA = json.loads(self.rankA)
-        rankB = json.loads(self.rankB) 
+        rankB = json.loads(self.rankB)
         p2 = list(rankA.values())[1]  # tasks player in position A2 (palabras del jugador en la posicion 2 del ranking A)
         p3 = list(rankB.values())[0]  # tasks player in position B1 (palabras del jugador en la posicion 1 del ranking B)
         tasks_tournament = p2 + p3
         return tasks_tournament
+
+    def set_likelihood_contract_A_p2(self):
+        if self.subsession.discrimination == 0:#(random)
+            self.likelihood_contract_A_p2 = 0.5
+        elif self.subsession.discrimination == 1:#(perfect)
+            if (self.get_tasks_p2() > self.get_tasks_tournament()/2):
+                self.likelihood_contract_A_p2  = 1
+            elif (self.get_tasks_p2() == self.get_tasks_tournament()/2):
+                self.likelihood_contract_A_p2  = 0.5
+            else:
+                self.likelihood_contract_A_p2  = 0
+        else: #subsession.discrimination == 2 (noisy)
+            if self.get_tasks_tournament() == 0:
+                self.likelihood_contract_A_p2 = 0.5
+            else:
+                self.likelihood_contract_A_p2 = self.get_tasks_p2() / self.get_tasks_tournament()
 
     def set_winner_contract_A(self):
         rankA = json.loads(self.rankA)

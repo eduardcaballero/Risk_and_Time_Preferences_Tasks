@@ -134,14 +134,20 @@ class results_tournament(Page):
         return {
             "discrimination" : self.session.config["discrimination"],
             "num_rounds" : Constants.num_rounds,
-            "tasks_other":self.group.tasks_tournament - self.player.tasks,
             "round": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
             "round_next": self.round_number,
-            "tasks" : self.player.tasks,
+            "tasks" : self.player.tasks,          
+            "tasks_other":self.group.tasks_tournament - self.player.tasks,
+            "tasks_p1" : self.group.tasks_p1,
+            "tasks_p2" : self.group.tasks_p2,
+            "tasks_p3" : self.group.tasks_p3,
+            "tasks_p4" : self.group.tasks_p4,
             "payoff_round": "$"+format(int(str(self.player.payoff_round).split(",")[0]),',d'),
             "position_group": self.player.position_group,
             "contract_A": self.player.contract_A,
             "position_contract": self.player.position_contract,
+            "likelihood_contract_A_p2": "{0:.0f}%".format(self.group.likelihood_contract_A_p2*100),
+            "likelihood_contract_A_p3": "{0:.0f}%".format(100-self.group.likelihood_contract_A_p2*100),
             "likelihood_contract_A_number": self.player.likelihood_contract_A,
             "likelihood_contract_A": "{0:.0f}%".format(self.player.likelihood_contract_A*100),
             "likelihood_contract_A_other": "{0:.0f}%".format(100-self.player.likelihood_contract_A*100)

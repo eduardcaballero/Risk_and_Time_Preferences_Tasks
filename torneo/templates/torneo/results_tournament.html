@@ -9,7 +9,81 @@ Resultados: ronda {{round}} de {{num_rounds}}
 <p> Usted hizo {{tasks}} secuencias correctamente.<br>
     Sus ganancias en esta ronda son {{payoff_round}}.</p>
 
-{% if round < num_rounds %} <!--Ranking -->
+{% if round < num_rounds %} 
+<!--Ranking -->
+<style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    table.center {
+      margin-left: auto; 
+      margin-right: auto;
+    }
+    </style>
+
+<table class="center">
+
+    <tr>      
+      <th scope="row">Ranking</th>      
+      <th>Puesto y contrato</th>
+      <th>Secuencias correctas</th>      
+      <th>Probabilidad Contrato A - ronda {{round_next}} </th>      
+    </tr>
+  
+    <tr>
+      <th>1</th>      
+      <td>Primer puesto de los participantes con <i>Contrato A</i></td> 
+      <td>{{tasks_p1}}</td>      
+      <td>
+            {% if discrimination == 0 %}
+                50%
+            {% else %}
+                100%
+            {% endif %}  
+      </td>                
+    </tr>
+
+    <tr>      
+        <th>2</th>        
+        <td>Segundo puesto de los participantes con <i>Contrato A</i></td>
+        <td>{{tasks_p2}}</td>        
+        <td>{{likelihood_contract_A_p2}}</td>                     
+    </tr>
+    <tr>      
+        <th>3</th>
+        <td>Primer puesto de los participantes con <i>Contrato B</i></td>
+        <td>{{tasks_p3}}</td>        
+        <td>{{likelihood_contract_A_p3}}</td>                  
+    </tr>
+
+    <tr>
+        <th>4</th>        
+        <td>Segundo puesto de los participantes con <i>Contrato B</i></td>
+        <td>{{tasks_p4}}</td>        
+        <td>
+            {% if discrimination == 0 %}
+                50%
+            {% else %}
+                0%
+            {% endif %}  
+        </td>            
+    </tr>
+  
+  </table>
+
+   <br>
+
     <h5> Ranking y probabilidad de tener un Contrato A en la siguiente ronda</h5>
     <style>
         h1 {
