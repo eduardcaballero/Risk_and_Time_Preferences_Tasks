@@ -90,41 +90,43 @@ class Subsession(BaseSubsession):
         rank = dict(sorted(rank.items(), key=lambda x: x[1], reverse=True))
         return rank
 
-    """Este método retorna la posición del jugador en el ranking grupal"""
+    """Ronda 0: Este método retorna la posición del jugador en el ranking grupal"""
     def set_ranking(self):
-        players = self.get_players()
-        rank = {}
-        for k, j in enumerate(players):
-            rank['j' + str(k)] = j.tasks
-        if (self.merit and self.round_number==1) or (self.discrimination > 0 and 
-            self.round_number!=1):
-            rank = self.sort(rank)
-        else: 
-            l = list(rank.items())
-            random.shuffle(l)
-            rank = dict(l)
-        for j, i in enumerate(rank.keys()):
-            jugador = players[int(i.split('j')[1])]
-            # Half of the players are contract A (Primera mitad de los players es contrato A)
-            if j < len(players)//2:
-                jugador.contract_A_tournament = True
-                # Players in the 1st quarter are in position Contract A1 (Primeta mitad de la mitad, primer cuarto, son posicion 1 contrato A)
-                if j < len(players)//4:
-                    jugador.position_contract_tournament = 1
-                # The other 2nd quarter are in position Contract A2  (La otra mitad seria posicion 2 contrato A)
+        if (self.round_number == 1):
+            players = self.get_players()
+            rank = {}
+            for k, j in enumerate(players):
+                rank['j' + str(k)] = j.tasks
+            if (self.merit and self.round_number==1) or (self.discrimination > 0 and 
+                self.round_number!=1):
+                rank = self.sort(rank)
+            else: 
+                l = list(rank.items())
+                random.shuffle(l)
+                rank = dict(l)
+
+            for j, i in enumerate(rank.keys()):
+                jugador = players[int(i.split('j')[1])]
+                # Half of the players are contract A (Primera mitad de los players es contrato A)
+                if j < len(players)//2:
+                    jugador.contract_A_tournament = True
+                    # Players in the 1st quarter are in position Contract A1 (Primeta mitad de la mitad, primer cuarto, son posicion 1 contrato A)
+                    if j < len(players)//4:
+                        jugador.position_contract_tournament = 1
+                    # The other 2nd quarter are in position Contract A2  (La otra mitad seria posicion 2 contrato A)
+                    else:
+                        jugador.position_contract_tournament = 2
+                # Half of the players are contract A (La otra mitad son contato B)
                 else:
-                    jugador.position_contract_tournament = 2
-            # Half of the players are contract A (La otra mitad son contato B)
-            else:
-                jugador.contract_A_tournament= False
-                # Players in the 3rd quarter are in position Contract B1 (La primera mitad de la mitad de B, osea 3/4, son posicion 1)
-                if j < 3*len(players)//4:
-                    jugador.position_contract_tournament = 1
-                else:
-                    jugador.position_contract_tournament = 2
-            if(self.round_number==1):
-                jugador.contract_A = jugador.contract_A_tournament
-    
+                    jugador.contract_A_tournament= False
+                    # Players in the 3rd quarter are in position Contract B1 (La primera mitad de la mitad de B, osea 3/4, son posicion 1)
+                    if j < 3*len(players)//4:
+                        jugador.position_contract_tournament = 1
+                    else:
+                        jugador.position_contract_tournament = 2
+                if(self.round_number==1):
+                    jugador.contract_A = jugador.contract_A_tournament
+        
     def set_ranking_groups(self):
         for g in self.get_groups():
             g.set_ranking()
@@ -255,7 +257,6 @@ class Group(BaseGroup):
                         jugador.position_contract_tournament = 1
                     else:
                         jugador.position_contract_tournament = 2   
-    
 
     def set_ranking_contract(self):
         rankA = {}
