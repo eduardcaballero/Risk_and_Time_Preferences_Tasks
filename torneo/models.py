@@ -104,7 +104,6 @@ class Subsession(BaseSubsession):
                 l = list(rank.items())
                 random.shuffle(l)
                 rank = dict(l)
-
             for j, i in enumerate(rank.keys()):
                 jugador = players[int(i.split('j')[1])]
                 # Half of the players are contract A (Primera mitad de los players es contrato A)
@@ -139,6 +138,10 @@ class Subsession(BaseSubsession):
             j.set_position_group()
             j.set_position_contract()
             j.set_likelihood_contract_A()
+    
+    def set_winners_contract_A(self):
+        for g in self.get_groups():
+            g.set_winner_contract_A()
 
     def set_payoff_players(self):
         for j in self.get_players():
@@ -169,22 +172,22 @@ class Group(BaseGroup):
 
     def get_tasks_p1(self):
         rankA = json.loads(self.rankA)
-        p1 = list(rankA.values())[0] 
+        tasks_p1 = list(rankA.values())[0] 
         return tasks_p1
     
     def get_tasks_p2(self):
         rankA = json.loads(self.rankA)
-        p1 = list(rankA.values())[1] 
+        tasks_p2 = list(rankA.values())[1]
         return tasks_p2
 
     def get_tasks_p3(self):
-        rankA = json.loads(self.rankB)
-        p1 = list(rankB.values())[0] 
+        rankB = json.loads(self.rankB)
+        tasks_p3 = list(rankB.values())[0] 
         return tasks_p3
     
     def get_tasks_p4(self):
-        rankA = json.loads(self.rankB)
-        p1 = list(rankB.values())[1] 
+        rankB = json.loads(self.rankB)
+        tasks_p4 = list(rankB.values())[1] 
         return tasks_p4
 
     def get_tasks_tournament(self):
@@ -196,29 +199,31 @@ class Group(BaseGroup):
         return tasks_tournament
 
     def set_likelihood_contract_A_p2(self):
-        if self.subsession.discrimination == 0:#(random)
-            self.likelihood_contract_A_p2 = 0.5
-        elif self.subsession.discrimination == 1:#(perfect)
-            if (self.get_tasks_p2() > self.get_tasks_tournament()/2):
-                self.likelihood_contract_A_p2  = 1
-            elif (self.get_tasks_p2() == self.get_tasks_tournament()/2):
-                self.likelihood_contract_A_p2  = 0.5
-            else:
-                self.likelihood_contract_A_p2  = 0
-        else: #subsession.discrimination == 2 (noisy)
-            if self.get_tasks_tournament() == 0:
+        if (self.round_number!=1):
+            if self.subsession.discrimination == 0:#(random)
                 self.likelihood_contract_A_p2 = 0.5
-            else:
-                self.likelihood_contract_A_p2 = self.get_tasks_p2() / self.get_tasks_tournament()
+            elif self.subsession.discrimination == 1:#(perfect)
+                if (self.get_tasks_p2() > self.get_tasks_tournament()/2):
+                    self.likelihood_contract_A_p2  = 1
+                elif (self.get_tasks_p2() == self.get_tasks_tournament()/2):
+                    self.likelihood_contract_A_p2  = 0.5
+                else:
+                    self.likelihood_contract_A_p2  = 0
+            else: #subsession.discrimination == 2 (noisy)
+                if self.get_tasks_tournament() == 0:
+                    self.likelihood_contract_A_p2 = 0.5
+                else:
+                    self.likelihood_contract_A_p2 = self.get_tasks_p2() / self.get_tasks_tournament()
 
     def set_winner_contract_A(self):
-        rankA = json.loads(self.rankA)
-        rankB = json.loads(self.rankB)
-        p2 = self.get_player_by_id(int(list(rankA.keys())[1].split('j')[1]))
-        p3 = self.get_player_by_id(int(list(rankB.keys())[0].split('j')[1]))
-        p_choise = [str(list(rankA.keys())[1]).split('j')[1], str(list(rankB.keys())[0]).split('j')[1]]
-        self.winner_contract_A = int(random.choices(p_choise, weights=[p2.likelihood_contract_A, p3.likelihood_contract_A], k = 1)[0])
-        return self.winner_contract_A
+        if (self.round_number!=1):
+            rankA = json.loads(self.rankA)
+            rankB = json.loads(self.rankB)
+            p2 = self.get_player_by_id(int(list(rankA.keys())[1].split('j')[1]))
+            p3 = self.get_player_by_id(int(list(rankB.keys())[0].split('j')[1]))
+            p_choise = [str(list(rankA.keys())[1]).split('j')[1], str(list(rankB.keys())[0]).split('j')[1]]
+            self.winner_contract_A = int(random.choices(p_choise, weights=[p2.likelihood_contract_A, p3.likelihood_contract_A], k = 1)[0])
+            return self.winner_contract_A
         
     def sort(self, rank):
         l = list(rank.items())
@@ -404,26 +409,27 @@ class Player(BasePlayer):
  #           j.pago = j.pago_ronda.in_all_rounds()[ronda - 1]
         
     def set_likelihood_contract_A(self):
-        if self.subsession.discrimination == 0:
-            self.likelihood_contract_A = 0.5
-        else:     
-            if (self.contract_A == True and self.position_contract == 1):
-                    self.likelihood_contract_A = 1
-            elif (self.contract_A == False and self.position_contract == 2):
-                    self.likelihood_contract_A = 0
-            else:
-                if self.subsession.discrimination == 1:#(perfect)
-                    if (self.tasks > self.group.get_tasks_tournament()/2):
+        if (self.round_number!=1):
+            if self.subsession.discrimination == 0:
+                self.likelihood_contract_A = 0.5
+            else:     
+                if (self.contract_A == True and self.position_contract == 1):
                         self.likelihood_contract_A = 1
-                    elif (self.tasks == self.group.get_tasks_tournament()/2):
-                        self.likelihood_contract_A = 0.5
-                    else:
+                elif (self.contract_A == False and self.position_contract == 2):
                         self.likelihood_contract_A = 0
-                else: #subsession.discrimination == 2 (noisy)
-                    if self.group.get_tasks_tournament() == 0:
-                        self.likelihood_contract_A = 0.5
-                    else:
-                        self.likelihood_contract_A = self.tasks / self.group.get_tasks_tournament()
+                else:
+                    if self.subsession.discrimination == 1:#(perfect)
+                        if (self.tasks > self.group.get_tasks_tournament()/2):
+                            self.likelihood_contract_A = 1
+                        elif (self.tasks == self.group.get_tasks_tournament()/2):
+                            self.likelihood_contract_A = 0.5
+                        else:
+                            self.likelihood_contract_A = 0
+                    else: #subsession.discrimination == 2 (noisy)
+                        if self.group.get_tasks_tournament() == 0:
+                            self.likelihood_contract_A = 0.5
+                        else:
+                            self.likelihood_contract_A = self.tasks / self.group.get_tasks_tournament()
 
     def set_position_group(self):
         rank = json.loads(self.group.rank)
@@ -440,7 +446,7 @@ class Player(BasePlayer):
             self.position_ranking = list(rankB).index('j' + str(self.id_in_group)) + 3
 
     def set_contract_A_tournament(self):
-            winner = self.group.set_winner_contract_A()
+            winner = self.group.winner_contract_A
             if (self.contract_A == True and self.position_contract == 1) or (self.contract_A == False and self.position_contract == 2):
                 self.contract_A_tournament = self.contract_A
                 if self.position_contract == 1:

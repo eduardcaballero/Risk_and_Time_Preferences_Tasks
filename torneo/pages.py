@@ -109,14 +109,18 @@ class task_tournament(Page):
                 "contract_A": self.player.contract_A,
                 }
 
-class calculations(WaitPage):
+class calculations1(WaitPage):
     wait_for_all_groups = True
     def after_all_players_arrive(self):
         self.subsession.set_ranking()
         self.subsession.set_ranking_groups()
         self.subsession.set_positions_players()
-        self.subsession.set_contract_A_players()
-        
+
+class calculations2(WaitPage):
+    wait_for_all_groups = True
+    def after_all_players_arrive(self):
+        self.subsession.set_winners_contract_A()
+        self.subsession.set_contract_A_players()        
                 
 class results_practice(Page):
     def is_displayed(self):
@@ -204,7 +208,8 @@ page_sequence = [
     quiz_answer,
 	task_practice,
     task_tournament,
-    calculations,
+    calculations1,
+    calculations2,
     results_practice,
     results_tournament,
     allocation,
