@@ -137,7 +137,7 @@ class results_tournament(Page):
     def vars_for_template(self):
         return {
             "discrimination" : self.session.config["discrimination"],
-            "num_rounds" : Constants.num_rounds,
+            "num_rounds" : Constants.num_rounds -1,
             "round": self.round_number - 1, #Restar 1 al número de rondas. Ronda 0 = Práctica
             "round_next": self.round_number,
             "tasks" : self.player.tasks,          
@@ -155,7 +155,8 @@ class results_tournament(Page):
             "likelihood_contract_A_p3": "{0:.0f}%".format(100-self.group.likelihood_contract_A_p2*100),
             "likelihood_contract_A_number": self.player.likelihood_contract_A,
             "likelihood_contract_A": "{0:.0f}%".format(self.player.likelihood_contract_A*100),
-            "likelihood_contract_A_other": "{0:.0f}%".format(100-self.player.likelihood_contract_A*100)
+            "likelihood_contract_A_other": "{0:.0f}%".format(100-self.player.likelihood_contract_A*100),
+            "contract_A_tournament" : self.player.contract_A_tournament
         }
 
 class allocation(Page):
