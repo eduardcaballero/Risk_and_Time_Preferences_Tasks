@@ -39,14 +39,13 @@ Resultados: ronda {{round}} de {{num_rounds}}
         {% endif %}
         <br>
         <!--Repechaje -->
-        {% if discrimination != 0 %}
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
         En el <i>repechaje</i> usted podrá cambiar de contrato con el participante en el ranking <b>
             {% if contract_A == 1 and position_contract == 2%}
-            3 </b> (Contrato B).
-        {% else %}
-        2 </b> (Contrato A).
-        {% endif %}
+                3 </b> (Contrato B).
+            {% else %}
+                2 </b> (Contrato A).
+            {% endif %}
         {% endif %}
 </p>
 <!--Ranking -->
@@ -197,31 +196,20 @@ Resultados: ronda {{round}} de {{num_rounds}}
     selectedRow();
 </script>
 <br>
-
-<!-- {% if discrimination != 0 %} -->
-<!-- {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %} -->
-
-<!-- {% else %}
-<div style="position:relative;">
-    <button type="button" id="btn-load2" class="btn-load">
-    </button>
-    <p id="text2" class="text">Resultado <br /> repechaje</p>
-</div> -->
-
-<!-- {% endif %}
-{% endif %} -->
+    {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
+        <p>Haga clic en el circulo amarillo para ver la <i>asignación de contrato</i> resultante del repechaje.</p>
+    {% else %}
+        <p>Haga clic en el circulo amarillo para ver la <i>asignación de contrato</i> .</p>
+    {% endif %}
 
 
-{% endif %}
 <!--Fin Repechaje -->
-<h5> Repechaje </h5>
-<p>Haga clic en el circulo amarillo para el resultado del repechaje.</p>
 <div class="container-chart">
     <div id="chart" class="chart-canva d-none" style="height:400px; width:40%"><canvas id="myChart"></canvas></div>
     <div style="position:relative;">
         <button type="button" id="btn-load" class="btn-load">
         </button>
-        <p id="text" class="text">Resultado <br /> repechaje</p>
+        <p id="text" class="text">Asignación <br /> contrato</p>
     </div>
 </div>
 {% endif %}
@@ -233,8 +221,6 @@ Resultados: ronda {{round}} de {{num_rounds}}
 <script>
     var contract_A = '{{contract_A}}'
     var position_contract = '{{position_contract}}'
-    console.log("CONTRATO A", contract_A)
-    console.log("POS", position_contract)
     if (contract_A == 'True' && position_contract == 2 || contract_A == 'False' && position_contract == 1) {
         console.log("Mostrar grafica")
         document.getElementById("chart").classList.remove("d-none")
@@ -294,9 +280,8 @@ Resultados: ronda {{round}} de {{num_rounds}}
 
     function addLoad() {
         document.getElementById("btn-load").classList.add("active")
-        if (contractA) {
+        if (contractA == 'True') {
             document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato A</b>"
-
         } else {
             document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato B</b>"
 
