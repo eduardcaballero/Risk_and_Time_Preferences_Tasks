@@ -173,12 +173,6 @@ class wait_groups(WaitPage):
     after_all_players_arrive = 'creating_groups'
     def is_displayed(self):
         return self.round_number < Constants.num_rounds
-	
-class questions(Page):
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
-    form_model = 'player'
-    form_fields = ['p_risk','p1', 'p2', 'p3','p4', 'p5', 'p6','p7'] 
 
 class wait_payoff_total(WaitPage):
     wait_for_all_groups = True
@@ -186,18 +180,6 @@ class wait_payoff_total(WaitPage):
         self.subsession.set_payoff_players()
     def is_displayed(self):
         return self.round_number == Constants.num_rounds 
-
-class thanks(Page):
-    def is_displayed(self):
-        return self.round_number == Constants.num_rounds
-    def vars_for_template(self): 
-        return {
-            'identificador': self.player.in_round(1).identificador,
-            "round_payoff" :  Constants.round_payoff - 1,
-            "payoff_total" :  self.player.pago,
-            'payoff_complete': self.player.payoff_complete,
-            # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
-        }
 
 page_sequence = [
     consent,
@@ -215,7 +197,5 @@ page_sequence = [
     results_tournament,
     allocation,
     wait_groups,
-    questions,
     wait_payoff_total,
-    thanks,
 ]

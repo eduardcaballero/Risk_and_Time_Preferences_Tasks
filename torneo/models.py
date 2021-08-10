@@ -290,63 +290,6 @@ class Player(BasePlayer):
     consent = models.BooleanField(blank=True)
     consent_account = models.BooleanField(blank=True)
     identificador = models.StringField(label='Para iniciar por favor ingrese las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, debe ingresar LR11021995. Escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
-    
-    p1 = models.IntegerField(
-    choices=[
-        [1, 'Hombre'],
-        [2, 'Mujer'],
-        [3, 'Otro'],
-    ], label="¿Con qué género se identifica?")
-    p2 = models.IntegerField(label="Edad")
-    p3 = models.IntegerField(
-    choices=[
-        [1,'Estudiante'],
-        [2,'Desempleado'],
-        [3,'Empleado a jornada completa'],
-        [4,'Empleado a tiempo parcial'],
-        [5,'Trabajador independiente'],
-        [6,'Trabajador no remunerado (por ejemplo: ama de casa, empresa familiar)'],
-        [7,'Retirado/pensionado'],
-        [8,'Otro'],
-        [9,'No sabe']
-    ], label="¿Cuál es su situación laboral actual?")
-    p4 = models.IntegerField(
-    choices=[
-        [1,'Ninguno'],
-        [2,'Primaria incompleta'],
-        [3,'Primaria'],
-        [4,'Bachillerato'],
-        [5,'Técnico o Tecnólogo'],
-        [6,'Pregrado'],
-        [7,'Posgrado (Especialización, Maestría, Doctorado)']
-    ], label="¿Cuál es el nivel educativo más alto que ha completado?")
-    p5 = models.StringField(label="Escriba el nombre de su profesión/ocupación")
-    p6 = models.IntegerField(
-    choices=[
-        [1,'Subsidiado'],
-        [2,'Contributivo (incluye regímenes especiales)']
-    ], label="A qué régimen de seguridad social en salud pertenece")
-    p7 = models.IntegerField(
-    choices=[
-        [1,'Menos del Salario Mínimo Mensual (SMMLV)'],
-        [2,'Entre 1 SMMLV - $ 1.500.000'],
-        [3,'Entre $ 1.500.000 - $ 2.000.000'],
-        [4,'Entre $ 2.000.000 - $ 4.000.000'],
-        [5,'Mayor a $ 4.000.000'],
-    ], label="¿Cuál es el rango de su ingreso mensual?")
-    p_risk = models.IntegerField(widget=widgets.RadioSelectHorizontal, 
-                                 label="", 
-                                 choices=[  [0, "0"],
-                                            [1, "1"],
-                                            [2, "2"],
-                                            [3, "3"],
-                                            [4, "4"],
-                                            [5, "5"],
-                                            [6, "6"],
-                                            [7, "7"],
-                                            [8, "8"],
-                                            [9, "9"],
-                                            [10, "10"]])
     p_random1 = models.IntegerField(blank=9, widget=widgets.RadioSelectHorizontal, 
                                  label="1. Usted hace 6 secuencias, y los otros participantes hace 4 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
                                  choices=[  [0, "0%"],
@@ -404,6 +347,8 @@ class Player(BasePlayer):
             for j in self.in_all_rounds():
                 payoff_rounds.append(j.payoff_round)
             self.pago= payoff_rounds[ronda- 1]
+            self.participant.vars['payoff_total'] = self.pago
+            self.participant.vars['round_payoff'] = self.subsession.round_payoff
         else:
             self.pago= 0
  #           j.pago = j.pago_ronda.in_all_rounds()[ronda - 1]
@@ -471,4 +416,5 @@ class Player(BasePlayer):
     def set_payoff_complete(self):
         if (self.round_number==Constants.num_rounds):
             self.payoff_complete = self.pago + 4000
+            self.participant.vars['payoff_complete'] = self.payoff_complete
         return self.payoff_complete 
