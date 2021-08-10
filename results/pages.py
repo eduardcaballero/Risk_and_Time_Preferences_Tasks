@@ -13,7 +13,7 @@ class thanks(Page):
     def vars_for_template(self): 
         return {
             "identificador" : self.participant.vars['identificador'],
-            "round_payoff_total" : self.participant.vars['payoff_total'],
+            "payoff_total" : self.participant.vars['payoff_total'],
             "payoff_complete" : self.participant.vars['payoff_complete'],
             "round_payoff" : self.participant.vars['round_payoff']
             # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
