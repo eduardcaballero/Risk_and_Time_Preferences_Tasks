@@ -70,7 +70,7 @@ SESSION_CONFIGS = [
         'name': 'torneo',
         'display_name': 'Juego de encriptacion',
         'num_demo_participants': 4,
-        'app_sequence': ['torneo','icl'],
+        'app_sequence': ['torneo','icl','results'],
         'discrimination': 0,
         'merit': False,
     },

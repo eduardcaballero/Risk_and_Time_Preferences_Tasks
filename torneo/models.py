@@ -145,7 +145,8 @@ class Subsession(BaseSubsession):
 
     def set_payoff_players(self):
         for j in self.get_players():
-            j.set_payoff()
+            j.set_payoff()          
+            j.set_identificador()
             j.set_payoff_complete()
     
     def set_contract_A_players(self):
@@ -417,4 +418,8 @@ class Player(BasePlayer):
         if (self.round_number==Constants.num_rounds):
             self.payoff_complete = self.pago + 4000
             self.participant.vars['payoff_complete'] = self.payoff_complete
-        return self.payoff_complete 
+        return self.payoff_complete
+
+    def set_identificador(self):
+        if (self.round_number==1):
+            self.participant.vars['identificador'] == self.identificador
