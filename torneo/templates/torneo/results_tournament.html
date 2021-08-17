@@ -54,26 +54,22 @@ Resultados: ronda {{round}} de {{num_rounds}}
         width: 150px;
         height: 150px;
         padding: 10px 16px;
-        border-radius: 50%;
+        border-radius: 100%;
         font-size: 17px;
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: #fcffcc;
         outline: none !important;
-        border: none;
         margin-left: 100px;
-        /* animation: loading; */
-
-
+        /* animation: loading*/
     }
 
     .active {
         border-color: #000;
-
-        border: 10px solid #fcffcc;
+        border: 10px solid rgba(240, 255, 0, 0.2);
         border-top: 10px solid #ffc107;
-        animation: spin 5s linear;
+        animation: spin 1s linear;
     }
 
     .text {
@@ -197,9 +193,9 @@ Resultados: ronda {{round}} de {{num_rounds}}
 </script>
 <br>
     {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-        <p>Haga clic en el circulo amarillo para ver la <i>asignación de contrato</i> resultante del repechaje.</p>
+        <p>Haga clic en el circulo para ver la <i>asignación de contrato</i> resultante del repechaje.</p>
     {% else %}
-        <p>Haga clic en el circulo amarillo para ver la <i>asignación de contrato</i> .</p>
+        <p>Haga clic en el circulo para ver la <i>asignación de contrato</i> .</p>
     {% endif %}
 
 

@@ -200,6 +200,7 @@ class Group(BaseGroup):
         p2 = list(rankA.values())[1]  # tasks player in position A2 (palabras del jugador en la posicion 2 del ranking A)
         p3 = list(rankB.values())[0]  # tasks player in position B1 (palabras del jugador en la posicion 1 del ranking B)
         tasks_tournament = p2 + p3
+        self.tasks_tournament = tasks_tournament
         return tasks_tournament
 
     def set_likelihood_contract_A_p2(self):
