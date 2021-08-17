@@ -37,14 +37,10 @@
         <!-- Table - Decision -->
         <!-- ------------------------------------------------------------------------------------------------------- -->
         <div class="card">
-            <div class="card-header">
-                {% blocktrans trimmed %}
-                    Su elección:
-                {% endblocktrans %}
-            </div>
+
             <table class="table">
                 <tr>
-                    <th>{% trans "Opción A:" %}</th>
+
                     <td>
                         {% with hi=hi lo=lo p_hi=p_hi p_lo=p_lo %}
                             {% blocktrans trimmed %}
@@ -74,9 +70,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
-                        {% trans "Opción B:" %}
-                    </th>
                     <td>
                         {% with sure_payoff=sure_payoff %}
                             {% blocktrans trimmed %}
@@ -153,7 +146,7 @@
                 <br/>
             {% else %}
                 {% blocktrans trimmed with option_to_pay=option_to_pay %}
-                    Como se indicó anteriormente, se decidió por la "Opción {{option_to_pay}}" en esta opción.
+                    En esta decisión usted prefirio la "Opción {{option_to_pay}}".
                 {% endblocktrans %}
                 <br/>
             {% endif %}
@@ -161,32 +154,30 @@
             {% if payoff_relevant == "A" %}
                 <br/>
                 {% blocktrans trimmed %}
-                    Para la "Opción A", uno de los dos posibles resultados ha sido
-                     realizado aleatoriamente con base en las probabilidades correspondientes.
+                    Para la "Opción A" se realizó la loteria.
                 {% endblocktrans %}
             {% endif %}
 
-            <br/>
+
             {% blocktrans trimmed with payoff=payoff %}
-                Su recompensa en esta tarea es igual a {{ payoff }}.
+                Su recompensa en esta decisión es igual a {{ payoff }}.
             {% endblocktrans %}
-            {% if player.id_in_subsession == Constants.ganador %}
- </div>
-            <br/>
 
-            <div class="card info">
-Usted fue seleccionado para recibir el pago por esta parte del experimento.
+   </div>
+        <br/>
 
-{% else %}
+         <div class="card info">
 
-Usted NO fue seleccionado para recibir el pago por esta parte del experimento.
+        {% if player.id_in_subsession == Constants.ganador %}
 
-{% endif %}
-</div>
+Usted fue seleccionado para recibir el pago por esta parte de la actividad.
 
+             {% else %}
 
+Usted NO fue seleccionado para recibir el pago por esta parte de la actividad.
 
-    </div>
+             {% endif %}
+        </div>
 
 
     {% next_button %}

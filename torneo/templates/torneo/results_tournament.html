@@ -217,12 +217,13 @@ Resultados: ronda {{round}} de {{num_rounds}}
 <script>
     var contract_A = '{{contract_A}}'
     var position_contract = '{{position_contract}}'
-    if (contract_A == 'True' && position_contract == 2 || contract_A == 'False' && position_contract == 1) {
+    var round = '{{round}}'
+    var num_rounds = '{{num_rounds}}'
+    if (contract_A == 'True' && position_contract == 2 || contract_A == 'False' && position_contract == 1 || round == num_rounds) {
         console.log("Mostrar grafica")
         document.getElementById("chart").classList.remove("d-none")
     } else {
         console.log(" NO Mostrar grafica")
-
     }
     var but = document.getElementsByClassName("otree-btn-next")
     but[0].style.visibility = "hidden";

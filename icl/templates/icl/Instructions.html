@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Instrucciones" %}
+    {% trans "Parte final - Instrucciones" %}
 {% endblock %}
 
 
@@ -32,7 +32,7 @@
                  y una posibilidad del {{p_lo}} de recibir {{lo}}.
             {% endblocktrans %}
             {% blocktrans trimmed with n=Constants.num_choices %}
-                Le presentaremos {{n}} diferentes opciones.
+                Le presentaremos {{n}} opciones diferentes.
                  Si bien la lotería es la misma en todas las opciones,
                  el pago seguro diferirá en cada elección.
             {% endblocktrans %}
@@ -40,7 +40,10 @@
         <p>
             {% blocktrans trimmed with n=Constants.num_choices %}
 Después de completar todas las {{n}} opciones, una de las opciones se elegirá al azar para determinar su
-                 pago. Si elige la lotería, un sorteo aleatorio determinará si el resultado alto o bajo constituira su recompensa; de lo contrario, el pago seguro constituirá su recompensa. Esta actividad solo le será pagada a una de cada 20 personas.  Además, tenga en cuenta que cada punto ganado en esta parte del estudio será pagado a 100 pesos. Por ejemplo, si usted gana 300 puntos, sus ganancias en COP serian 30 mil pesos.
+                 pago. Si elige la lotería, un sorteo aleatorio determinará su ganancia; de lo contrario, el pago seguro será su ganancia.
+        </p>
+        <p>
+            Esta actividad solo le será pagada a una de cada 10 personas.
             {% endblocktrans %}
         </p>
     </div>
