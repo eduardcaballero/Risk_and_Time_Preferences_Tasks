@@ -27,23 +27,22 @@
     <div class="wrapper instructions">
         <p>
             {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-                A continuación, puede elegir entre un pago seguro y una lotería.
+                A continuación, puede elegir entre un <i>pago seguro</i> y una <i>lotería</i>.<br>
                  La lotería le da una oportunidad del {{p_hi}} de recibir {{hi}}
-                 y una posibilidad del {{p_lo}} de recibir {{lo}}.
+                 y una posibilidad del {{p_lo}} de recibir {{lo}}.<br>
             {% endblocktrans %}
             {% blocktrans trimmed with n=Constants.num_choices %}
-                Le presentaremos {{n}} opciones diferentes.
-                 Si bien la lotería es la misma en todas las opciones,
-                 el pago seguro diferirá en cada elección.
+                Le vamos a presentar {{n}} preguntas diferentes. La <i>lotería</i> es la misma en todas las preguntas,
+                pero el <i>pago seguro</i> diferirá en cada pregunta.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed with n=Constants.num_choices %}
-Después de completar todas las {{n}} opciones, una de las opciones se elegirá al azar para determinar su
-                 pago. Si elige la lotería, un sorteo aleatorio determinará su ganancia; de lo contrario, el pago seguro será su ganancia.
+                Después de completar todas las {{n}} preguntas, 1 de las 5 preguntas se elegirá al azar para determinar su
+                pago. Si elige la <i>lotería</i>, el computador mediante un sorteo aleatorio determinará su ganancia; de lo contrario, el <i>pago seguro</i> será su ganancia.
         </p>
         <p>
-            Esta actividad solo le será pagada a una de cada 10 personas.
+            Esta actividad solo le será pagada a 1 de cada 10 personas. Informaremos por correo electrónico los últimos 4 dígitos de la cédula de las personas seleccionadas. Si usted es elegido las ganancias de esta parte se sumarán a las ganancias del <i>Torneo</i>.
             {% endblocktrans %}
         </p>
     </div>
