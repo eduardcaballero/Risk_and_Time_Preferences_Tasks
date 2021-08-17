@@ -8,10 +8,10 @@ from .models import Constants
 # --------------------------------------------------------------------------------------------------------------------
 def vars_for_all_templates(self):
     return {
-        'p_hi': "{0:.1f}".format(Constants.probability) + "%",
-        'p_lo': "{0:.1f}".format(100 - Constants.probability) + "%",
-        'hi':   c(Constants.lottery_hi*100),
-        'lo':   c(Constants.lottery_lo*100)
+        'p_hi': "{0:.0f}".format(Constants.probability) + "%",
+        'p_lo': "{0:.0f}".format(100 - Constants.probability) + "%",
+        'hi':"$"+format(int(str(Constants.lottery_hi*100).split(",")[0]), ',d'),
+        'lo': "$"+format(int(str(Constants.lottery_lo*100).split(",")[0]), ',d')
     }
 
 
