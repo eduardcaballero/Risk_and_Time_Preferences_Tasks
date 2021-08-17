@@ -118,7 +118,8 @@ class calculations1(WaitPage):
 
 class calculations2(WaitPage):
     wait_for_all_groups = True
-    def after_all_players_arrive(self):
+    def after_all_players_arrive(self):        
+        self.subsession.set_tasks()
         self.subsession.set_winners_contract_A()
         self.subsession.set_contract_A_players()        
                 

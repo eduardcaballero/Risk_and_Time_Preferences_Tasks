@@ -142,6 +142,14 @@ class Subsession(BaseSubsession):
     def set_winners_contract_A(self):
         for g in self.get_groups():
             g.set_winner_contract_A()
+    
+    def set_tasks(self):
+        if (self.round_number!=1):
+            for g in self.get_groups():
+                g.set_tasks_p1()
+                g.set_tasks_p2()
+                g.set_tasks_p3()
+                g.set_tasks_p4()
 
     def set_payoff_players(self):
         for j in self.get_players():
@@ -170,25 +178,21 @@ class Group(BaseGroup):
     tasks_tournament = models.IntegerField(initial=0)
     likelihood_contract_A_p2= models.FloatField()
 
-    def get_tasks_p1(self):
+    def set_tasks_p1(self):
         rankA = json.loads(self.rankA)
-        tasks_p1 = list(rankA.values())[0] 
-        return tasks_p1
+        self.tasks_p1 = list(rankA.values())[0] 
     
-    def get_tasks_p2(self):
+    def set_tasks_p2(self):
         rankA = json.loads(self.rankA)
-        tasks_p2 = list(rankA.values())[1]
-        return tasks_p2
+        self.tasks_p2 = list(rankA.values())[1]
 
-    def get_tasks_p3(self):
+    def set_tasks_p3(self):
         rankB = json.loads(self.rankB)
-        tasks_p3 = list(rankB.values())[0] 
-        return tasks_p3
+        self.tasks_p3 = list(rankB.values())[0]
     
-    def get_tasks_p4(self):
+    def set_tasks_p4(self):
         rankB = json.loads(self.rankB)
-        tasks_p4 = list(rankB.values())[1] 
-        return tasks_p4
+        self.tasks_p4 = list(rankB.values())[1]
 
     def get_tasks_tournament(self):
         rankA = json.loads(self.rankA)
@@ -203,9 +207,9 @@ class Group(BaseGroup):
             if self.subsession.discrimination == 0:#(random)
                 self.likelihood_contract_A_p2 = 0.5
             elif self.subsession.discrimination == 1:#(perfect)
-                if (self.get_tasks_p2() > self.get_tasks_tournament()/2):
+                if (self.tasks_p2 > self.get_tasks_tournament()/2):
                     self.likelihood_contract_A_p2  = 1
-                elif (self.get_tasks_p2() == self.get_tasks_tournament()/2):
+                elif (self.tasks_p2 == self.get_tasks_tournament()/2):
                     self.likelihood_contract_A_p2  = 0.5
                 else:
                     self.likelihood_contract_A_p2  = 0
@@ -213,7 +217,7 @@ class Group(BaseGroup):
                 if self.get_tasks_tournament() == 0:
                     self.likelihood_contract_A_p2 = 0.5
                 else:
-                    self.likelihood_contract_A_p2 = self.get_tasks_p2() / self.get_tasks_tournament()
+                    self.likelihood_contract_A_p2 = self.tasks_p2 / self.get_tasks_tournament()
 
     def set_winner_contract_A(self):
         if (self.round_number!=1):
