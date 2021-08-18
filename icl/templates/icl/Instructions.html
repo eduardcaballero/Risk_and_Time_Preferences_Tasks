@@ -27,22 +27,23 @@
     <div class="wrapper instructions">
         <p>
             {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-                A continuación, puede elegir entre un <i>pago seguro</i> y una <i>lotería</i>.<br>
+                A continuación, puede elegir entre un pago seguro y una lotería.
                  La lotería le da una oportunidad del {{p_hi}} de recibir {{hi}}
-                 y una posibilidad del {{p_lo}} de recibir {{lo}}.<br>
+                 y una posibilidad del {{p_lo}} de recibir {{lo}}.
             {% endblocktrans %}
             {% blocktrans trimmed with n=Constants.num_choices %}
-                Le vamos a presentar {{n}} preguntas diferentes. La <i>lotería</i> es la misma en todas las preguntas,
-                pero el <i>pago seguro</i> diferirá en cada pregunta.
+                Le presentaremos {{n}} diferentes opciones.
+                 Si bien la lotería es la misma en todas las opciones,
+                 el pago seguro diferirá en cada elección.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed with n=Constants.num_choices %}
-                Después de completar todas las {{n}} preguntas, 1 de las 5 preguntas se elegirá al azar para determinar su
-                pago. Si elige la <i>lotería</i>, el computador mediante un sorteo aleatorio determinará su ganancia; de lo contrario, el <i>pago seguro</i> será su ganancia.
+Después de completar todas las {{n}} opciones, una de las opciones se elegirá al azar para determinar su
+                 pago. Si elige la lotería, un sorteo aleatorio determinará si el resultado alto o bajo constituira su recompensa; de lo contrario, el pago seguro constituirá su recompensa.
         </p>
         <p>
-            Esta actividad solo le será pagada a 1 de cada 10 personas. Informaremos por correo electrónico los últimos 4 dígitos de la cédula de las personas seleccionadas. Si usted es elegido las ganancias de esta parte se sumarán a las ganancias del <i>Torneo</i>.
+            Esta actividad solo le será pagada a una de cada 10 personas.
             {% endblocktrans %}
         </p>
     </div>
