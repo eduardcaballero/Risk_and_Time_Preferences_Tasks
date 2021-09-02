@@ -27,12 +27,6 @@ SESSION_CONFIGS = [
         'app_sequence': ['bret']
     },
     {
-        'name': 'eet',
-        'display_name': "eet",
-        'num_demo_participants': 2,
-        'app_sequence': ['eet']
-    },
-    {
         'name': 'sgg',
         'display_name': "SGG",
         'num_demo_participants': 50,
