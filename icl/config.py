@@ -83,4 +83,5 @@ class Constants(BaseConstants):
     name_in_url = 'icl'
     players_per_group = None
     num_rounds = num_choices
-    ganador = random.randint(1, 2)
+    ganador1 = random.randint(1, 10)
+    ganador2 = random.randint(11, 20)

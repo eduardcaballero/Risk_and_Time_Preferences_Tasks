@@ -14,7 +14,7 @@ class thanks(Page):
         return {
             "identificador" : self.participant.vars['identificador'],
             "payoff_total" : self.participant.vars['payoff_total'],
-            "payoff_complete" : self.participant.vars['payoff_complete'],
+            "payoff_complete" : self.participant.vars['payoff_complete']+(self.player.participant.vars["icl_pago"]*100),
             "round_payoff" : self.participant.vars['round_payoff']
             # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
