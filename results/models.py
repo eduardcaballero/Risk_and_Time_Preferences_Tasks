@@ -37,7 +37,7 @@ class Player(BasePlayer):
         [1, 'Hombre'],
         [2, 'Mujer'],
         [3, 'Otro'],
-    ], label="¿Con qué género se identifica?")
+    ], label="¿Cuál es su sexo?")
     p_age = models.IntegerField(label="Edad")
     p_student = models.IntegerField(
     choices=[
