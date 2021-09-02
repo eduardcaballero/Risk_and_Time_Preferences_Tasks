@@ -55,10 +55,11 @@
                     <th>{% trans "Opción A:" %}</th>
                     <td>
                         {% with hi=hi lo=lo p_hi=p_hi p_lo=p_lo %}
-                            {% blocktrans trimmed %}
-                                una probabilidad del {{ p_hi }} de ganar {{ hi }} y <br/>
-                                una probabilidad del  {{ p_lo }} de ganar {{ lo }}
-                            {% endblocktrans %}
+                        {% blocktrans trimmed %}
+                            ganar {{ hi }} si cae cara y <br>
+                            ganar {{ lo }} si cae sello
+                        {% endblocktrans %}
+
                         {% endwith %}
                     </td>
                     <td>

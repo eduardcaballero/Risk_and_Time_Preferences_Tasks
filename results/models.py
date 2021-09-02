@@ -32,16 +32,21 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    p1 = models.IntegerField(
+    p_gender = models.IntegerField(
     choices=[
         [1, 'Hombre'],
         [2, 'Mujer'],
         [3, 'Otro'],
     ], label="¿Con qué género se identifica?")
-    p2 = models.IntegerField(label="Edad")
-    p3 = models.IntegerField(
+    p_age = models.IntegerField(label="Edad")
+    p_student = models.IntegerField(
     choices=[
-        [1,'Estudiante'],
+        [1, 'Sí'],
+        [2, 'No'],
+    ], label="¿Es usted estudiante?")
+    p = models.IntegerField(
+    choices=[
+        [1,'Solo estudio'],
         [2,'Desempleado'],
         [3,'Empleado a jornada completa'],
         [4,'Empleado a tiempo parcial'],
@@ -54,20 +59,20 @@ class Player(BasePlayer):
     p4 = models.IntegerField(
     choices=[
         [1,'Ninguno'],
-        [2,'Primaria incompleta'],
-        [3,'Primaria'],
-        [4,'Bachillerato'],
-        [5,'Técnico o Tecnólogo'],
-        [6,'Pregrado'],
-        [7,'Posgrado (Especialización, Maestría, Doctorado)']
-    ], label="¿Cuál es el nivel educativo más alto que ha completado?")
-    p5 = models.StringField(label="Escriba el nombre de su profesión/ocupación")
-    p6 = models.IntegerField(
+        [2,'Primaria'],
+        [3,'Bachillerato'],
+        [4,'Técnico o Tecnólogo'],
+        [5,'Pregrado'],
+        [6,'Posgrado (Especialización, Maestría, Doctorado)']
+    ], label="5. ¿Cuál es el nivel educativo más alto que cursó?")
+    peduc1 = models.IntegerField(label="¿Cuántos años de educación completó en ese nivel?")
+    peduc2 = models.StringField(label="Escriba el nombre de su profesión/ocupación")
+    p7 = models.IntegerField(
     choices=[
         [1,'Subsidiado'],
         [2,'Contributivo (incluye regímenes especiales)']
-    ], label="A qué régimen de seguridad social en salud pertenece")
-    p7 = models.IntegerField(
+    ], label="¿A qué régimen de seguridad social en salud pertenece?")
+    p8 = models.IntegerField(
     choices=[
         [1,'Menos del Salario Mínimo Mensual (SMMLV)'],
         [2,'Entre 1 SMMLV - $ 1.500.000'],
@@ -89,10 +94,13 @@ class Player(BasePlayer):
                                             [9, "9"],
                                             [10, "10"]])
 
-    
-    
-    p11 = models.StringField(label="¿Qué entiende usted como probabilidad?")
-    p12 = models.StringField(label="¿Hubo algo que no entendiera en alguna de las actividades? Si es así, ¿qué no entendió? (Recuerde que son 4 actividades)")
-    p13 = models.StringField(label="¿Hubo algo que le pareciera confuso en alguna de las actividades? Si es así, ¿qué le pareció confuso?")
-    p14 = models.StringField(label="¿Hubo algo que le pareciera difícil en alguna de las actividades? Si es así, ¿qué se le dificultó?")
-    
+    p8 = models.IntegerField(
+    choices=[
+        [1,'Portátil'],
+        [2,'Equipo de escritorio']
+    ], label="¿Qué tipo de computador usó durante la actividad?")
+    p9 = models.IntegerField(
+    choices=[
+        [1,'Sí (no incluye el mouse incorporado en el computador portátil).'],
+        [2,'No']
+    ], label="¿Durante la actividad usted utilizó un “mouse/ratón” no incorporado al equipo?") 

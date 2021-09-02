@@ -154,7 +154,7 @@
             {% if payoff_relevant == "A" %}
                 <br/>
                 {% blocktrans trimmed %}
-                    Para la "Opción A" se realizó la loteria.
+                    Para la "Opción A" se realizó el lanzamiento de moneda.
                 {% endblocktrans %}
             {% endif %}
 
@@ -163,8 +163,19 @@
                 Su recompensa en esta decisión es igual a {{ payoff }}.
             {% endblocktrans %}
 
-   </div>
+        </div>
         <br/>
+
+         <div class="card info">
+
+        {% if player.id_in_subsession == Constants.ganador1 or player.id_in_subsession == Constants.ganador2 %}
+            Usted fue seleccionado para recibir el pago por esta parte de la actividad.
+        {% else %}
+            Usted NO fue seleccionado para recibir el pago por esta parte de la actividad.
+        {% endif %}
+        </div>
+
+
     {% next_button %}
 
 {% endblock %}

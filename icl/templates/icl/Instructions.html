@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Parte final - Instrucciones" %}
+    {% trans "Parte final" %}
 {% endblock %}
 
 
@@ -27,19 +27,19 @@
 <div class="wrapper instructions">
     <p>
         {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-            A continuación, puede elegir entre un <i>pago seguro</i> y una <i>lotería</i>.<br>
-             La lotería le da una oportunidad del {{p_hi}} de recibir {{hi}}
-             y una posibilidad del {{p_lo}} de recibir {{lo}}.<br>
+            A continuación, puede elegir entre un <i>pago seguro</i> y un <i>lanzamiento de moneda</i>.<br>
+            En el lanzamiento de moneda, si cae <i>cara</i> usted recibe 30.000 pesos y si cae <i>sello</i> no recibe nada (0 pesos).<br>
         {% endblocktrans %}
         {% blocktrans trimmed with n=Constants.num_choices %}
-            Le vamos a presentar {{n}} preguntas diferentes. La <i>lotería</i> es la misma en todas las preguntas,
-            pero el <i>pago seguro</i> diferirá en cada pregunta.
+            Le vamos a presentar {{n}} situaciones diferentes. 
+            El pago de <i>cara</i> y <i>sello</i> será el mismo en todos los lanzamientos de moneda pero el <i>pago seguro</i> cambiará en cada situación. 
         {% endblocktrans %}
     </p>
     <p>
         {% blocktrans trimmed with n=Constants.num_choices %}
-            Después de completar todas las {{n}} preguntas, 1 de las 5 preguntas se elegirá al azar para determinar su
-            pago. Si elige la <i>lotería</i>, el computador mediante un sorteo aleatorio determinará su ganancia; de lo contrario, el <i>pago seguro</i> será su ganancia.
+        Al final de esta parte, una de las situaciones será elegida al azar para determinar su pago. 
+        Si en esta usted eligió el <i>lanzamiento de moneda</i>, el computador hará un sorteo aleatorio para determinar su ganancia; 
+        de lo contrario, el <i>pago seguro</i> determinará su ganancia. 
     </p>
     <p>
         Esta actividad solo le será pagada a 1 de cada 10 personas. Si usted es elegido las ganancias de esta parte se sumarán a las ganancias del <i>Torneo</i>.

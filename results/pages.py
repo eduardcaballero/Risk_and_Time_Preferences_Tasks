@@ -7,7 +7,7 @@ import string
 
 class questions(Page):
     form_model = 'player'
-    form_fields = ['p_risk','p1', 'p2', 'p3','p4', 'p5', 'p6','p7'] 
+    form_fields = ['p_risk','p_sex', 'p_age', 'p_student', 'p_job', 'p_educ', 'p_educ1', 'p_ocupation', 'p_health', 'p_inc', 'p_pc', 'p_mouse'] 
 
 class thanks(Page):
     def vars_for_template(self): 
