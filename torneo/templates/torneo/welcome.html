@@ -2,11 +2,9 @@
 {% load user_agents %}
 
 {% block content %}
-
-{% if consent and consent_account %}
     <h1>Bienvenida</h1>
 
-    <p> Por favor silencie su teléfono móvil y evite cualquier distracción en los siguientes 30 minutos.</p>
+    <p> Por favor silencie su teléfono móvil y evite cualquier distracción en la actividad.</p>
 
     <p> En esta actividad su tarea consiste en pasar secuencias de <i>números</i> a <i>letras</i>. 
         Su pago depende del azar, y de la cantidad de secuencias correctas que usted y otros participantes realicen. </p> 
@@ -43,9 +41,9 @@
 
         <p>Luego de la ronda de práctica explicaremos en detalle los cambios de contrato. </p>
 
-        <h3>Ganancia adicional</h3>
+        <h5>Ganancia adicional</h5>
 
-        <p>Antes de finalizar se le presentarán 5 situaciones en las que dependiendo de sus decisiones y del azar podrá obtener una ganancia adicional</p>. 
+        <p>Antes de finalizar se le presentarán 5 situaciones en las que dependiendo de sus decisiones y del azar podrá obtener una ganancia adicional.</p> 
 
         <h5>Pagos de la actividad</h5>
 
@@ -53,15 +51,10 @@
             Su pago total en esta actividad corresponde al pago de una de las cinco rondas del torneo elegida al azar. Recuerde que podrá tener una ganancia adicional. 
         </p>
 
-    <p> Por favor, escribanos por chat. Uno de los monitores se comunicará con usted y le ofrecerá ayuda. </p> 
+    <p> Por favor, escribanos por chat si necesita ayuda. Uno de los monitores se comunicará con usted y le ofrecerá ayuda. </p> 
     
-    <p>
+    <p><b>
         {% formfields %}
-    </p>
+    </b></p>
     {% next_button %} 
-
-{% else %}
-    <h1>Muchas gracias!</h1>
-    <p>Su participación en este estudio terminó.</p>
-{% endif %}
-{% endblock %}
+    {% endblock %}

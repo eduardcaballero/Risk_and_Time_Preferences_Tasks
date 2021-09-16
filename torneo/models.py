@@ -296,7 +296,7 @@ class Player(BasePlayer):
     consent_account = models.BooleanField(blank=True)
     identificador = models.StringField(label='Para iniciar por favor ingrese las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, debe ingresar LR11021995. Escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
     p_random1 = models.IntegerField(blank=9, widget=widgets.RadioSelectHorizontal, 
-                                 label="1. Usted hace 6 secuencias, y los otros participantes hace 4 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 label="1. Usted hace 6 secuencias, y los otros participantes hacen 4 secuencias cada uno. Su probabilidad de tener el Contrato A en la siguiente ronda es:", 
                                  choices=[  [0, "0%"],
                                             [0, "30%"],
                                             [1, "50%"],
@@ -304,7 +304,7 @@ class Player(BasePlayer):
                                             [0, "90%"],
                                             [0, "100%"]])
     p_random2 = models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
-                                 label="2. Usted hace 6 secuencias, y los otros participantes también hacen 6 secuencias cada uno. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 label="2. Usted hace 6 secuencias, y los otros participantes también hacen 6 secuencias cada uno. Su probabilidad de tener el Contrato A en la siguiente ronda es:", 
                                  choices=[  [0, "0"],
                                             [0, "30%"],
                                             [1, "50%"],
@@ -312,7 +312,7 @@ class Player(BasePlayer):
                                             [0, "90%"],
                                             [0, "100%"]])
     p_perfect1 = models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
-                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A en la siguiente ronda es:", 
                                  choices=[  [0, "0%"],
                                             [0, "30%"],
                                             [0, "50%"],
@@ -328,7 +328,7 @@ class Player(BasePlayer):
                                             [0, "90%"],
                                             [0, "100%"]])
     p_noisy1= models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
-                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 label="1. Usted hace 6 secuencias, y el otro participante hace 4 secuencias. Su probabilidad de tener el Contrato A en la siguiente ronda es:", 
                                  choices=[  [0, "0%"],
                                             [0, "30%"],
                                             [0, "50%"],
@@ -336,7 +336,7 @@ class Player(BasePlayer):
                                             [0, "90%"],
                                             [0, "100%"]])
     p_noisy2= models.IntegerField(blank=9,widget=widgets.RadioSelectHorizontal, 
-                                 label="2. Usted hace 6 secuencias, y el otro participante también hace 6 secuencias. Su probabilidad de tener el Contrato A la siguiente ronda es:", 
+                                 label="2. Usted hace 6 secuencias, y el otro participante también hace 6 secuencias. Su probabilidad de tener el Contrato A en la siguiente ronda es:", 
                                  choices=[  [0, "0%"],
                                             [0, "30%"],
                                             [1, "50%"],

@@ -68,7 +68,7 @@ Resultados: ronda {{round}} de {{num_rounds}}
     .active {
         border-color: #000;
         border: 10px solid rgba(240, 255, 0, 0.2);
-        border-top: 10px solid #ffc107;
+        border-top: 10px solid #000000;
         animation: spin 1s linear;
     }
 
@@ -193,9 +193,9 @@ Resultados: ronda {{round}} de {{num_rounds}}
 </script>
 <br>
     {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-        <p>Haga clic en el circulo para ver la <i>asignación de contrato</i> resultante del repechaje.</p>
+        <p>Haga clic en el <b>circulo</b> para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
     {% else %}
-        <p>Haga clic en el circulo para ver la <i>asignación de contrato</i> .</p>
+        <p>Haga clic en el <b>circulo</b> para ver la asignación de contrato para la siguiente ronda:</p>
     {% endif %}
 
 
@@ -281,12 +281,13 @@ Resultados: ronda {{round}} de {{num_rounds}}
             document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato A</b>"
         } else {
             document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato B</b>"
-
+            
         }
+        document.getElementById("btn-load").style.backgroundColor = "yellow";
         setTimeout(function () {
             document.getElementById("btn-load").classList.remove("active")
             but[0].style.visibility = "visible";
-        }, 1000);
+        }, 500);
     }
 </script>
 {% endblock %}
