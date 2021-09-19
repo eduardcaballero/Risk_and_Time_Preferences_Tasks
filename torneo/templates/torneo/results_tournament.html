@@ -40,7 +40,7 @@ Resultados: ronda {{round}} de {{num_rounds}}
         <br>
         <!--Repechaje -->
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-        En el <i>repechaje</i> usted podrá cambiar de contrato con el participante en el ranking <b>
+        En el <i>Reclasificación</i> usted podrá cambiar de contrato con el participante en el ranking <b>
             {% if contract_A == 1 and position_contract == 2%}
                 3 </b> (Contrato B).
             {% else %}
@@ -261,7 +261,7 @@ Resultados: ronda {{round}} de {{num_rounds}}
             plugins: {
                 title: {
                     display: true,
-                    text: 'Probabilidad Contrato A [%] de participantes en Repechaje',
+                    text: 'Probabilidad Contrato A [%] de participantes en Reclasificación',
                     padding: {
                         top: 10,
                         bottom: 30

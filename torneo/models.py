@@ -215,10 +215,11 @@ class Group(BaseGroup):
                 else:
                     self.likelihood_contract_A_p2  = 0
             else: #subsession.discrimination == 2 (noisy)
-                if self.get_tasks_tournament() == 0:
-                    self.likelihood_contract_A_p2 = 0.5
-                else:
-                    self.likelihood_contract_A_p2 = self.tasks_p2 / self.get_tasks_tournament()
+                if self.subsession.discrimination == 2:
+                    if self.get_tasks_tournament() == 0:
+                        self.likelihood_contract_A_p2 = 0.5
+                    else:
+                        self.likelihood_contract_A_p2 = self.tasks_p2 / self.get_tasks_tournament()
 
     def set_winner_contract_A(self):
         if (self.round_number!=1):
@@ -363,7 +364,7 @@ class Player(BasePlayer):
         if (self.round_number!=1):
             if self.subsession.discrimination == 0:
                 self.likelihood_contract_A = 0.5
-            else:     
+            else:                     
                 if (self.contract_A == True and self.position_contract == 1):
                         self.likelihood_contract_A = 1
                 elif (self.contract_A == False and self.position_contract == 2):
