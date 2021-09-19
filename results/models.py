@@ -65,8 +65,8 @@ class Player(BasePlayer):
         [5,'Pregrado'],
         [6,'Posgrado (Especialización, Maestría, Doctorado)']
     ], label="5. ¿Cuál es el nivel educativo más alto que cursó?")
-    p_educ1 = models.IntegerField(label="¿Cuántos años de educación ha cursado en el nivel educativo que indicó previamente? (por ejemplo, si antes seleccionó Bachillerato debe escribir el número de años de Bachillerato que ha completado")
-    p_ocupation = models.StringField(label="Escriba el nombre de su profesión/ocupación")
+    p_educ1 = models.IntegerField(label="¿Cuántos años de educación ha cursado en el nivel educativo que indicó previamente? (por ejemplo, si antes seleccionó Bachillerato debe escribir el número de años de Bachillerato que ha completado)")
+    p_ocupation = models.StringField(label="Escriba el nombre de su profesión/ocupación/carrera")
     p_health = models.IntegerField(
     choices=[
         [1,'Subsidiado'],
