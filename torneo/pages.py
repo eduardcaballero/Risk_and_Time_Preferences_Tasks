@@ -2,6 +2,20 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class device(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class wait_all(WaitPage):
+    wait_for_all_groups = True
+
+class consent(Page):
+    form_model = 'player'
+    form_fields = ['consent','consent_account']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 class consent(Page):
     form_model = 'player'
     form_fields = ['consent','consent_account']
@@ -183,6 +197,8 @@ class wait_payoff_total(WaitPage):
         return self.round_number == Constants.num_rounds 
 
 page_sequence = [
+    device,
+    wait_all, 
     consent,
 	welcome, 
 	instructions_practice,
