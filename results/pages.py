@@ -13,10 +13,9 @@ class thanks(Page):
     def vars_for_template(self): 
         return {
             "identificador" : self.participant.vars['identificador'],
-            "payoff_total" : self.participant.vars['payoff_total'],
-            "payoff_complete" : self.participant.vars['payoff_complete']+(self.player.participant.vars["icl_pago"]*100),
+            "payoff_total" : "$"+format(int(str(self.participant.vars['payoff_total']).split(",")[0]),',d'),
+            "payoff_complete" : "$"+format(int(str(self.participant.vars['payoff_complete']+(self.player.participant.vars["icl_pago"]*100)).split(",")[0]),',d'),
             "round_payoff" : self.participant.vars['round_payoff']
-            # "pago_total" : "$"+format(int(str(self.player.pago.to_real_world_currency(self.session)).split(",")[0]),',d')
         }
-
+        
 page_sequence = [questions, thanks]

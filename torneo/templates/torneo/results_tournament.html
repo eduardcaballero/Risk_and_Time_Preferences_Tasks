@@ -192,12 +192,15 @@ Resultados: ronda {{round}} de {{num_rounds}}
     selectedRow();
 </script>
 <br>
-    {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-        <p>Haga clic en el <b>circulo</b> del lado derecho para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
+    {% if discrimination > 0 %}
+        {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
+            <p>Haga clic en el <b>circulo</b> que está abajo al lado derecho de la gráfica para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
+        {% else %}
+            <p>Haga clic en el <b>circulo</b> que está abajo para ver la asignación de contrato para la siguiente ronda:</p>
+        {% endif %}
     {% else %}
-        <p>Haga clic en el <b>circulo</b> del lado derecho para ver la asignación de contrato para la siguiente ronda:</p>
+        <p>Haga clic en el <b>circulo</b> que está abajo para ver la asignación de contrato para la siguiente ronda:</p>
     {% endif %}
-
 
 <!--Fin Repechaje -->
 <div class="container-chart">
@@ -219,7 +222,8 @@ Resultados: ronda {{round}} de {{num_rounds}}
     var position_contract = '{{position_contract}}'
     var round = '{{round}}'
     var num_rounds = '{{num_rounds}}'
-    if (contract_A == 'True' && position_contract == 2 || contract_A == 'False' && position_contract == 1 || round == num_rounds) {
+    var discrimination = '{{discrimination}}'
+    if (discrimination>0 && contract_A == 'True' && position_contract == 2 || discrimination>0 && contract_A == 'False' && position_contract == 1 || round == num_rounds) {
         console.log("Mostrar grafica")
         document.getElementById("chart").classList.remove("d-none")
     } else {
