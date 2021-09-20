@@ -27,6 +27,7 @@
 <div class="wrapper instructions">
     <p>
         {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
+        <h3>Situaciones</h3>
             A continuación, puede elegir entre un <i>pago seguro</i> y un <i>lanzamiento de moneda</i>.<br>
             En el lanzamiento de moneda, si cae <i>cara</i> usted recibe 30.000 pesos y si cae <i>sello</i> no recibe nada (0 pesos).<br>
         {% endblocktrans %}
@@ -37,12 +38,13 @@
     </p>
     <p>
         {% blocktrans trimmed with n=Constants.num_choices %}
+        <h3>Pago</h3>
         Al final de esta parte, una de las situaciones será elegida al azar para determinar su pago. 
         Si en esta usted eligió el <i>lanzamiento de moneda</i>, el computador hará un sorteo aleatorio para determinar su ganancia; 
         de lo contrario, el <i>pago seguro</i> determinará su ganancia. 
     </p>
     <p>
-        La probabilidad de que sea elegido para recibir el pago de esta parte es del 10 % (1 de cada 10 personas). Por favor elija de acuerdo a lo que prefiera, no hay respuestas correctas o incorrectas. Si usted es elegido las ganancias de esta parte se sumarán a las ganancias del <i>Torneo</i>.
+        Esta parte de la actividad le será pagada con una probabilidad del 10% (Es decir, a 1 de cada 10 personas que participen en todas las sesiones). Si usted es seleccionado, las ganancias de esta parte se sumarán a sus ganancias del <i>Torneo</i>. <br> Por favor elija de acuerdo a lo que usted prefiere, no hay respuestas correctas o incorrectas.
         {% endblocktrans %}
         </p>
     </div>

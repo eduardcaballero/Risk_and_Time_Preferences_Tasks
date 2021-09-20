@@ -24,12 +24,12 @@ class Constants(BaseConstants):
     name_in_url = 'Torneo'
     players_per_group = 4
     num_rounds = 6
-    payoff_A = c(2000)
-    payoff_B = c(1000)
+    payoff_A = c(4000)
+    payoff_B = c(2000)
     round_payoff = random.randint(2, num_rounds)
     letters_per_word = 5
     use_timeout = True
-    seconds_per_period = 90
+    seconds_per_period = 120
 
 class Subsession(BaseSubsession):
     merit = models.BooleanField(
@@ -130,7 +130,6 @@ class Subsession(BaseSubsession):
         for g in self.get_groups():
             g.set_ranking()
             g.set_ranking_contract()
-            g.set_likelihood_contract_A_p2()
     
     def set_positions_players(self):
         for j in self.get_players():
@@ -142,6 +141,7 @@ class Subsession(BaseSubsession):
     def set_winners_contract_A(self):
         for g in self.get_groups():
             g.set_winner_contract_A()
+            g.set_likelihood_contract_A_p2()
     
     def set_tasks(self):
         if (self.round_number!=1):
@@ -207,15 +207,15 @@ class Group(BaseGroup):
         if (self.round_number!=1):
             if self.subsession.discrimination == 0:#(random)
                 self.likelihood_contract_A_p2 = 0.5
-            elif self.subsession.discrimination == 1:#(perfect)
-                if (self.tasks_p2 > self.get_tasks_tournament()/2):
-                    self.likelihood_contract_A_p2  = 1
-                elif (self.tasks_p2 == self.get_tasks_tournament()/2):
-                    self.likelihood_contract_A_p2  = 0.5
-                else:
-                    self.likelihood_contract_A_p2  = 0
-            else: #subsession.discrimination == 2 (noisy)
-                if self.subsession.discrimination == 2:
+            else: 
+                if self.subsession.discrimination == 1:#(perfect)
+                    if (self.tasks_p2 > self.get_tasks_tournament()/2):
+                        self.likelihood_contract_A_p2  = 1
+                    elif (self.tasks_p2 == self.get_tasks_tournament()/2):
+                        self.likelihood_contract_A_p2  = 0.5
+                    else:
+                        self.likelihood_contract_A_p2  = 0
+                else: #subsession.discrimination == 2 (noisy)
                     if self.get_tasks_tournament() == 0:
                         self.likelihood_contract_A_p2 = 0.5
                     else:

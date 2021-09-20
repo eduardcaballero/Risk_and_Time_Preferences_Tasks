@@ -4,10 +4,13 @@ from .models import Constants
 import random
 import string    
 
-
-class questions(Page):
+class questions1(Page):
     form_model = 'player'
-    form_fields = ['p_risk','p_sex', 'p_age', 'p_student', 'p_job', 'p_educ', 'p_educ1', 'p_ocupation', 'p_health', 'p_inc', 'p_pc', 'p_mouse'] 
+    form_fields = ['p_emp','pnorm_1','pnorm_2','pnorm_3','p_pension'] 
+
+class questions2(Page):
+    form_model = 'player'
+    form_fields = ['p_risk','p_sex', 'p_age', 'p_student', 'p_job', 'p_educ', 'p_educ1', 'p_ocupation', 'p_health', 'p_inc', 'p_pc', 'p_mouse', 'p_mouse1', 'p_wifi'] 
 
 class thanks(Page):
     def vars_for_template(self): 
@@ -18,4 +21,4 @@ class thanks(Page):
             "round_payoff" : self.participant.vars['round_payoff']
         }
         
-page_sequence = [questions, thanks]
+page_sequence = [questions1,questions2, thanks]
