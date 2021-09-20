@@ -25,7 +25,17 @@
 {% block content %}
 
     <div class="wrapper">
+        <div class="card info">
 
+            {% if player.id_in_subsession == Constants.ganador1 or player.id_in_subsession == Constants.ganador2 %}
+                Usted fue seleccionado para recibir el pago por esta parte de la actividad.
+            {% else %}
+                Usted NO fue seleccionado para recibir el pago por esta parte de la actividad.
+            {% endif %}
+        </div>
+        <br/>
+
+        {% if player.id_in_subsession == Constants.ganador1 or player.id_in_subsession == Constants.ganador2 %}
         <div class="card info">
             {% blocktrans trimmed %}
                 La siguiente decisión fue elegida al azar para su pago:
@@ -165,16 +175,7 @@
 
         </div>
         <br/>
-
-         <div class="card info">
-
-        {% if player.id_in_subsession == Constants.ganador1 or player.id_in_subsession == Constants.ganador2 %}
-            Usted fue seleccionado para recibir el pago por esta parte de la actividad.
-        {% else %}
-            Usted NO fue seleccionado para recibir el pago por esta parte de la actividad.
         {% endif %}
-        </div>
-
 
     {% next_button %}
 

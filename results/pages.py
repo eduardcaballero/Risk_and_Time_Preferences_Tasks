@@ -10,7 +10,7 @@ class questions1(Page):
 
 class questions2(Page):
     form_model = 'player'
-    form_fields = ['p_risk','p_sex', 'p_age', 'p_student', 'p_job', 'p_educ', 'p_educ1', 'p_ocupation', 'p_health', 'p_inc', 'p_pc', 'p_mouse', 'p_mouse1', 'p_wifi'] 
+    form_fields = ['p_risk','p_sex', 'p_age', 'p_student', 'p_job', 'p_educ', 'p_educ1', 'p_ocupation', 'p_inc','p_health', 'p_pension2', 'p_pc', 'p_mouse', 'p_mouse1', 'p_wifi'] 
 
 class thanks(Page):
     def vars_for_template(self): 

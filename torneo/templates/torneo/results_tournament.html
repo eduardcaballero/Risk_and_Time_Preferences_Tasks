@@ -39,13 +39,15 @@ Resultados: ronda {{round}} de {{num_rounds}}
         {% endif %}
         <br>
         <!--Repechaje -->
+        {% if discrimination > 0 %}
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-        En el <i>Reclasificación</i> usted podrá cambiar de contrato con el participante en el ranking <b>
+        En la <i>Reclasificación</i> usted podrá cambiar de contrato con el participante en el ranking <b>
             {% if contract_A == 1 and position_contract == 2%}
                 3 </b> (Contrato B).
             {% else %}
                 2 </b> (Contrato A).
             {% endif %}
+        {% endif %}
         {% endif %}
 </p>
 <!--Ranking -->
@@ -68,14 +70,14 @@ Resultados: ronda {{round}} de {{num_rounds}}
     .active {
         border-color: #000;
         border: 10px solid rgba(240, 255, 0, 0.2);
-        border-top: 10px solid #000000;
+        border-top: 5px solid #000000;
         animation: spin 1s linear;
     }
 
     .text {
         position: absolute;
-        top: 50px;
-        left: 140px;
+        top: 40px;
+        left: 130px;
         text-align: center;
         cursor: pointer;
     }
@@ -194,12 +196,12 @@ Resultados: ronda {{round}} de {{num_rounds}}
 <br>
     {% if discrimination > 0 %}
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-            <p>Haga clic en el <b>circulo</b> que está abajo al lado derecho de la gráfica para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
+            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo al lado derecho de la gráfica, para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
         {% else %}
-            <p>Haga clic en el <b>circulo</b> que está abajo para ver la asignación de contrato para la siguiente ronda:</p>
+            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación de contrato para la siguiente ronda:</p>
         {% endif %}
     {% else %}
-        <p>Haga clic en el <b>circulo</b> que está abajo para ver la asignación de contrato para la siguiente ronda:</p>
+        <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación de contrato para la siguiente ronda:</p>
     {% endif %}
 
 <!--Fin Repechaje -->
@@ -208,7 +210,7 @@ Resultados: ronda {{round}} de {{num_rounds}}
     <div style="position:relative;">
         <button type="button" id="btn-load" class="btn-load">
         </button>
-        <p id="text" class="text">Asignación <br /> contrato</p>
+        <p id="text" class="text">Botón <br /> Asignación <br />contrato</p>
     </div>
 </div>
 {% endif %}
@@ -282,9 +284,9 @@ Resultados: ronda {{round}} de {{num_rounds}}
     function addLoad() {
         document.getElementById("btn-load").classList.add("active")
         if (contractA == 'True') {
-            document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato A</b>"
+            document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <h5><b>Contrato A</b></h5>"
         } else {
-            document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <b>Contrato B</b>"
+            document.getElementById("text").innerHTML = "Ronda " + round + ":" + "<br/> <h5><b>Contrato B</b></h5>"
             
         }
         document.getElementById("btn-load").style.backgroundColor = "yellow";

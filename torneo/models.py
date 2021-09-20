@@ -24,8 +24,8 @@ class Constants(BaseConstants):
     name_in_url = 'Torneo'
     players_per_group = 4
     num_rounds = 6
-    payoff_A = c(4000)
-    payoff_B = c(2000)
+    payoff_A = c(3000)
+    payoff_B = c(1500)
     round_payoff = random.randint(2, num_rounds)
     letters_per_word = 5
     use_timeout = True

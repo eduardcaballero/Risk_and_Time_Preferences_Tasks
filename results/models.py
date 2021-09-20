@@ -98,24 +98,24 @@ class Player(BasePlayer):
     choices=[
         [1,'Portátil'],
         [2,'Equipo de escritorio']
-    ], label="11. ¿Qué tipo de computador usó durante la actividad?")
+    ], label="12. ¿Qué tipo de computador usó durante la actividad?")
     p_mouse = models.IntegerField(
     choices=[
         [1,'Sí (no incluye el mouse incorporado en el computador portátil).'],
         [2,'No']
-    ], label="12. ¿Durante la actividad usted utilizó un “mouse/ratón” no incorporado al equipo?") 
+    ], label="13. ¿Durante la actividad usted utilizó un “mouse/ratón” no incorporado al equipo?") 
     p_mouse1 = models.IntegerField(
     choices=[
         [1,'Bueno (funcionó adecuadamente).'],
         [2,'Regular (no funcionó bien en algunos momentos)'],
         [3,'Malo (dejó de funcionar en algún momento)'],
-    ], label="13. ¿Cómo califica el funcionamiento del “mouse/ratón” que usó durante la actividad?") 
+    ], label="14. ¿Cómo califica el funcionamiento del “mouse/ratón” que usó durante la actividad?") 
     p_wifi = models.IntegerField(
     choices=[
         [1,'Bueno (funcionó adecuadamente).'],
         [2,'Regular (no funcionó bien en algunos momentos)'],
         [3,'Malo (dejó de funcionar en algún momento)'],
-    ], label="14. ¿Cómo califica el funcionamiento de su conexión a internet durante la actividad?") 
+    ], label="15. ¿Cómo califica el funcionamiento de su conexión a internet durante la actividad?") 
 
     pnorm_1 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
@@ -140,6 +140,17 @@ class Player(BasePlayer):
         [3,'Ahorrando'],
         [4,'Haciendo inversiones'],
         [5,'Pagando un seguro por su cuenta'],
-        [6,'Preparando a sus hijos para que puedan mantenerlo en su vejez'],
+        [6,'Preparando a sus hijos para que puedan ayudarlo en su vejez'],
         [7,'Nada'],
     ], label="¿Qué está haciendo usted actualmente para mantenerse económicamente en su vejez?")
+
+    p_pension2 = models.IntegerField(
+    choices=[
+        [1,'Aportando en un fondo de pensiones obligatorias'],
+        [2,'Aportando en un fondo de pensiones voluntarias (por ejemplo, BEPS)'],
+        [3,'Ahorrando'],
+        [4,'Haciendo inversiones'],
+        [5,'Pagando un seguro por su cuenta'],
+        [6,'Preparando a los hijos para que puedan ayudarlos en su vejez'],
+        [7,'Nada'],
+    ], label="11. ¿Qué están haciendo (hicieron) sus padres para mantenerse económicamente en la vejez?")
