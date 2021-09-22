@@ -422,5 +422,6 @@ class Player(BasePlayer):
 
     def set_payoff_complete(self):
         if (self.round_number==Constants.num_rounds):
+            self.payoff_complete= self.pago + 10000
             self.participant.vars['payoff_complete']= self.pago + 10000
         return self.participant.vars['payoff_complete']

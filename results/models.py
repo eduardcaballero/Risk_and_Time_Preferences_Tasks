@@ -32,6 +32,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    pago_total = models.CurrencyField()
+
     p_sex = models.IntegerField(
     choices=[
         [1, 'Hombre'],
@@ -154,3 +156,6 @@ class Player(BasePlayer):
         [6,'Preparando a los hijos para que puedan ayudarlos en su vejez'],
         [7,'Nada'],
     ], label="11. ¿Qué están haciendo (hicieron) sus padres para mantenerse económicamente en la vejez?")
+
+    def payoff_complete(self):
+        self.pago_total =  self.participant.vars['payoff_complete']+(self.participant.vars["icl_pago"]*100)
