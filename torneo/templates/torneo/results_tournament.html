@@ -38,7 +38,7 @@ Resultados: ronda {{round}} de {{num_rounds}}
         {% endif %}
         {% endif %}
         <br>
-        <!--Repechaje -->
+        <!--Reclasificación -->
         {% if discrimination > 0 %}
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
         En la <i>Reclasificación</i> usted podrá cambiar de contrato con el participante en el ranking <b>
@@ -196,25 +196,28 @@ Resultados: ronda {{round}} de {{num_rounds}}
 <br>
     {% if discrimination > 0 %}
         {% if contract_A == 1 and position_contract == 2 or contract_A == 0 and position_contract == 1 %}
-            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo al lado derecho de la gráfica, para ver la asignación de contrato resultante del repechaje para la siguiente ronda.</p>
+            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo al lado derecho de la gráfica, para ver la asignación del contrato resultante de la <i>Reclasificación</i> para la siguiente ronda.</p>
         {% else %}
-            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación de contrato para la siguiente ronda:</p>
+            <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación del contrato para la siguiente ronda:</p>
         {% endif %}
     {% else %}
-        <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación de contrato para la siguiente ronda:</p>
+        <p>Haga clic en el botón <b>(circulo)</b>, que está abajo, para ver la asignación del contrato para la siguiente ronda:</p>
     {% endif %}
 
-<!--Fin Repechaje -->
+<!--Fin Reclasificación -->
 <div class="container-chart">
     <div id="chart" class="chart-canva d-none" style="height:400px; width:40%"><canvas id="myChart"></canvas></div>
     <div style="position:relative;">
         <button type="button" id="btn-load" class="btn-load">
         </button>
-        <p id="text" class="text">Botón <br /> Asignación <br />contrato</p>
+        <p id="text" class="text"><b>Botón</b><br />Asignación<br />Contrato</p>
     </div>
 </div>
 {% endif %}
-<br>
+{% if round < num_rounds %}
+    <br>
+    <p> Luego de dar <I>clic</I> en el botón, por favor oprima "Siguiente" para continuar.</p>
+{% endif %}
 {% next_button %}
 {% endblock %}
 {% block global_scripts %}

@@ -413,7 +413,6 @@ class Player(BasePlayer):
                     self.contract_A_tournament = False
                     self.position_contract_tournament = 1
 
-
     def set_payoff_round(self):
         if (self.contract_A):
             self.payoff_round= Constants.payoff_A * self.tasks
