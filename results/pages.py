@@ -21,7 +21,7 @@ class thanks(Page):
             "identificador" : self.participant.vars['identificador'],
             "payoff_total" : "$"+format(int(str(self.participant.vars['payoff_total']).split(",")[0]),',d'),
             "payoff_complete" : "$"+format(int(str(self.participant.vars['payoff_complete']+(self.participant.vars["icl_pago"]*100)).split(",")[0]),',d'),
-            "round_payoff" : self.participant.vars['round_payoff']
+            "round_payoff" : self.participant.vars['round_payoff']-1
         }
         
 page_sequence = [questions1,questions2, thanks]
