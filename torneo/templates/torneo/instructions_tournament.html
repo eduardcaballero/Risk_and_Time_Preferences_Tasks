@@ -114,7 +114,7 @@
     
     <p> Según la tercera columna de la tabla, 
         {% if discrimination == 0 %}
-            la probabilidad de cambiar de contrato es la misma para todos los participantes. <br>
+            <b>la probabilidad de cambiar de contrato es la misma para todos los participantes.</b><br>
             Es decir, es igual de probable que reciba el <i>Contrato A</i> o el <i>Contrato B</i>. 
       
         {% else %}
@@ -129,10 +129,11 @@
                 <p>La asignación del <i>Contrato A</i> depende del número de secuencias correctas que hayan realizado los participantes en el Ranking <b>2</b> y <b>3</b>. <br>
                                     
                     {% if discrimination == 1 %}
-                        Se queda con el <i>Contrato A</i> el que haya completado más <i>secuencias</i> entre los participantes en la Reclasificación.
+                        <b>Se queda con el <i>Contrato A</i> el que haya completado más <i>secuencias</i> entre los participantes en la Reclasificación.</b> <br> 
+                        Si ambos hacen la misma cantidad de secuencias correctas, la probabilidad quedarse con el <i>Contrato A</i> es la misma para ambos los participantes (50%).
                     {% else %}
                         Quedarse con el <i>Contrato A</i> depende de un sorteo. 
-                        Entre más secuencias correctas respecto a las del otro participante en la Reclasificación, más chances de ganar.
+                        <b>Entre más secuencias correctas respecto a las del otro participante en la Reclasificación, más chances de ganar.</b><br>
                         Si ambos hacen la misma cantidad de secuencias correctas, la probabilidad quedarse con el <i>Contrato A</i> es la misma para ambos los participantes (50%). <br>
 
                         Así se ve la fórmula exacta: $$\text{Probabilidad Contrato A}  = {\text{Sus tareas }  \over \text{Sus tareas }  + \text{Tareas del otro} }.$$
