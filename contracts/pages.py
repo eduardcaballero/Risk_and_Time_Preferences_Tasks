@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class MyPage(Page):
+class Contrato(Page):
     pass
 
 
@@ -11,8 +11,8 @@ class ResultsWaitPage(WaitPage):
     pass
 
 
-class Results(Page):
+class Comparacion(Page):
     pass
 
 
-page_sequence = [MyPage, ResultsWaitPage, Results]
+page_sequence = [Contrato, Comparacion]
