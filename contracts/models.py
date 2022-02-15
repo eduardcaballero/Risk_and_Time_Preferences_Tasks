@@ -87,29 +87,29 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    c1 =  models.IntegerField()
-    c2 =  models.IntegerField()
-    c3 =  models.IntegerField()
-    c4 =  models.IntegerField()
-    c5 =  models.IntegerField()
-    c6 =  models.IntegerField()
-    c7 =  models.IntegerField()
-    c8 =  models.IntegerField()
-    c9 =  models.IntegerField()
-    c10 =  models.IntegerField()
-    c11 =  models.IntegerField()
-    c12 =  models.IntegerField()
-    c13 =  models.IntegerField()
-    c14 =  models.IntegerField()
-    c15 =  models.IntegerField()
-    c16 =  models.IntegerField()
+    c1 =  models.StringField()
+    c2 =  models.StringField()
+    c3 =  models.StringField()
+    c4 =  models.StringField()
+    c5 =  models.StringField()
+    c6 =  models.StringField()
+    c7 =  models.StringField()
+    c8 =  models.StringField()
+    c9 =  models.StringField()
+    c10 =  models.StringField()
+    c11 =  models.StringField()
+    c12 =  models.StringField()
+    c13 =  models.StringField()
+    c14 =  models.StringField()
+    c15 =  models.StringField()
+    c16 =  models.StringField()
 
     consent = models.BooleanField(blank=True)
     consent_account = models.BooleanField(blank=True)
     identificador = models.StringField(label='Para iniciar por favor ingrese las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Lina Ríos y usted nació el 11 de febrero de 1995, debe ingresar LR11021995. Escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad y la realización de los pagos.')
 
 
-    contract_pago = models.IntegerField()
+    contract_pago = models.StringField()
     #pago = models.CurrencyField(initial=0)
 
     def rellenar_campos(self, campo):
