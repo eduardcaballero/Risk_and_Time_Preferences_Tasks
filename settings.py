@@ -26,6 +26,12 @@ SESSION_CONFIGS = [
         'num_demo_participants': 1,
         'app_sequence': ['contracts']
     },
+     {
+        'name': 'allocations',
+        'display_name': "Allocations",
+        'num_demo_participants': 1,
+        'app_sequence': ['allocations']
+    },
     {
         'name': 'bret',
         'display_name': "BRET",
